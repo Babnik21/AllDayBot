@@ -1,0 +1,58 @@
+query GetActiveRewardPasses {
+    getActiveRewardPasses {
+        id
+        title
+        description
+        imageUrl
+        startAt
+        endAt
+        tasks {
+            rewardPassID
+            id
+            slug
+            title
+            type
+            description
+            category
+            rewardPoints
+            referenceID
+            timesRequired
+            streakIndex
+            streakCountRequired
+            validFrom
+            validTo
+            validations {
+                moments {
+                    tier
+                    quantity
+                    __typename
+                }
+                __typename
+            }
+            __typename
+        }
+        levels {
+            id
+            rewardPassID
+            requiredPoints
+            rewards {
+                id
+                levelID
+                rewardID
+                tier
+                title
+                description
+                imageUrl
+                skipClaim
+                __typename
+            }
+            usersCompleted
+            __typename
+        }
+        week
+        difficulty
+        __typename
+    }
+}
+
+        

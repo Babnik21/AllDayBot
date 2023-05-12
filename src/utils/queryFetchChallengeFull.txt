@@ -1,0 +1,110 @@
+query searchChallenges_challenge(
+    $byIDs: [String], 
+    $byHasParentChallenge: Boolean
+) 
+{
+    searchChallenges(
+        input: {
+            filters: {
+                byIDs: $byIDs, 
+                byHasParentChallenge: $byHasParentChallenge
+            },
+        first: 1
+        }
+    ) 
+    {
+        totalCount
+        pageInfo {
+            endCursor
+            hasNextPage
+            __typename
+        }
+        edges {
+            node {
+                ...ChallengeQueryFragment
+                childChallenges {
+                    ...ChallengeQueryFragment
+                    __typename
+                }
+                __typename
+            }
+            cursor
+            __typename
+        }
+        __typename
+    }
+}
+
+fragment ChallengeQueryFragment on Challenge {
+    id
+    name
+    category
+    nftType
+    summary
+    description
+    instructions {
+        instructions
+        __typename
+        }
+    finePrint
+    startDate
+    endDate
+    images {
+        url
+        type
+        __typename
+    }
+    videos {
+        url
+        type
+        __typename
+    }
+    slots {
+        id
+        title
+        description
+        query {
+                ...ChallengeSlotQueryFragment
+            __typename
+        }
+        slotOrder
+        isWildcard
+        submission {
+            id
+            nftID
+            nftType
+            __typename
+        }
+        __typename
+    }
+    rewardID
+    communityCompletions
+    relatedGames {
+        id
+        awayTeamID
+        homeTeamID
+        __typename
+    }
+    parentChallengeID
+    userSubmissionMomentNFTIDs
+    userSubmissionEditionIDs
+    userSubmissionTeamNFTIDs
+    userSubmissionStatus
+    visibility
+    __typename
+}
+    
+fragment ChallengeSlotQueryFragment on ChallengeSlotQuery {
+    byEditionFlowIDs
+    byPlayTypes
+    byPlayerIDs
+    bySetIDs
+    byTeamIDs
+    byTiers
+    byPlayerPositions
+    bySeries
+    byCombinedBadgeSlugs
+    __typename
+}
+    
+            

@@ -1,0 +1,675 @@
+{
+    "data": {
+        "searchMarketplaceEditions": {
+            "totalCount": 14,
+            "pageInfo": {
+                "endCursor": "NDVlNTVjZjAtN2YxMy00YjA2LWIzNjQtZDBhYTdiMmIxY2MyLDAwMDEtMDEtMDFUMDA6MDA6MDBaLDAsMTgwLjAwMDAwMDAw",
+                "hasNextPage": true,
+                "__typename": "PageInfo"
+            },
+            "edges": [
+                {
+                    "cursor": "MGU4MTBhMjYtMDExNi00ZDEzLWJkNTUtYzBmYzA5MjdiODA0LDAwMDEtMDEtMDFUMDA6MDA6MDBaLDAsODQuMDAwMDAwMDA=",
+                    "node": {
+                        "editionFlowID": 1266,
+                        "lowestPrice": "84.00000000",
+                        "edition": {
+                            "id": "0e810a26-0116-4d13-bd55-c0fc0927b804",
+                            "flowID": 1266,
+                            "tier": "RARE",
+                            "maxMintSize": 250,
+                            "assetType": "STATIC",
+                            "assetVersion": "-v2",
+                            "currentMintSize": 250,
+                            "authenticatedUserOwnedMomentNFTs": {
+                                "totalCount": 0,
+                                "__typename": "SearchMomentNFTsResponseV2"
+                            },
+                            "numMomentsBurned": 0,
+                            "badges": [
+                                {
+                                    "id": "0553c4b3-3524-4f57-9550-cdc42f58186e",
+                                    "title": "Dynamic Moment",
+                                    "slug": "dynamic-moment",
+                                    "description": "Marks any Moment with the capacity to change and evolve beyond its original condition",
+                                    "__typename": "Badge"
+                                }
+                            ],
+                            "play": {
+                                "id": "e1891848-db19-4813-9bc5-7d4afc6e4a16",
+                                "metadata": {
+                                    "teamName": "Jacksonville Jaguars",
+                                    "classification": "PLAYER_MELT",
+                                    "playerFullName": "Jacksonville Jaguars",
+                                    "gameDate": "01/01/2022",
+                                    "playType": "Team Melt",
+                                    "homeTeamID": "5181",
+                                    "awayTeamID": "5181",
+                                    "__typename": "PlayMetadata"
+                                },
+                                "__typename": "Play"
+                            },
+                            "set": {
+                                "name": "Banner Year",
+                                "__typename": "Set"
+                            },
+                            "series": {
+                                "name": "Series 2",
+                                "__typename": "Series"
+                            },
+                            "__typename": "Edition"
+                        },
+                        "__typename": "MarketplaceEdition"
+                    },
+                    "__typename": "MarketplaceEditionEdge"
+                },
+                {
+                    "cursor": "MDVlNjM0ZWEtOTkwYy00ZmU2LWEzMDYtNTBlNjdiZjllYmIwLDAwMDEtMDEtMDFUMDA6MDA6MDBaLDAsODkuMDAwMDAwMDA=",
+                    "node": {
+                        "editionFlowID": 1270,
+                        "lowestPrice": "89.00000000",
+                        "edition": {
+                            "id": "05e634ea-990c-4fe6-a306-50e67bf9ebb0",
+                            "flowID": 1270,
+                            "tier": "RARE",
+                            "maxMintSize": 250,
+                            "assetType": "STATIC",
+                            "assetVersion": "-v2",
+                            "currentMintSize": 250,
+                            "authenticatedUserOwnedMomentNFTs": {
+                                "totalCount": 0,
+                                "__typename": "SearchMomentNFTsResponseV2"
+                            },
+                            "numMomentsBurned": 0,
+                            "badges": [
+                                {
+                                    "id": "0553c4b3-3524-4f57-9550-cdc42f58186e",
+                                    "title": "Dynamic Moment",
+                                    "slug": "dynamic-moment",
+                                    "description": "Marks any Moment with the capacity to change and evolve beyond its original condition",
+                                    "__typename": "Badge"
+                                }
+                            ],
+                            "play": {
+                                "id": "0c97b64c-9d36-4e17-8c79-8b91b4619f76",
+                                "metadata": {
+                                    "teamName": "Minnesota Vikings",
+                                    "classification": "PLAYER_MELT",
+                                    "playerFullName": "Minnesota Vikings",
+                                    "gameDate": "01/01/2022",
+                                    "playType": "Team Melt",
+                                    "homeTeamID": "5167",
+                                    "awayTeamID": "5167",
+                                    "__typename": "PlayMetadata"
+                                },
+                                "__typename": "Play"
+                            },
+                            "set": {
+                                "name": "Banner Year",
+                                "__typename": "Set"
+                            },
+                            "series": {
+                                "name": "Series 2",
+                                "__typename": "Series"
+                            },
+                            "__typename": "Edition"
+                        },
+                        "__typename": "MarketplaceEdition"
+                    },
+                    "__typename": "MarketplaceEditionEdge"
+                },
+                {
+                    "cursor": "NzZmZGQxN2MtYzI3OS00MzRmLWFjZDUtOWNiMjIxNGRhZmU1LDAwMDEtMDEtMDFUMDA6MDA6MDBaLDAsOTAuMDAwMDAwMDA=",
+                    "node": {
+                        "editionFlowID": 1274,
+                        "lowestPrice": "90.00000000",
+                        "edition": {
+                            "id": "76fdd17c-c279-434f-acd5-9cb2214dafe5",
+                            "flowID": 1274,
+                            "tier": "RARE",
+                            "maxMintSize": 250,
+                            "assetType": "STATIC",
+                            "assetVersion": "-v2",
+                            "currentMintSize": 250,
+                            "authenticatedUserOwnedMomentNFTs": {
+                                "totalCount": 0,
+                                "__typename": "SearchMomentNFTsResponseV2"
+                            },
+                            "numMomentsBurned": 0,
+                            "badges": [
+                                {
+                                    "id": "0553c4b3-3524-4f57-9550-cdc42f58186e",
+                                    "title": "Dynamic Moment",
+                                    "slug": "dynamic-moment",
+                                    "description": "Marks any Moment with the capacity to change and evolve beyond its original condition",
+                                    "__typename": "Badge"
+                                }
+                            ],
+                            "play": {
+                                "id": "dd7f8f02-0e89-4dfc-a5a8-eec0278cb930",
+                                "metadata": {
+                                    "teamName": "Seattle Seahawks",
+                                    "classification": "PLAYER_MELT",
+                                    "playerFullName": "Seattle Seahawks",
+                                    "gameDate": "01/01/2022",
+                                    "playType": "Team Melt",
+                                    "homeTeamID": "5177",
+                                    "awayTeamID": "5177",
+                                    "__typename": "PlayMetadata"
+                                },
+                                "__typename": "Play"
+                            },
+                            "set": {
+                                "name": "Banner Year",
+                                "__typename": "Set"
+                            },
+                            "series": {
+                                "name": "Series 2",
+                                "__typename": "Series"
+                            },
+                            "__typename": "Edition"
+                        },
+                        "__typename": "MarketplaceEdition"
+                    },
+                    "__typename": "MarketplaceEditionEdge"
+                },
+                {
+                    "cursor": "ZGFlY2IwZTgtYzQwNy00ODhiLWJmYjEtZTZiOTRlODczM2EyLDAwMDEtMDEtMDFUMDA6MDA6MDBaLDAsOTAuMDAwMDAwMDA=",
+                    "node": {
+                        "editionFlowID": 1269,
+                        "lowestPrice": "90.00000000",
+                        "edition": {
+                            "id": "daecb0e8-c407-488b-bfb1-e6b94e8733a2",
+                            "flowID": 1269,
+                            "tier": "RARE",
+                            "maxMintSize": 250,
+                            "assetType": "STATIC",
+                            "assetVersion": "-v2",
+                            "currentMintSize": 250,
+                            "authenticatedUserOwnedMomentNFTs": {
+                                "totalCount": 0,
+                                "__typename": "SearchMomentNFTsResponseV2"
+                            },
+                            "numMomentsBurned": 1,
+                            "badges": [
+                                {
+                                    "id": "0553c4b3-3524-4f57-9550-cdc42f58186e",
+                                    "title": "Dynamic Moment",
+                                    "slug": "dynamic-moment",
+                                    "description": "Marks any Moment with the capacity to change and evolve beyond its original condition",
+                                    "__typename": "Badge"
+                                }
+                            ],
+                            "play": {
+                                "id": "271ebfe6-5e0d-4895-ab28-b95e17272632",
+                                "metadata": {
+                                    "teamName": "Miami Dolphins",
+                                    "classification": "PLAYER_MELT",
+                                    "playerFullName": "Miami Dolphins",
+                                    "gameDate": "01/01/2022",
+                                    "playType": "Team Melt",
+                                    "homeTeamID": "5166",
+                                    "awayTeamID": "5166",
+                                    "__typename": "PlayMetadata"
+                                },
+                                "__typename": "Play"
+                            },
+                            "set": {
+                                "name": "Banner Year",
+                                "__typename": "Set"
+                            },
+                            "series": {
+                                "name": "Series 2",
+                                "__typename": "Series"
+                            },
+                            "__typename": "Edition"
+                        },
+                        "__typename": "MarketplaceEdition"
+                    },
+                    "__typename": "MarketplaceEditionEdge"
+                },
+                {
+                    "cursor": "ZWYyY2VhNDgtM2FiNi00MDA2LWFlMjUtYmI2YzVjZDYzYmZmLDAwMDEtMDEtMDFUMDA6MDA6MDBaLDAsOTAuMDAwMDAwMDA=",
+                    "node": {
+                        "editionFlowID": 1262,
+                        "lowestPrice": "90.00000000",
+                        "edition": {
+                            "id": "ef2cea48-3ab6-4006-ae25-bb6c5cd63bff",
+                            "flowID": 1262,
+                            "tier": "RARE",
+                            "maxMintSize": 250,
+                            "assetType": "STATIC",
+                            "assetVersion": "-v2",
+                            "currentMintSize": 250,
+                            "authenticatedUserOwnedMomentNFTs": {
+                                "totalCount": 0,
+                                "__typename": "SearchMomentNFTsResponseV2"
+                            },
+                            "numMomentsBurned": 2,
+                            "badges": [
+                                {
+                                    "id": "0553c4b3-3524-4f57-9550-cdc42f58186e",
+                                    "title": "Dynamic Moment",
+                                    "slug": "dynamic-moment",
+                                    "description": "Marks any Moment with the capacity to change and evolve beyond its original condition",
+                                    "__typename": "Badge"
+                                }
+                            ],
+                            "play": {
+                                "id": "ce3179a3-6d54-4725-b6ba-484cae52047c",
+                                "metadata": {
+                                    "teamName": "Baltimore Ravens",
+                                    "classification": "PLAYER_MELT",
+                                    "playerFullName": "Baltimore Ravens",
+                                    "gameDate": "01/01/2022",
+                                    "playType": "Team Melt",
+                                    "homeTeamID": "5156",
+                                    "awayTeamID": "5156",
+                                    "__typename": "PlayMetadata"
+                                },
+                                "__typename": "Play"
+                            },
+                            "set": {
+                                "name": "Banner Year",
+                                "__typename": "Set"
+                            },
+                            "series": {
+                                "name": "Series 2",
+                                "__typename": "Series"
+                            },
+                            "__typename": "Edition"
+                        },
+                        "__typename": "MarketplaceEdition"
+                    },
+                    "__typename": "MarketplaceEditionEdge"
+                },
+                {
+                    "cursor": "MDg0MjE0MzMtOTFiMS00OTY3LTk3YWEtMDhlZWI5MTBiMDliLDAwMDEtMDEtMDFUMDA6MDA6MDBaLDAsMTAwLjAwMDAwMDAw",
+                    "node": {
+                        "editionFlowID": 1268,
+                        "lowestPrice": "100.00000000",
+                        "edition": {
+                            "id": "08421433-91b1-4967-97aa-08eeb910b09b",
+                            "flowID": 1268,
+                            "tier": "RARE",
+                            "maxMintSize": 250,
+                            "assetType": "STATIC",
+                            "assetVersion": "-v2",
+                            "currentMintSize": 250,
+                            "authenticatedUserOwnedMomentNFTs": {
+                                "totalCount": 0,
+                                "__typename": "SearchMomentNFTsResponseV2"
+                            },
+                            "numMomentsBurned": 0,
+                            "badges": [
+                                {
+                                    "id": "0553c4b3-3524-4f57-9550-cdc42f58186e",
+                                    "title": "Dynamic Moment",
+                                    "slug": "dynamic-moment",
+                                    "description": "Marks any Moment with the capacity to change and evolve beyond its original condition",
+                                    "__typename": "Badge"
+                                }
+                            ],
+                            "play": {
+                                "id": "f8481a54-e0a7-47d4-950f-3324c1bbc233",
+                                "metadata": {
+                                    "teamName": "Los Angeles Chargers",
+                                    "classification": "PLAYER_MELT",
+                                    "playerFullName": "Los Angeles Chargers",
+                                    "gameDate": "01/01/2022",
+                                    "playType": "Team Melt",
+                                    "homeTeamID": "5175",
+                                    "awayTeamID": "5175",
+                                    "__typename": "PlayMetadata"
+                                },
+                                "__typename": "Play"
+                            },
+                            "set": {
+                                "name": "Banner Year",
+                                "__typename": "Set"
+                            },
+                            "series": {
+                                "name": "Series 2",
+                                "__typename": "Series"
+                            },
+                            "__typename": "Edition"
+                        },
+                        "__typename": "MarketplaceEdition"
+                    },
+                    "__typename": "MarketplaceEditionEdge"
+                },
+                {
+                    "cursor": "NmQyYTE5YjEtNTMzNS00MzcyLWIyOTAtMGZjNzIwYjU1YTJjLDAwMDEtMDEtMDFUMDA6MDA6MDBaLDAsMTA1LjAwMDAwMDAw",
+                    "node": {
+                        "editionFlowID": 1265,
+                        "lowestPrice": "105.00000000",
+                        "edition": {
+                            "id": "6d2a19b1-5335-4372-b290-0fc720b55a2c",
+                            "flowID": 1265,
+                            "tier": "RARE",
+                            "maxMintSize": 250,
+                            "assetType": "STATIC",
+                            "assetVersion": "-v2",
+                            "currentMintSize": 250,
+                            "authenticatedUserOwnedMomentNFTs": {
+                                "totalCount": 0,
+                                "__typename": "SearchMomentNFTsResponseV2"
+                            },
+                            "numMomentsBurned": 0,
+                            "badges": [
+                                {
+                                    "id": "0553c4b3-3524-4f57-9550-cdc42f58186e",
+                                    "title": "Dynamic Moment",
+                                    "slug": "dynamic-moment",
+                                    "description": "Marks any Moment with the capacity to change and evolve beyond its original condition",
+                                    "__typename": "Badge"
+                                }
+                            ],
+                            "play": {
+                                "id": "005a5b8e-bc52-42c6-92df-b6cfec7f0ad6",
+                                "metadata": {
+                                    "teamName": "Dallas Cowboys",
+                                    "classification": "PLAYER_MELT",
+                                    "playerFullName": "Dallas Cowboys",
+                                    "gameDate": "01/01/2022",
+                                    "playType": "Team Melt",
+                                    "homeTeamID": "5157",
+                                    "awayTeamID": "5157",
+                                    "__typename": "PlayMetadata"
+                                },
+                                "__typename": "Play"
+                            },
+                            "set": {
+                                "name": "Banner Year",
+                                "__typename": "Set"
+                            },
+                            "series": {
+                                "name": "Series 2",
+                                "__typename": "Series"
+                            },
+                            "__typename": "Edition"
+                        },
+                        "__typename": "MarketplaceEdition"
+                    },
+                    "__typename": "MarketplaceEditionEdge"
+                },
+                {
+                    "cursor": "MjFjYmFmNjktNmQ2MC00YmIzLWI4NDMtMzZiNDZjYTAxZDhkLDAwMDEtMDEtMDFUMDA6MDA6MDBaLDAsMTE5LjAwMDAwMDAw",
+                    "node": {
+                        "editionFlowID": 1271,
+                        "lowestPrice": "119.00000000",
+                        "edition": {
+                            "id": "21cbaf69-6d60-4bb3-b843-36b46ca01d8d",
+                            "flowID": 1271,
+                            "tier": "RARE",
+                            "maxMintSize": 250,
+                            "assetType": "STATIC",
+                            "assetVersion": "-v2",
+                            "currentMintSize": 250,
+                            "authenticatedUserOwnedMomentNFTs": {
+                                "totalCount": 0,
+                                "__typename": "SearchMomentNFTsResponseV2"
+                            },
+                            "numMomentsBurned": 0,
+                            "badges": [
+                                {
+                                    "id": "0553c4b3-3524-4f57-9550-cdc42f58186e",
+                                    "title": "Dynamic Moment",
+                                    "slug": "dynamic-moment",
+                                    "description": "Marks any Moment with the capacity to change and evolve beyond its original condition",
+                                    "__typename": "Badge"
+                                }
+                            ],
+                            "play": {
+                                "id": "c96cd0bc-826d-4765-b6b4-b378e8a5dd87",
+                                "metadata": {
+                                    "teamName": "New York Giants",
+                                    "classification": "PLAYER_MELT",
+                                    "playerFullName": "New York Giants",
+                                    "gameDate": "01/01/2022",
+                                    "playType": "Team Melt",
+                                    "homeTeamID": "5170",
+                                    "awayTeamID": "5170",
+                                    "__typename": "PlayMetadata"
+                                },
+                                "__typename": "Play"
+                            },
+                            "set": {
+                                "name": "Banner Year",
+                                "__typename": "Set"
+                            },
+                            "series": {
+                                "name": "Series 2",
+                                "__typename": "Series"
+                            },
+                            "__typename": "Edition"
+                        },
+                        "__typename": "MarketplaceEdition"
+                    },
+                    "__typename": "MarketplaceEditionEdge"
+                },
+                {
+                    "cursor": "YjZjYmYzN2YtN2RjYi00ZDA0LTg0MTAtNTg5NmJjOGIyN2Y1LDAwMDEtMDEtMDFUMDA6MDA6MDBaLDAsMTI1LjAwMDAwMDAw",
+                    "node": {
+                        "editionFlowID": 1264,
+                        "lowestPrice": "125.00000000",
+                        "edition": {
+                            "id": "b6cbf37f-7dcb-4d04-8410-5896bc8b27f5",
+                            "flowID": 1264,
+                            "tier": "RARE",
+                            "maxMintSize": 250,
+                            "assetType": "STATIC",
+                            "assetVersion": "-v2",
+                            "currentMintSize": 250,
+                            "authenticatedUserOwnedMomentNFTs": {
+                                "totalCount": 0,
+                                "__typename": "SearchMomentNFTsResponseV2"
+                            },
+                            "numMomentsBurned": 0,
+                            "badges": [
+                                {
+                                    "id": "0553c4b3-3524-4f57-9550-cdc42f58186e",
+                                    "title": "Dynamic Moment",
+                                    "slug": "dynamic-moment",
+                                    "description": "Marks any Moment with the capacity to change and evolve beyond its original condition",
+                                    "__typename": "Badge"
+                                }
+                            ],
+                            "play": {
+                                "id": "70d6ce7e-bd04-42d2-b54a-df293f26916c",
+                                "metadata": {
+                                    "teamName": "Cincinnati Bengals",
+                                    "classification": "PLAYER_MELT",
+                                    "playerFullName": "Cincinnati Bengals",
+                                    "gameDate": "01/01/2022",
+                                    "playType": "Team Melt",
+                                    "homeTeamID": "5155",
+                                    "awayTeamID": "5155",
+                                    "__typename": "PlayMetadata"
+                                },
+                                "__typename": "Play"
+                            },
+                            "set": {
+                                "name": "Banner Year",
+                                "__typename": "Set"
+                            },
+                            "series": {
+                                "name": "Series 2",
+                                "__typename": "Series"
+                            },
+                            "__typename": "Edition"
+                        },
+                        "__typename": "MarketplaceEdition"
+                    },
+                    "__typename": "MarketplaceEditionEdge"
+                },
+                {
+                    "cursor": "OTA2NjgyNzktMmQxMy00NzhkLWE1NTItZGViYmRmNGFkZWZiLDAwMDEtMDEtMDFUMDA6MDA6MDBaLDAsMTMwLjAwMDAwMDAw",
+                    "node": {
+                        "editionFlowID": 1272,
+                        "lowestPrice": "130.00000000",
+                        "edition": {
+                            "id": "90668279-2d13-478d-a552-debbdf4adefb",
+                            "flowID": 1272,
+                            "tier": "RARE",
+                            "maxMintSize": 250,
+                            "assetType": "STATIC",
+                            "assetVersion": "-v2",
+                            "currentMintSize": 250,
+                            "authenticatedUserOwnedMomentNFTs": {
+                                "totalCount": 0,
+                                "__typename": "SearchMomentNFTsResponseV2"
+                            },
+                            "numMomentsBurned": 0,
+                            "badges": [
+                                {
+                                    "id": "0553c4b3-3524-4f57-9550-cdc42f58186e",
+                                    "title": "Dynamic Moment",
+                                    "slug": "dynamic-moment",
+                                    "description": "Marks any Moment with the capacity to change and evolve beyond its original condition",
+                                    "__typename": "Badge"
+                                }
+                            ],
+                            "play": {
+                                "id": "2fedda49-ffaa-43eb-913f-37adc90f6829",
+                                "metadata": {
+                                    "teamName": "Philadelphia Eagles",
+                                    "classification": "PLAYER_MELT",
+                                    "playerFullName": "Philadelphia Eagles",
+                                    "gameDate": "01/01/2022",
+                                    "playType": "Team Melt",
+                                    "homeTeamID": "5172",
+                                    "awayTeamID": "5172",
+                                    "__typename": "PlayMetadata"
+                                },
+                                "__typename": "Play"
+                            },
+                            "set": {
+                                "name": "Banner Year",
+                                "__typename": "Set"
+                            },
+                            "series": {
+                                "name": "Series 2",
+                                "__typename": "Series"
+                            },
+                            "__typename": "Edition"
+                        },
+                        "__typename": "MarketplaceEdition"
+                    },
+                    "__typename": "MarketplaceEditionEdge"
+                },
+                {
+                    "cursor": "NDg1NWU1NTEtYjJlOS00MjMzLTg1MDQtMThmMWE1ZDRiNGE3LDAwMDEtMDEtMDFUMDA6MDA6MDBaLDAsMTQ5LjAwMDAwMDAw",
+                    "node": {
+                        "editionFlowID": 1273,
+                        "lowestPrice": "149.00000000",
+                        "edition": {
+                            "id": "4855e551-b2e9-4233-8504-18f1a5d4b4a7",
+                            "flowID": 1273,
+                            "tier": "RARE",
+                            "maxMintSize": 250,
+                            "assetType": "STATIC",
+                            "assetVersion": "-v2",
+                            "currentMintSize": 250,
+                            "authenticatedUserOwnedMomentNFTs": {
+                                "totalCount": 0,
+                                "__typename": "SearchMomentNFTsResponseV2"
+                            },
+                            "numMomentsBurned": 0,
+                            "badges": [
+                                {
+                                    "id": "0553c4b3-3524-4f57-9550-cdc42f58186e",
+                                    "title": "Dynamic Moment",
+                                    "slug": "dynamic-moment",
+                                    "description": "Marks any Moment with the capacity to change and evolve beyond its original condition",
+                                    "__typename": "Badge"
+                                }
+                            ],
+                            "play": {
+                                "id": "66b04804-487d-4df8-a620-79f776341203",
+                                "metadata": {
+                                    "teamName": "San Francisco 49ers",
+                                    "classification": "PLAYER_MELT",
+                                    "playerFullName": "San Francisco 49ers",
+                                    "gameDate": "01/01/2022",
+                                    "playType": "Team Melt",
+                                    "homeTeamID": "5176",
+                                    "awayTeamID": "5176",
+                                    "__typename": "PlayMetadata"
+                                },
+                                "__typename": "Play"
+                            },
+                            "set": {
+                                "name": "Banner Year",
+                                "__typename": "Set"
+                            },
+                            "series": {
+                                "name": "Series 2",
+                                "__typename": "Series"
+                            },
+                            "__typename": "Edition"
+                        },
+                        "__typename": "MarketplaceEdition"
+                    },
+                    "__typename": "MarketplaceEditionEdge"
+                },
+                {
+                    "cursor": "NDVlNTVjZjAtN2YxMy00YjA2LWIzNjQtZDBhYTdiMmIxY2MyLDAwMDEtMDEtMDFUMDA6MDA6MDBaLDAsMTgwLjAwMDAwMDAw",
+                    "node": {
+                        "editionFlowID": 1263,
+                        "lowestPrice": "180.00000000",
+                        "edition": {
+                            "id": "45e55cf0-7f13-4b06-b364-d0aa7b2b1cc2",
+                            "flowID": 1263,
+                            "tier": "RARE",
+                            "maxMintSize": 250,
+                            "assetType": "STATIC",
+                            "assetVersion": "-v2",
+                            "currentMintSize": 250,
+                            "authenticatedUserOwnedMomentNFTs": {
+                                "totalCount": 0,
+                                "__typename": "SearchMomentNFTsResponseV2"
+                            },
+                            "numMomentsBurned": 0,
+                            "badges": [
+                                {
+                                    "id": "0553c4b3-3524-4f57-9550-cdc42f58186e",
+                                    "title": "Dynamic Moment",
+                                    "slug": "dynamic-moment",
+                                    "description": "Marks any Moment with the capacity to change and evolve beyond its original condition",
+                                    "__typename": "Badge"
+                                }
+                            ],
+                            "play": {
+                                "id": "ae222825-8ea3-4d3e-90a0-7d4e74b0db1d",
+                                "metadata": {
+                                    "teamName": "Buffalo Bills",
+                                    "classification": "PLAYER_MELT",
+                                    "playerFullName": "Buffalo Bills",
+                                    "gameDate": "01/01/2022",
+                                    "playType": "Team Melt",
+                                    "homeTeamID": "5153",
+                                    "awayTeamID": "5153",
+                                    "__typename": "PlayMetadata"
+                                },
+                                "__typename": "Play"
+                            },
+                            "set": {
+                                "name": "Banner Year",
+                                "__typename": "Set"
+                            },
+                            "series": {
+                                "name": "Series 2",
+                                "__typename": "Series"
+                            },
+                            "__typename": "Edition"
+                        },
+                        "__typename": "MarketplaceEdition"
+                    },
+                    "__typename": "MarketplaceEditionEdge"
+                }
+            ],
+            "__typename": "SearchMarketplaceEditionsResponse"
+        }
+    }
+}

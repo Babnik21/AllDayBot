@@ -1,0 +1,126 @@
+query searchMomentNFTsV2_challengesMoment(
+    $byOwnerFlowAddresses: [String], 
+    $byIDs: [String], 
+    $byFlowIDs: [Int], 
+    $bySetIDs: [String], 
+    $bySeriesFlowIDs: [Int], 
+    $byPlayerIDs: [String], 
+    $byPlayTypes: [PlayType], 
+    $byTeamIDs: [String], 
+    $byEditionFlowIDs: [Int], 
+    $byTiers: [EditionTier], 
+    $byPlayerPositions: [PlayerPosition], 
+    $byBadgeSlugs: [BadgeSlug], 
+    $byCombinedBadgeSlugs: [BadgeSlug], 
+    $after: String, 
+    $first: Int, 
+    $sortBy: MomentNFTSortType
+) 
+{
+    searchMomentNFTsV2(
+        input: 
+        {
+            after: $after, 
+            first: $first, 
+            filters: {
+                byOwnerFlowAddresses: $byOwnerFlowAddresses, 
+                byIDs: $byIDs, 
+                byFlowIDs: $byFlowIDs, 
+                byPlayerIDs: $byPlayerIDs, 
+                byPlayTypes: $byPlayTypes, 
+                bySetIDs: $bySetIDs, 
+                bySeriesFlowIDs: $bySeriesFlowIDs, 
+                byTeamIDs: $byTeamIDs, 
+                byEditionFlowIDs: $byEditionFlowIDs, 
+                byTiers: $byTiers, 
+                byPlayerPositions: $byPlayerPositions, 
+                byBadgeSlugs: $byBadgeSlugs, 
+                byCombinedBadgeSlugs: $byCombinedBadgeSlugs
+            }, 
+            sortBy: $sortBy
+        }
+    ) 
+    {
+        totalCount
+        edges {
+            node {
+                ...ChallengesMomentNFTFragment
+                __typename
+            }
+            __typename
+        }
+        __typename
+    }
+}
+
+fragment ChallengesMomentNFTFragment on MomentNFT {
+    badges {
+        id
+        title
+        slug
+        description
+        __typename
+    }
+    id
+    flowID
+    editionFlowID
+    ownerAddress
+    serialNumber
+    momentNFTListing {
+        id
+        listingFlowID
+        __typename
+    }
+    edition {
+        id
+        flowID
+        currentMintSize
+        maxMintSize
+        assetType
+        assetVersion
+        series {
+        id
+        name
+        __typename
+      }
+      set {
+        id
+        name
+        __typename
+    }
+    play {
+        id
+        flowID
+        metadata {
+            classification
+            playType
+            images {
+                type
+                url
+                __typename
+            }
+            week
+            season
+            playerFullName
+            homeTeamName
+            awayTeamName
+            teamName
+            teamID
+            homeTeamID
+            awayTeamID
+            gameDate
+            __typename
+            }
+            __typename
+        }
+        tier
+        __typename
+    }
+    owner {
+        id
+        username
+        flowAddress
+        __typename
+    }
+    __typename
+}

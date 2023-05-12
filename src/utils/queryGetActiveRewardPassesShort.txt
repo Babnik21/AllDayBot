@@ -1,0 +1,32 @@
+query GetActiveRewardPasses {
+    getActiveRewardPasses {
+        title
+        startAt
+        endAt
+        tasks {
+            title
+            type
+            category
+            rewardPoints
+            validTo
+            validations {
+                moments {
+                    tier
+                    quantity
+                }
+            }
+        }
+        levels {
+            requiredPoints
+            rewards {
+                tier
+                title
+            }
+            usersCompleted
+        }
+        week
+        difficulty
+    }
+}
+
+        
