@@ -1,27 +1,36 @@
 {
     "totalCount": 1,
+    "pageInfo": {
+        "endCursor": "ZmYyODM1NGYtOGFmZi00YTY0LWFkYzUtNTZkY2QzYmU2Y2Q4LDIwMjMtMDUtMDhUMjA6MDA6MDBaLDAs",
+        "hasNextPage": false,
+        "__typename": "PageInfo"
+    },
     "edges": [
         {
             "node": {
-                "id": "e61ecfca-029e-406d-a38c-9047ec34f8ee",
-                "name": "🏈 Who's your superstar? - Legendary",
+                "id": "ff28354f-8aff-4a64-adc5-56dcd3be6cd8",
+                "name": "🏈 Daily Task: Day 6",
                 "category": "PRESCRIPTIVE_INSTANT",
                 "nftType": "MOMENT_NFT",
-                "summary": "Submit a complete Challenge Entry to earn 50 yards towards the May 8-15: Weekly Playbook",
-                "description": "<p>To complete this Challenge, fans will need to submit Moments according to the following requirements:</p><p><br></p><ul><li>Submit 1 Legendary or higher tier Moment from your favorite player in the NFL<br></li></ul><p><br></p><p>OR</p><p><br></p><ul><li>Burn 6 Common Moments: 2 from a QB, 2 from a RB, 2 from a WR/TE</li></ul>",
+                "summary": "Submit a complete Challenge Entry to earn 10 yards towards the Playbook.",
+                "description": "<p>To complete this challenge, fans will need to submit Moments according to the following requirements:</p><p><br></p><ul><li>Submit 1 Common or higher tier Moment of a WR or TE</li></ul>",
                 "instructions": {
                     "instructions": [
                         "<p>1. Submit a complete Challenge Entry with the correct required Moments.</p><p><br></p><p>2. Completing this challenge earns Playbook yards. To earn Premium Rewards this week, fans must unlock Premium Rewards and gain enough yardage in the weekly Playbook.</p>"
                     ],
                     "__typename": "ChallengeInstructions"
                 },
-                "finePrint": "<ul><li>Only 1 Challenge Entry per fan will be eligible.</li></ul><p><br></p><ul><li>Only 1 credit of 50 yards towards this week’s Playbook can be won per fan per Challenge.</li></ul><p><br></p><ul><li>On <strong>Monday, May 16, 2023 at 12:44:59 PM ET</strong>, a snapshot will be taken of all Challenge Entries. All eligible fans who complete the Challenge prior to the snapshot will receive 1 credit of 50 yards towards this week’s Playbook.</li></ul><p><br></p><ul><li>Snapshot times/dates may be extended if maintenance mode or technical difficulties prevent the Marketplace from being accessible.</li></ul><p><br></p><ul><li>Fans are responsible for monitoring their eligibility on the Challenge page and making any necessary updates before the deadline. Prior to the snapshot, please verify that each Challenge Entry still includes all eligible Moments.</li></ul><p><br></p><ul><li>All eligible Challenge submissions will receive the reward via the Playbook. After the Challenge ends and prizes have been distributed, go to the Playbook tab of your profile to view the reward.</li></ul><p><br></p><ul><li>Cosmetic rewards are triggered instantly upon completing the task, however it may take anywhere between a few seconds and a few minutes for the system to properly show up in the fan’s Profile or Playbook.</li></ul><p><br></p><ul><li>Pack rewards are currently delivered after the Playbook week is over.</li></ul><p><br></p><ul><li>Fans must use the Challenge Builder to enter this Challenge as well as make edits to their Challenge Entry. Fans must submit their completed Challenge Entry BEFORE <strong>Monday, May 16, 2023 at 12:44:59 PM ET</strong> to ensure their submission is accepted. The time of submission is recorded when the save button is pressed. If fans submit after the deadline, those entries will not be accepted.</li></ul><p><br></p><ul><li>The Challenge Builder will automatically filter eligible Moments. Click each slot to see which Moments in your Collection are eligible.</li></ul><p><br></p><ul><li>In addition to the Challenge Builder automatically filtering eligible Moments, the Marketplace and Collection pages also have filters available for all the Challenge requirements (set, team, player, etc.).</li></ul><p><br></p><ul><li>Please make sure all Moments utilized for the Challenge Entry are delisted from the Marketplace before saving a Challenge Entry. If a Moment in a Challenge Entry is delisted after building the Challenge Entry, please confirm the Challenge Entry still has the right amount of Moments and meets the criteria.</li></ul><p><br></p><ul><li>If fans have submitted or saved a Challenge Entry from the Challenge Builder prior to the snapshot time, Challenge Entries can be edited by going back to the Challenge page. Select the button that says Edit Challenge Entry to make any necessary changes to a Challenge Entry.</li></ul><p><br></p><ul><li>Fans can have as many qualifying Entries as they want and NFL ALL DAY will only count 1 Challenge Entry as being eligible.</li></ul><p><br></p><p>ARBITRATION NOTICE: THE GENERAL NFL ALL DAY TERMS OF USE SET FORTH <a href=\"https://nflallday.com/terms\" target=\"_blank\">HERE</a> (THE “GENERAL TERMS”) CONTAIN AN ARBITRATION PROVISION (SEE SECTION 16 OF THE GENERAL TERMS). PLEASE REVIEW THE ARBITRATION PROVISION CAREFULLY, SINCE IT AFFECTS YOUR RIGHTS. BY USING THE NFL ALL DAY APPLICATION OR ANY PART OF IT, INCLUDING YOUR ENTRY AND PARTICIPATION IN THIS Challenge, YOU UNDERSTAND AND AGREE TO BE BOUND BY THE ARBITRATION PROVISION IN THE GENERAL TERMS.</p><p>The <strong>🏈 Who's your superstar? - Legendary</strong> (the “Challenge”) starts on <strong>45056</strong> after the game concludes, and ends on <strong>Monday, May 16, 2023 at 12:44:59 PM ET</strong> (the “Challenge Period”).</p><p><br></p><p><strong>ELIGIBILITY:</strong> The Challenge is open to NFL ALL DAY users (defined as a person with an account at <a href=\"http://www.nflallday.com\" target=\"_blank\">www.nflallday.com</a>, and a valid email address associated with that account), and who are eighteen (18) years of age or older (or of the legal age of majority in their state or province of residence, whichever is older) at the time of entry. Employees of Dapper Labs Inc. (“Sponsor”, “we”, or “us”), the NFL Entities (as defined below), the National Football League Players Association and their respective parents, subsidiaries, affiliates, promotion and advertising agencies, and members of their immediate families (spouse and parent, children and siblings and their respective spouses, regardless of where they reside) and persons living in the same household, whether or not related, of such employees, are not eligible to win. Void where prohibited by law. The Challenge is subject to all applicable federal, provincial, state and local laws.</p><p><br></p><p><strong>PRIZES:</strong> At the conclusion of the Challenge Period, all fans who have successfully followed the “Challenge Rules,” as listed in the section above, and accurately completed the Challenge will be awarded with 1 credit of 50 yards towards their current Playbook (“Prize”).</p><p><br></p><p><strong>HOW TO ENTER:</strong> Complete the requirements contained in the “Challenge Rules” section listed above during the Challenge Period to obtain a maximum of one (1) Entry. Users must use the Challenge Builder to enter this Challenge. Users must submit their completed Challenge Entry before the conclusion of the Challenge Period to ensure their submission is accepted. The time of submission is recorded when the submit button is pressed. If a user submits after the deadline, those entries will not be accepted.</p><p><br></p><p><strong>WINNER NOTIFICATION</strong>: Each potential Prize winner will be notified either in the User Interface of the App and/or by email. The inability to contact, or receive a response from, a potential winner through email may result in disqualification. The Released Parties (defined below) are not responsible for any delay or failure for a potential winner to receive notification from Sponsor, or for Sponsor to fail to receive a potential winner’s response, for any reason, including inactive account(s), technical difficulties associated therewith, or a potential winner’s failure to adequately monitor any account. The Released Parties are not responsible for communications that are undeliverable as a result of any form of active or passive filtering of any kind, or insufficient space in an entrant’s email account to receive email messages. The Released Parties are not responsible for false, incorrect, changed, incomplete or illegible contact information. Once you have won a Prize, you will not be eligible to win any additional Prizes for this Challenge.</p><p><br></p><p><strong>GENERAL:</strong> <strong>ENTRANTS ACKNOWLEDGE AND AGREE BY PARTICIPATING IN THE Challenge THAT THEY MAY BE WAIVING CERTAIN LEGAL RIGHTS THAT THEY MAY OTHERWISE HAVE.</strong> By participating in the Challenge, each entrant agrees: (a) to abide by these Official Rules and decisions of Sponsor, <a href=\"https://nflallday.com/terms\" target=\"_blank\">NFL ALL DAY Terms of Use</a>, <a href=\"https://accounts.meetdapper.com/terms\" target=\"_blank\">Dapper Service Terms of Use</a>, and the decisions of the Sponsor, which shall be final and binding in all respects relating to this Challenge; (b) to release, discharge and hold harmless Released Parties from and against any and all costs, claims, damages, (including, without limitation, any special, incidental, or consequential damages), or any other injury, whether due to negligence or otherwise, to person(s) or property (including, without limitation, death or violation of any personal rights, such as violation of right of publicity/privacy, libel, or slander), due in whole or in part, directly or indirectly, to participation in the Challenge, or arising out of participation in any Challenge related or Prize related Activity, or the receipt, enjoyment, participation in, use or misuse, of any Challenge or Prize related activity, whether hosted by Sponsor or a Third Party; and (c) to the use of his/her name, voice, performance, photograph/video, image and likeness for programming, advertising, publicity and promotional purposes in any and all media (including digital media), now or hereafter known, worldwide and in perpetuity by Sponsor, the NFL Entities, the NFLPA Entities, and its and their designees, without compensation (unless prohibited by law) or additional consents from entrant or any third party and without prior notice, approval or inspection, and to execute specific consent to such use if asked to do so. By participating, entrants also agree not to release any publicity or other materials on their own or through someone else regarding their participation in the Challenge without the prior consent of the Sponsor, which it may withhold in its sole discretion.</p><p><br></p><p>Prizes are awarded “as is” with no warranty or guarantee, either express or implied, including but not limited to, the implied warranties of merchantability, fitness for a particular purpose or non-infringement. Some jurisdiction may not allow the limitations or exclusion of liability for incidental or consequential damages or exclusion of implied warranties so some of the limitations or exclusions contained herein may not apply to you. Check your local laws for any restrictions or limitations regarding these limitations or exclusions. A winner may not substitute, assign or transfer their Prize, but we reserve the right, at Sponsor’s sole discretion, to substitute the Prize with another prize of comparable or greater value. Winners are responsible for all applicable federal, provincial, state and local taxes, if any, as well as any other costs and expenses otherwise associated with accepting any Prize. All Prize details are provided at Sponsor’s sole discretion. Sponsor will not be required to award more prizes than the number of available prizes set forth in these Official Rules. Each eligible person can receive a maximum of (1) one Prize. If a user is found to have entered the Challenge more than once or via more than one account (or multiple times from the same account), or has any other methods in an attempt to receive more than the permitted Maximum Entries, that user will be disqualified from the Challenge, and all of that user’s entries will be deemed ineligible. Sponsor reserves the right not to award any or all Prizes if, in its sole discretion, it does not receive a sufficient number of eligible and qualified entries. All Prize awards are subject to verification of eligibility and compliance with these Official Rules.</p><p><br></p><p>In no event will the Released Parties be responsible or liable for any damages or losses of any kind, including direct, indirect, incidental, consequential or punitive damages arising out of your access to and participating in the Challenge and/or downloading from and/or print material downloaded from any website associated with the Challenge. Released Parties are not responsible for lost, interrupted or unavailable network, server, Internet Service Provider (ISP), website, or other connections, availability or accessibility or miscommunications or failed computer, satellite, telephone or cable transmissions, lines, or technical failure or jumbled, scrambled, delayed, or misdirected transmissions or computer hardware or software malfunctions, failures or difficulties, or other errors or difficulties of any kind whether human, mechanical, electronic, computer, network, typographical, printing or otherwise relating to or in connection with the Challenge, including, without limitation, errors or difficulties which may occur in connection with the administration of the Challenge, the processing or judging of the Challenge, the selection of winners, or the announcement of any prize. Released Parties are also not responsible for any incorrect or inaccurate information, whether caused by other entrants or site users, tampering, hacking, or by any equipment or programming associated with or utilized in the Challenge. Released Parties are not responsible for injury or damage to any person's computer related to or resulting from participating in this Challenge or downloading materials from or use of the website. Persons who tamper with or abuse any aspect of the Challenge or website, who act in an unsportsmanlike or disruptive manner or who are in violation of these Official Rules, as solely determined by Sponsor, will be disqualified. Should any portion, or the entirety of the Challenge be deemed illegal in any jurisdiction in the United States or Canada, Sponsor reserves the right at its sole discretion to suspend, modify or terminate the Challenge. Should any portion of the Challenge be, in Sponsor’s sole opinion, compromised by virus, worms, bugs, non-authorized human intervention or other causes which, in the sole opinion of the Sponsor, corrupt or impair the administration, security, fairness or proper play, or submission of entries, Sponsor reserves the right at its sole discretion to suspend, modify or terminate the Challenge and, if terminated, at its discretion, select the potential winner(s) from all eligible participants using the procedures outlined above. CAUTION: ANY ATTEMPT TO DAMAGE THE NFL ALL DAY SITE OR TO UNDERMINE THE LEGITIMATE OPERATION OF THE Challenge MAY BE IN VIOLATION OF CRIMINAL AND CIVIL LAWS AND SHOULD SUCH AN ATTEMPT BE MADE, SPONSOR RESERVES THE RIGHT TO SEEK DAMAGES AND OTHER REMEDIES (INCLUDING ATTORNEYS’ FEES) FROM ANY SUCH INDIVIDUAL TO THE FULLEST EXTENT OF THE LAW, INCLUDING CRIMINAL PROSECUTION.</p><p><br></p><p><strong>GOVERNING LAW:</strong> The Challenge shall be governed by and construed in accordance with the laws of the Province of British Columbia and the federal laws of Canada applicable therein without giving effect to any choice or conflict of law provision or rule (whether of the Province of British Columbia or any other jurisdiction).</p><p><br></p><p>THE NATIONAL FOOTBALL LEAGUE, ITS MEMBER PROFESSIONAL FOOTBALL CLUBS, NFL VENTURES, INC., NFL VENTURES, L.P., NFL PROPERTIES LLC, NFL ENTERPRISES LLC, NFL PRODUCTIONS LLC, NFL INTERNATIONAL LLC, AND EACH OF THEIR RESPECTIVE SUBSIDIARIES, AFFILIATES, SHAREHOLDERS, OFFICERS, DIRECTORS, AGENTS, MEMBERS, REPRESENTATIVES, AND EMPLOYEES (COLLECTIVELY, THE \"NFL ENTITIES\") WILL HAVE NO LIABILITY OR RESPONSIBILITY FOR ANY CLAIM ARISING IN CONNECTION WITH PARTICIPATION IN THIS Challenge OR ANY PRIZE AWARDED. THE NFL ENTITIES HAVE NOT OFFERED OR SPONSORED THIS Challenge IN ANY WAY.</p><p><br></p><p><strong>Sponsor</strong>: Dapper Labs Inc., 600-565 Great Northern Way, Vancouver, BC V5T 0H8, Canada.</p>",
-                "startDate": "2023-05-10T20:00:00Z",
-                "endDate": "2023-05-16T19:45:00Z",
+                "startDate": "2023-05-08T20:00:00Z",
+                "endDate": "2023-05-09T20:00:00Z",
                 "images": [
                     {
-                        "url": "https://storage.googleapis.com/dl-nfl-assets-prod/challenges/50_pills.png",
+                        "url": "https://storage.googleapis.com/nfl-challenge-assets/production-1665015673622-10_pills.png",
                         "type": "REWARD",
+                        "__typename": "ChallengeImage"
+                    },
+                    {
+                        "url": "https://storage.googleapis.com/nfl-challenge-assets/production-1665015673622-10_pills.png",
+                        "type": "BACKGROUND",
                         "__typename": "ChallengeImage"
                     }
                 ],
@@ -32,9 +41,34 @@
                         "__typename": "ChallengeVideo"
                     }
                 ],
-                "slots": null,
+                "slots": [
+                    {
+                        "id": "6d6a3718-8bdf-4e9f-9085-af36153dfa10",
+                        "title": "WR/TE Moment",
+                        "description": "Submit 1 Moment from a WR or TE",
+                        "query": {
+                            "byEditionFlowIDs": null,
+                            "byPlayTypes": null,
+                            "byPlayerIDs": null,
+                            "bySetIDs": null,
+                            "byTeamIDs": null,
+                            "byTiers": [],
+                            "byPlayerPositions": [
+                                "WR",
+                                "TE"
+                            ],
+                            "bySeries": null,
+                            "byCombinedBadgeSlugs": null,
+                            "__typename": "ChallengeSlotQuery"
+                        },
+                        "slotOrder": 1,
+                        "isWildcard": null,
+                        "submission": null,
+                        "__typename": "ChallengeSlot"
+                    }
+                ],
                 "rewardID": null,
-                "communityCompletions": 1175,
+                "communityCompletions": 5024,
                 "relatedGames": [],
                 "parentChallengeID": null,
                 "userSubmissionMomentNFTIDs": null,
@@ -43,272 +77,9 @@
                 "userSubmissionStatus": "",
                 "visibility": "PUBLIC",
                 "__typename": "Challenge",
-                "childChallenges": [
-                    {
-                        "id": "102e458d-4ef7-4800-9e47-761616286c0e",
-                        "name": "🏈 Submit 🏈 1 Legendary",
-                        "category": "PRESCRIPTIVE_INSTANT",
-                        "nftType": "MOMENT_NFT",
-                        "summary": "Submit a complete Challenge Entry to earn 50 yards towards the May 8-15: Weekly Playbook",
-                        "description": "<p>To complete this Challenge, fans will need to submit Moments according to the following requirements:</p><p><br></p><ul><li>Submit 1 Legendary or higher tier Moment from your favorite player in the NFL<br></li></ul><p><br></p><p>OR</p><p><br></p><ul><li>Burn 6 Common Moments: 2 from a QB, 2 from a RB, 2 from a WR/TE</li></ul>",
-                        "instructions": {
-                            "instructions": [
-                                "<p>1. Submit a complete Challenge Entry with the correct required Moments.</p><p><br></p><p>2. Completing this challenge earns Playbook yards. To earn Premium Rewards this week, fans must unlock Premium Rewards and gain enough yardage in the weekly Playbook.</p>"
-                            ],
-                            "__typename": "ChallengeInstructions"
-                        },
-                        "finePrint": "<ul><li>Only 1 Challenge Entry per fan will be eligible.</li></ul><p><br></p><ul><li>Only 1 credit of 50 yards towards this week’s Playbook can be won per fan per Challenge.</li></ul><p><br></p><ul><li>On <strong>Monday, May 16, 2023 at 12:44:59 PM ET</strong>, a snapshot will be taken of all Challenge Entries. All eligible fans who complete the Challenge prior to the snapshot will receive 1 credit of 50 yards towards this week’s Playbook.</li></ul><p><br></p><ul><li>Snapshot times/dates may be extended if maintenance mode or technical difficulties prevent the Marketplace from being accessible.</li></ul><p><br></p><ul><li>Fans are responsible for monitoring their eligibility on the Challenge page and making any necessary updates before the deadline. Prior to the snapshot, please verify that each Challenge Entry still includes all eligible Moments.</li></ul><p><br></p><ul><li>All eligible Challenge submissions will receive the reward via the Playbook. After the Challenge ends and prizes have been distributed, go to the Playbook tab of your profile to view the reward.</li></ul><p><br></p><ul><li>Cosmetic rewards are triggered instantly upon completing the task, however it may take anywhere between a few seconds and a few minutes for the system to properly show up in the fan’s Profile or Playbook.</li></ul><p><br></p><ul><li>Pack rewards are currently delivered after the Playbook week is over.</li></ul><p><br></p><ul><li>Fans must use the Challenge Builder to enter this Challenge as well as make edits to their Challenge Entry. Fans must submit their completed Challenge Entry BEFORE <strong>Monday, May 16, 2023 at 12:44:59 PM ET</strong> to ensure their submission is accepted. The time of submission is recorded when the save button is pressed. If fans submit after the deadline, those entries will not be accepted.</li></ul><p><br></p><ul><li>The Challenge Builder will automatically filter eligible Moments. Click each slot to see which Moments in your Collection are eligible.</li></ul><p><br></p><ul><li>In addition to the Challenge Builder automatically filtering eligible Moments, the Marketplace and Collection pages also have filters available for all the Challenge requirements (set, team, player, etc.).</li></ul><p><br></p><ul><li>Please make sure all Moments utilized for the Challenge Entry are delisted from the Marketplace before saving a Challenge Entry. If a Moment in a Challenge Entry is delisted after building the Challenge Entry, please confirm the Challenge Entry still has the right amount of Moments and meets the criteria.</li></ul><p><br></p><ul><li>If fans have submitted or saved a Challenge Entry from the Challenge Builder prior to the snapshot time, Challenge Entries can be edited by going back to the Challenge page. Select the button that says Edit Challenge Entry to make any necessary changes to a Challenge Entry.</li></ul><p><br></p><ul><li>Fans can have as many qualifying Entries as they want and NFL ALL DAY will only count 1 Challenge Entry as being eligible.</li></ul><p><br></p><p>ARBITRATION NOTICE: THE GENERAL NFL ALL DAY TERMS OF USE SET FORTH <a href=\"https://nflallday.com/terms\" target=\"_blank\">HERE</a> (THE “GENERAL TERMS”) CONTAIN AN ARBITRATION PROVISION (SEE SECTION 16 OF THE GENERAL TERMS). PLEASE REVIEW THE ARBITRATION PROVISION CAREFULLY, SINCE IT AFFECTS YOUR RIGHTS. BY USING THE NFL ALL DAY APPLICATION OR ANY PART OF IT, INCLUDING YOUR ENTRY AND PARTICIPATION IN THIS Challenge, YOU UNDERSTAND AND AGREE TO BE BOUND BY THE ARBITRATION PROVISION IN THE GENERAL TERMS.</p><p>The <strong>🏈 Submit 🏈 1 Legendary</strong> (the “Challenge”) starts on <strong>45056</strong> after the game concludes, and ends on <strong>Monday, May 16, 2023 at 12:44:59 PM ET</strong> (the “Challenge Period”).</p><p><br></p><p><strong>ELIGIBILITY:</strong> The Challenge is open to NFL ALL DAY users (defined as a person with an account at <a href=\"http://www.nflallday.com\" target=\"_blank\">www.nflallday.com</a>, and a valid email address associated with that account), and who are eighteen (18) years of age or older (or of the legal age of majority in their state or province of residence, whichever is older) at the time of entry. Employees of Dapper Labs Inc. (“Sponsor”, “we”, or “us”), the NFL Entities (as defined below), the National Football League Players Association and their respective parents, subsidiaries, affiliates, promotion and advertising agencies, and members of their immediate families (spouse and parent, children and siblings and their respective spouses, regardless of where they reside) and persons living in the same household, whether or not related, of such employees, are not eligible to win. Void where prohibited by law. The Challenge is subject to all applicable federal, provincial, state and local laws.</p><p><br></p><p><strong>PRIZES:</strong> At the conclusion of the Challenge Period, all fans who have successfully followed the “Challenge Rules,” as listed in the section above, and accurately completed the Challenge will be awarded with 1 credit of 50 yards towards their current Playbook (“Prize”).</p><p><br></p><p><strong>HOW TO ENTER:</strong> Complete the requirements contained in the “Challenge Rules” section listed above during the Challenge Period to obtain a maximum of one (1) Entry. Users must use the Challenge Builder to enter this Challenge. Users must submit their completed Challenge Entry before the conclusion of the Challenge Period to ensure their submission is accepted. The time of submission is recorded when the submit button is pressed. If a user submits after the deadline, those entries will not be accepted.</p><p><br></p><p><strong>WINNER NOTIFICATION</strong>: Each potential Prize winner will be notified either in the User Interface of the App and/or by email. The inability to contact, or receive a response from, a potential winner through email may result in disqualification. The Released Parties (defined below) are not responsible for any delay or failure for a potential winner to receive notification from Sponsor, or for Sponsor to fail to receive a potential winner’s response, for any reason, including inactive account(s), technical difficulties associated therewith, or a potential winner’s failure to adequately monitor any account. The Released Parties are not responsible for communications that are undeliverable as a result of any form of active or passive filtering of any kind, or insufficient space in an entrant’s email account to receive email messages. The Released Parties are not responsible for false, incorrect, changed, incomplete or illegible contact information. Once you have won a Prize, you will not be eligible to win any additional Prizes for this Challenge.</p><p><br></p><p><strong>GENERAL:</strong> <strong>ENTRANTS ACKNOWLEDGE AND AGREE BY PARTICIPATING IN THE Challenge THAT THEY MAY BE WAIVING CERTAIN LEGAL RIGHTS THAT THEY MAY OTHERWISE HAVE.</strong> By participating in the Challenge, each entrant agrees: (a) to abide by these Official Rules and decisions of Sponsor, <a href=\"https://nflallday.com/terms\" target=\"_blank\">NFL ALL DAY Terms of Use</a>, <a href=\"https://accounts.meetdapper.com/terms\" target=\"_blank\">Dapper Service Terms of Use</a>, and the decisions of the Sponsor, which shall be final and binding in all respects relating to this Challenge; (b) to release, discharge and hold harmless Released Parties from and against any and all costs, claims, damages, (including, without limitation, any special, incidental, or consequential damages), or any other injury, whether due to negligence or otherwise, to person(s) or property (including, without limitation, death or violation of any personal rights, such as violation of right of publicity/privacy, libel, or slander), due in whole or in part, directly or indirectly, to participation in the Challenge, or arising out of participation in any Challenge related or Prize related Activity, or the receipt, enjoyment, participation in, use or misuse, of any Challenge or Prize related activity, whether hosted by Sponsor or a Third Party; and (c) to the use of his/her name, voice, performance, photograph/video, image and likeness for programming, advertising, publicity and promotional purposes in any and all media (including digital media), now or hereafter known, worldwide and in perpetuity by Sponsor, the NFL Entities, the NFLPA Entities, and its and their designees, without compensation (unless prohibited by law) or additional consents from entrant or any third party and without prior notice, approval or inspection, and to execute specific consent to such use if asked to do so. By participating, entrants also agree not to release any publicity or other materials on their own or through someone else regarding their participation in the Challenge without the prior consent of the Sponsor, which it may withhold in its sole discretion.</p><p><br></p><p>Prizes are awarded “as is” with no warranty or guarantee, either express or implied, including but not limited to, the implied warranties of merchantability, fitness for a particular purpose or non-infringement. Some jurisdiction may not allow the limitations or exclusion of liability for incidental or consequential damages or exclusion of implied warranties so some of the limitations or exclusions contained herein may not apply to you. Check your local laws for any restrictions or limitations regarding these limitations or exclusions. A winner may not substitute, assign or transfer their Prize, but we reserve the right, at Sponsor’s sole discretion, to substitute the Prize with another prize of comparable or greater value. Winners are responsible for all applicable federal, provincial, state and local taxes, if any, as well as any other costs and expenses otherwise associated with accepting any Prize. All Prize details are provided at Sponsor’s sole discretion. Sponsor will not be required to award more prizes than the number of available prizes set forth in these Official Rules. Each eligible person can receive a maximum of (1) one Prize. If a user is found to have entered the Challenge more than once or via more than one account (or multiple times from the same account), or has any other methods in an attempt to receive more than the permitted Maximum Entries, that user will be disqualified from the Challenge, and all of that user’s entries will be deemed ineligible. Sponsor reserves the right not to award any or all Prizes if, in its sole discretion, it does not receive a sufficient number of eligible and qualified entries. All Prize awards are subject to verification of eligibility and compliance with these Official Rules.</p><p><br></p><p>In no event will the Released Parties be responsible or liable for any damages or losses of any kind, including direct, indirect, incidental, consequential or punitive damages arising out of your access to and participating in the Challenge and/or downloading from and/or print material downloaded from any website associated with the Challenge. Released Parties are not responsible for lost, interrupted or unavailable network, server, Internet Service Provider (ISP), website, or other connections, availability or accessibility or miscommunications or failed computer, satellite, telephone or cable transmissions, lines, or technical failure or jumbled, scrambled, delayed, or misdirected transmissions or computer hardware or software malfunctions, failures or difficulties, or other errors or difficulties of any kind whether human, mechanical, electronic, computer, network, typographical, printing or otherwise relating to or in connection with the Challenge, including, without limitation, errors or difficulties which may occur in connection with the administration of the Challenge, the processing or judging of the Challenge, the selection of winners, or the announcement of any prize. Released Parties are also not responsible for any incorrect or inaccurate information, whether caused by other entrants or site users, tampering, hacking, or by any equipment or programming associated with or utilized in the Challenge. Released Parties are not responsible for injury or damage to any person's computer related to or resulting from participating in this Challenge or downloading materials from or use of the website. Persons who tamper with or abuse any aspect of the Challenge or website, who act in an unsportsmanlike or disruptive manner or who are in violation of these Official Rules, as solely determined by Sponsor, will be disqualified. Should any portion, or the entirety of the Challenge be deemed illegal in any jurisdiction in the United States or Canada, Sponsor reserves the right at its sole discretion to suspend, modify or terminate the Challenge. Should any portion of the Challenge be, in Sponsor’s sole opinion, compromised by virus, worms, bugs, non-authorized human intervention or other causes which, in the sole opinion of the Sponsor, corrupt or impair the administration, security, fairness or proper play, or submission of entries, Sponsor reserves the right at its sole discretion to suspend, modify or terminate the Challenge and, if terminated, at its discretion, select the potential winner(s) from all eligible participants using the procedures outlined above. CAUTION: ANY ATTEMPT TO DAMAGE THE NFL ALL DAY SITE OR TO UNDERMINE THE LEGITIMATE OPERATION OF THE Challenge MAY BE IN VIOLATION OF CRIMINAL AND CIVIL LAWS AND SHOULD SUCH AN ATTEMPT BE MADE, SPONSOR RESERVES THE RIGHT TO SEEK DAMAGES AND OTHER REMEDIES (INCLUDING ATTORNEYS’ FEES) FROM ANY SUCH INDIVIDUAL TO THE FULLEST EXTENT OF THE LAW, INCLUDING CRIMINAL PROSECUTION.</p><p><br></p><p><strong>GOVERNING LAW:</strong> The Challenge shall be governed by and construed in accordance with the laws of the Province of British Columbia and the federal laws of Canada applicable therein without giving effect to any choice or conflict of law provision or rule (whether of the Province of British Columbia or any other jurisdiction).</p><p><br></p><p>THE NATIONAL FOOTBALL LEAGUE, ITS MEMBER PROFESSIONAL FOOTBALL CLUBS, NFL VENTURES, INC., NFL VENTURES, L.P., NFL PROPERTIES LLC, NFL ENTERPRISES LLC, NFL PRODUCTIONS LLC, NFL INTERNATIONAL LLC, AND EACH OF THEIR RESPECTIVE SUBSIDIARIES, AFFILIATES, SHAREHOLDERS, OFFICERS, DIRECTORS, AGENTS, MEMBERS, REPRESENTATIVES, AND EMPLOYEES (COLLECTIVELY, THE \"NFL ENTITIES\") WILL HAVE NO LIABILITY OR RESPONSIBILITY FOR ANY CLAIM ARISING IN CONNECTION WITH PARTICIPATION IN THIS Challenge OR ANY PRIZE AWARDED. THE NFL ENTITIES HAVE NOT OFFERED OR SPONSORED THIS Challenge IN ANY WAY.</p><p><br></p><p><strong>Sponsor</strong>: Dapper Labs Inc., 600-565 Great Northern Way, Vancouver, BC V5T 0H8, Canada.</p>",
-                        "startDate": "2023-05-10T20:00:00Z",
-                        "endDate": "2023-05-16T19:45:00Z",
-                        "images": [
-                            {
-                                "url": "https://storage.googleapis.com/dl-nfl-assets-prod/challenges/50_pills.png",
-                                "type": "REWARD",
-                                "__typename": "ChallengeImage"
-                            }
-                        ],
-                        "videos": [
-                            {
-                                "url": "",
-                                "type": "DEFAULT",
-                                "__typename": "ChallengeVideo"
-                            }
-                        ],
-                        "slots": [
-                            {
-                                "id": "e0d3a508-cdc8-4c66-b461-9c51308dcc4e",
-                                "title": "What's your favorite Legendary Moment?",
-                                "description": "Select 1 Legendary+ Moment.",
-                                "query": {
-                                    "byEditionFlowIDs": null,
-                                    "byPlayTypes": null,
-                                    "byPlayerIDs": null,
-                                    "bySetIDs": null,
-                                    "byTeamIDs": null,
-                                    "byTiers": [
-                                        "LEGENDARY",
-                                        "ULTIMATE"
-                                    ],
-                                    "byPlayerPositions": null,
-                                    "bySeries": null,
-                                    "byCombinedBadgeSlugs": null,
-                                    "__typename": "ChallengeSlotQuery"
-                                },
-                                "slotOrder": 1,
-                                "isWildcard": null,
-                                "submission": null,
-                                "__typename": "ChallengeSlot"
-                            }
-                        ],
-                        "rewardID": null,
-                        "communityCompletions": 901,
-                        "relatedGames": [],
-                        "parentChallengeID": "e61ecfca-029e-406d-a38c-9047ec34f8ee",
-                        "userSubmissionMomentNFTIDs": null,
-                        "userSubmissionEditionIDs": null,
-                        "userSubmissionTeamNFTIDs": null,
-                        "userSubmissionStatus": "",
-                        "visibility": "PUBLIC",
-                        "__typename": "Challenge"
-                    },
-                    {
-                        "id": "21993af1-cb2e-4bf1-a346-56878d4cba33",
-                        "name": "🔥 Burn 🔥 6 Common",
-                        "category": "BURN",
-                        "nftType": "MOMENT_NFT",
-                        "summary": "Submit a complete Challenge Entry to earn 50 yards towards the May 8-15: Weekly Playbook",
-                        "description": "<p>To complete this Challenge, fans will need to submit Moments according to the following requirements:</p><p><br></p><ul><li>Submit 1 Legendary or higher tier Moment from your favorite player in the NFL<br></li></ul><p><br></p><p>OR</p><p><br></p><ul><li>Burn 6 Common Moments: 2 from a QB, 2 from a RB, 2 from a WR/TE</li></ul>",
-                        "instructions": {
-                            "instructions": [
-                                "<p>1. Submit a complete Challenge Entry with the correct required Moments.</p><p><br></p><p>2. Completing this challenge earns Playbook yards. To earn Premium Rewards this week, fans must unlock Premium Rewards and gain enough yardage in the weekly Playbook.</p>"
-                            ],
-                            "__typename": "ChallengeInstructions"
-                        },
-                        "finePrint": "<ul><li>Only 1 Challenge Entry per fan will be eligible.</li></ul><p><br></p><ul><li>Only 1 credit of 50 yards towards this week’s Playbook can be won per fan per Challenge.</li></ul><p><br></p><ul><li>On <strong>Monday, May 16, 2023 at 12:44:59 PM ET</strong>, a snapshot will be taken of all Challenge Entries. All eligible fans who complete the Challenge prior to the snapshot will receive 1 credit of 50 yards towards this week’s Playbook.</li></ul><p><br></p><ul><li>Snapshot times/dates may be extended if maintenance mode or technical difficulties prevent the Marketplace from being accessible.</li></ul><p><br></p><ul><li>Fans are responsible for monitoring their eligibility on the Challenge page and making any necessary updates before the deadline. Prior to the snapshot, please verify that each Challenge Entry still includes all eligible Moments.</li></ul><p><br></p><ul><li>All eligible Challenge submissions will receive the reward via the Playbook. After the Challenge ends and prizes have been distributed, go to the Playbook tab of your profile to view the reward.</li></ul><p><br></p><ul><li>Cosmetic rewards are triggered instantly upon completing the task, however it may take anywhere between a few seconds and a few minutes for the system to properly show up in the fan’s Profile or Playbook.</li></ul><p><br></p><ul><li>Pack rewards are currently delivered after the Playbook week is over.</li></ul><p><br></p><ul><li>Fans must use the Challenge Builder to enter this Challenge as well as make edits to their Challenge Entry. Fans must submit their completed Challenge Entry BEFORE <strong>Monday, May 16, 2023 at 12:44:59 PM ET</strong> to ensure their submission is accepted. The time of submission is recorded when the save button is pressed. If fans submit after the deadline, those entries will not be accepted.</li></ul><p><br></p><ul><li>The Challenge Builder will automatically filter eligible Moments. Click each slot to see which Moments in your Collection are eligible.</li></ul><p><br></p><ul><li>In addition to the Challenge Builder automatically filtering eligible Moments, the Marketplace and Collection pages also have filters available for all the Challenge requirements (set, team, player, etc.).</li></ul><p><br></p><ul><li>Please make sure all Moments utilized for the Challenge Entry are delisted from the Marketplace before saving a Challenge Entry. If a Moment in a Challenge Entry is delisted after building the Challenge Entry, please confirm the Challenge Entry still has the right amount of Moments and meets the criteria.</li></ul><p><br></p><ul><li>If fans have submitted or saved a Challenge Entry from the Challenge Builder prior to the snapshot time, Challenge Entries can be edited by going back to the Challenge page. Select the button that says Edit Challenge Entry to make any necessary changes to a Challenge Entry.</li></ul><p><br></p><ul><li>Fans can have as many qualifying Entries as they want and NFL ALL DAY will only count 1 Challenge Entry as being eligible.</li></ul><p><br></p><p>ARBITRATION NOTICE: THE GENERAL NFL ALL DAY TERMS OF USE SET FORTH <a href=\"https://nflallday.com/terms\" target=\"_blank\">HERE</a> (THE “GENERAL TERMS”) CONTAIN AN ARBITRATION PROVISION (SEE SECTION 16 OF THE GENERAL TERMS). PLEASE REVIEW THE ARBITRATION PROVISION CAREFULLY, SINCE IT AFFECTS YOUR RIGHTS. BY USING THE NFL ALL DAY APPLICATION OR ANY PART OF IT, INCLUDING YOUR ENTRY AND PARTICIPATION IN THIS Challenge, YOU UNDERSTAND AND AGREE TO BE BOUND BY THE ARBITRATION PROVISION IN THE GENERAL TERMS.</p><p>The <strong>🔥 Burn 🔥 6 Common</strong> (the “Challenge”) starts on <strong>45056</strong> after the game concludes, and ends on <strong>Monday, May 16, 2023 at 12:44:59 PM ET</strong> (the “Challenge Period”).</p><p><br></p><p><strong>ELIGIBILITY:</strong> The Challenge is open to NFL ALL DAY users (defined as a person with an account at <a href=\"http://www.nflallday.com\" target=\"_blank\">www.nflallday.com</a>, and a valid email address associated with that account), and who are eighteen (18) years of age or older (or of the legal age of majority in their state or province of residence, whichever is older) at the time of entry. Employees of Dapper Labs Inc. (“Sponsor”, “we”, or “us”), the NFL Entities (as defined below), the National Football League Players Association and their respective parents, subsidiaries, affiliates, promotion and advertising agencies, and members of their immediate families (spouse and parent, children and siblings and their respective spouses, regardless of where they reside) and persons living in the same household, whether or not related, of such employees, are not eligible to win. Void where prohibited by law. The Challenge is subject to all applicable federal, provincial, state and local laws.</p><p><br></p><p><strong>PRIZES:</strong> At the conclusion of the Challenge Period, all fans who have successfully followed the “Challenge Rules,” as listed in the section above, and accurately completed the Challenge will be awarded with 1 credit of 50 yards towards their current Playbook (“Prize”).</p><p><br></p><p><strong>HOW TO ENTER:</strong> Complete the requirements contained in the “Challenge Rules” section listed above during the Challenge Period to obtain a maximum of one (1) Entry. Users must use the Challenge Builder to enter this Challenge. Users must submit their completed Challenge Entry before the conclusion of the Challenge Period to ensure their submission is accepted. The time of submission is recorded when the submit button is pressed. If a user submits after the deadline, those entries will not be accepted.</p><p><br></p><p><strong>WINNER NOTIFICATION</strong>: Each potential Prize winner will be notified either in the User Interface of the App and/or by email. The inability to contact, or receive a response from, a potential winner through email may result in disqualification. The Released Parties (defined below) are not responsible for any delay or failure for a potential winner to receive notification from Sponsor, or for Sponsor to fail to receive a potential winner’s response, for any reason, including inactive account(s), technical difficulties associated therewith, or a potential winner’s failure to adequately monitor any account. The Released Parties are not responsible for communications that are undeliverable as a result of any form of active or passive filtering of any kind, or insufficient space in an entrant’s email account to receive email messages. The Released Parties are not responsible for false, incorrect, changed, incomplete or illegible contact information. Once you have won a Prize, you will not be eligible to win any additional Prizes for this Challenge.</p><p><br></p><p><strong>GENERAL:</strong> <strong>ENTRANTS ACKNOWLEDGE AND AGREE BY PARTICIPATING IN THE Challenge THAT THEY MAY BE WAIVING CERTAIN LEGAL RIGHTS THAT THEY MAY OTHERWISE HAVE.</strong> By participating in the Challenge, each entrant agrees: (a) to abide by these Official Rules and decisions of Sponsor, <a href=\"https://nflallday.com/terms\" target=\"_blank\">NFL ALL DAY Terms of Use</a>, <a href=\"https://accounts.meetdapper.com/terms\" target=\"_blank\">Dapper Service Terms of Use</a>, and the decisions of the Sponsor, which shall be final and binding in all respects relating to this Challenge; (b) to release, discharge and hold harmless Released Parties from and against any and all costs, claims, damages, (including, without limitation, any special, incidental, or consequential damages), or any other injury, whether due to negligence or otherwise, to person(s) or property (including, without limitation, death or violation of any personal rights, such as violation of right of publicity/privacy, libel, or slander), due in whole or in part, directly or indirectly, to participation in the Challenge, or arising out of participation in any Challenge related or Prize related Activity, or the receipt, enjoyment, participation in, use or misuse, of any Challenge or Prize related activity, whether hosted by Sponsor or a Third Party; and (c) to the use of his/her name, voice, performance, photograph/video, image and likeness for programming, advertising, publicity and promotional purposes in any and all media (including digital media), now or hereafter known, worldwide and in perpetuity by Sponsor, the NFL Entities, the NFLPA Entities, and its and their designees, without compensation (unless prohibited by law) or additional consents from entrant or any third party and without prior notice, approval or inspection, and to execute specific consent to such use if asked to do so. By participating, entrants also agree not to release any publicity or other materials on their own or through someone else regarding their participation in the Challenge without the prior consent of the Sponsor, which it may withhold in its sole discretion.</p><p><br></p><p>Prizes are awarded “as is” with no warranty or guarantee, either express or implied, including but not limited to, the implied warranties of merchantability, fitness for a particular purpose or non-infringement. Some jurisdiction may not allow the limitations or exclusion of liability for incidental or consequential damages or exclusion of implied warranties so some of the limitations or exclusions contained herein may not apply to you. Check your local laws for any restrictions or limitations regarding these limitations or exclusions. A winner may not substitute, assign or transfer their Prize, but we reserve the right, at Sponsor’s sole discretion, to substitute the Prize with another prize of comparable or greater value. Winners are responsible for all applicable federal, provincial, state and local taxes, if any, as well as any other costs and expenses otherwise associated with accepting any Prize. All Prize details are provided at Sponsor’s sole discretion. Sponsor will not be required to award more prizes than the number of available prizes set forth in these Official Rules. Each eligible person can receive a maximum of (1) one Prize. If a user is found to have entered the Challenge more than once or via more than one account (or multiple times from the same account), or has any other methods in an attempt to receive more than the permitted Maximum Entries, that user will be disqualified from the Challenge, and all of that user’s entries will be deemed ineligible. Sponsor reserves the right not to award any or all Prizes if, in its sole discretion, it does not receive a sufficient number of eligible and qualified entries. All Prize awards are subject to verification of eligibility and compliance with these Official Rules.</p><p><br></p><p>In no event will the Released Parties be responsible or liable for any damages or losses of any kind, including direct, indirect, incidental, consequential or punitive damages arising out of your access to and participating in the Challenge and/or downloading from and/or print material downloaded from any website associated with the Challenge. Released Parties are not responsible for lost, interrupted or unavailable network, server, Internet Service Provider (ISP), website, or other connections, availability or accessibility or miscommunications or failed computer, satellite, telephone or cable transmissions, lines, or technical failure or jumbled, scrambled, delayed, or misdirected transmissions or computer hardware or software malfunctions, failures or difficulties, or other errors or difficulties of any kind whether human, mechanical, electronic, computer, network, typographical, printing or otherwise relating to or in connection with the Challenge, including, without limitation, errors or difficulties which may occur in connection with the administration of the Challenge, the processing or judging of the Challenge, the selection of winners, or the announcement of any prize. Released Parties are also not responsible for any incorrect or inaccurate information, whether caused by other entrants or site users, tampering, hacking, or by any equipment or programming associated with or utilized in the Challenge. Released Parties are not responsible for injury or damage to any person's computer related to or resulting from participating in this Challenge or downloading materials from or use of the website. Persons who tamper with or abuse any aspect of the Challenge or website, who act in an unsportsmanlike or disruptive manner or who are in violation of these Official Rules, as solely determined by Sponsor, will be disqualified. Should any portion, or the entirety of the Challenge be deemed illegal in any jurisdiction in the United States or Canada, Sponsor reserves the right at its sole discretion to suspend, modify or terminate the Challenge. Should any portion of the Challenge be, in Sponsor’s sole opinion, compromised by virus, worms, bugs, non-authorized human intervention or other causes which, in the sole opinion of the Sponsor, corrupt or impair the administration, security, fairness or proper play, or submission of entries, Sponsor reserves the right at its sole discretion to suspend, modify or terminate the Challenge and, if terminated, at its discretion, select the potential winner(s) from all eligible participants using the procedures outlined above. CAUTION: ANY ATTEMPT TO DAMAGE THE NFL ALL DAY SITE OR TO UNDERMINE THE LEGITIMATE OPERATION OF THE Challenge MAY BE IN VIOLATION OF CRIMINAL AND CIVIL LAWS AND SHOULD SUCH AN ATTEMPT BE MADE, SPONSOR RESERVES THE RIGHT TO SEEK DAMAGES AND OTHER REMEDIES (INCLUDING ATTORNEYS’ FEES) FROM ANY SUCH INDIVIDUAL TO THE FULLEST EXTENT OF THE LAW, INCLUDING CRIMINAL PROSECUTION.</p><p><br></p><p><strong>GOVERNING LAW:</strong> The Challenge shall be governed by and construed in accordance with the laws of the Province of British Columbia and the federal laws of Canada applicable therein without giving effect to any choice or conflict of law provision or rule (whether of the Province of British Columbia or any other jurisdiction).</p><p><br></p><p>THE NATIONAL FOOTBALL LEAGUE, ITS MEMBER PROFESSIONAL FOOTBALL CLUBS, NFL VENTURES, INC., NFL VENTURES, L.P., NFL PROPERTIES LLC, NFL ENTERPRISES LLC, NFL PRODUCTIONS LLC, NFL INTERNATIONAL LLC, AND EACH OF THEIR RESPECTIVE SUBSIDIARIES, AFFILIATES, SHAREHOLDERS, OFFICERS, DIRECTORS, AGENTS, MEMBERS, REPRESENTATIVES, AND EMPLOYEES (COLLECTIVELY, THE \"NFL ENTITIES\") WILL HAVE NO LIABILITY OR RESPONSIBILITY FOR ANY CLAIM ARISING IN CONNECTION WITH PARTICIPATION IN THIS Challenge OR ANY PRIZE AWARDED. THE NFL ENTITIES HAVE NOT OFFERED OR SPONSORED THIS Challenge IN ANY WAY.</p><p><br></p><p><strong>Sponsor</strong>: Dapper Labs Inc., 600-565 Great Northern Way, Vancouver, BC V5T 0H8, Canada.</p>",
-                        "startDate": "2023-05-10T20:00:00Z",
-                        "endDate": "2023-05-16T19:45:00Z",
-                        "images": [
-                            {
-                                "url": "https://storage.googleapis.com/dl-nfl-assets-prod/challenges/50_pills.png",
-                                "type": "REWARD",
-                                "__typename": "ChallengeImage"
-                            }
-                        ],
-                        "videos": [
-                            {
-                                "url": "",
-                                "type": "DEFAULT",
-                                "__typename": "ChallengeVideo"
-                            }
-                        ],
-                        "slots": [
-                            {
-                                "id": "e2825f23-c438-43f4-8959-3404ffec9d5b",
-                                "title": "Burn your first QB",
-                                "description": "Select 1 Common Moment from a Quarterback to burned.",
-                                "query": {
-                                    "byEditionFlowIDs": null,
-                                    "byPlayTypes": null,
-                                    "byPlayerIDs": null,
-                                    "bySetIDs": null,
-                                    "byTeamIDs": null,
-                                    "byTiers": [
-                                        "COMMON"
-                                    ],
-                                    "byPlayerPositions": [
-                                        "QB"
-                                    ],
-                                    "bySeries": null,
-                                    "byCombinedBadgeSlugs": null,
-                                    "__typename": "ChallengeSlotQuery"
-                                },
-                                "slotOrder": 1,
-                                "isWildcard": null,
-                                "submission": null,
-                                "__typename": "ChallengeSlot"
-                            },
-                            {
-                                "id": "fcb7b3d4-c8b1-4052-858f-e0311c538e12",
-                                "title": "Burn your second QB",
-                                "description": "Select 1 Common Moment from a Quarterback to burned.",
-                                "query": {
-                                    "byEditionFlowIDs": null,
-                                    "byPlayTypes": null,
-                                    "byPlayerIDs": null,
-                                    "bySetIDs": null,
-                                    "byTeamIDs": null,
-                                    "byTiers": [
-                                        "COMMON"
-                                    ],
-                                    "byPlayerPositions": [
-                                        "QB"
-                                    ],
-                                    "bySeries": null,
-                                    "byCombinedBadgeSlugs": null,
-                                    "__typename": "ChallengeSlotQuery"
-                                },
-                                "slotOrder": 2,
-                                "isWildcard": null,
-                                "submission": null,
-                                "__typename": "ChallengeSlot"
-                            },
-                            {
-                                "id": "bbebc91b-8d3f-4b42-9db7-e7fe7e2f89fa",
-                                "title": "Burn your first RB",
-                                "description": "Select 1 Common Moment from a Running Back to burned.",
-                                "query": {
-                                    "byEditionFlowIDs": null,
-                                    "byPlayTypes": null,
-                                    "byPlayerIDs": null,
-                                    "bySetIDs": null,
-                                    "byTeamIDs": null,
-                                    "byTiers": [
-                                        "COMMON"
-                                    ],
-                                    "byPlayerPositions": [
-                                        "RB"
-                                    ],
-                                    "bySeries": null,
-                                    "byCombinedBadgeSlugs": null,
-                                    "__typename": "ChallengeSlotQuery"
-                                },
-                                "slotOrder": 3,
-                                "isWildcard": null,
-                                "submission": null,
-                                "__typename": "ChallengeSlot"
-                            },
-                            {
-                                "id": "38d6448e-a352-4999-aea9-132d5376331c",
-                                "title": "Burn your second RB",
-                                "description": "Select 1 Common Moment from a Running Back to burned.",
-                                "query": {
-                                    "byEditionFlowIDs": null,
-                                    "byPlayTypes": null,
-                                    "byPlayerIDs": null,
-                                    "bySetIDs": null,
-                                    "byTeamIDs": null,
-                                    "byTiers": [
-                                        "COMMON"
-                                    ],
-                                    "byPlayerPositions": [
-                                        "RB"
-                                    ],
-                                    "bySeries": null,
-                                    "byCombinedBadgeSlugs": null,
-                                    "__typename": "ChallengeSlotQuery"
-                                },
-                                "slotOrder": 4,
-                                "isWildcard": null,
-                                "submission": null,
-                                "__typename": "ChallengeSlot"
-                            },
-                            {
-                                "id": "e7235ed8-bfb5-48fa-899f-1a67b2251e86",
-                                "title": "Burn your first WR/TE",
-                                "description": "Select 1 Common Moment from a Wide Receiver or Tight End to burned.",
-                                "query": {
-                                    "byEditionFlowIDs": null,
-                                    "byPlayTypes": null,
-                                    "byPlayerIDs": null,
-                                    "bySetIDs": null,
-                                    "byTeamIDs": null,
-                                    "byTiers": [
-                                        "COMMON"
-                                    ],
-                                    "byPlayerPositions": [
-                                        "WR",
-                                        "TE"
-                                    ],
-                                    "bySeries": null,
-                                    "byCombinedBadgeSlugs": null,
-                                    "__typename": "ChallengeSlotQuery"
-                                },
-                                "slotOrder": 5,
-                                "isWildcard": null,
-                                "submission": null,
-                                "__typename": "ChallengeSlot"
-                            },
-                            {
-                                "id": "22e2c50b-9b2e-452d-ad24-fab25b7c196e",
-                                "title": "Burn your second WR/TE",
-                                "description": "Select 1 Common Moment from a Wide Receiver or Tight End to burned.",
-                                "query": {
-                                    "byEditionFlowIDs": null,
-                                    "byPlayTypes": null,
-                                    "byPlayerIDs": null,
-                                    "bySetIDs": null,
-                                    "byTeamIDs": null,
-                                    "byTiers": [
-                                        "COMMON"
-                                    ],
-                                    "byPlayerPositions": [
-                                        "WR",
-                                        "TE"
-                                    ],
-                                    "bySeries": null,
-                                    "byCombinedBadgeSlugs": null,
-                                    "__typename": "ChallengeSlotQuery"
-                                },
-                                "slotOrder": 6,
-                                "isWildcard": null,
-                                "submission": null,
-                                "__typename": "ChallengeSlot"
-                            }
-                        ],
-                        "rewardID": null,
-                        "communityCompletions": 264,
-                        "relatedGames": [],
-                        "parentChallengeID": "e61ecfca-029e-406d-a38c-9047ec34f8ee",
-                        "userSubmissionMomentNFTIDs": null,
-                        "userSubmissionEditionIDs": null,
-                        "userSubmissionTeamNFTIDs": null,
-                        "userSubmissionStatus": "",
-                        "visibility": "PUBLIC",
-                        "__typename": "Challenge"
-                    }
-                ]
+                "childChallenges": []
             },
-            "cursor": "ZTYxZWNmY2EtMDI5ZS00MDZkLWEzOGMtOTA0N2VjMzRmOGVlLDIwMjMtMDUtMTBUMjA6MDA6MDBaLDAs",
+            "cursor": "ZmYyODM1NGYtOGFmZi00YTY0LWFkYzUtNTZkY2QzYmU2Y2Q4LDIwMjMtMDUtMDhUMjA6MDA6MDBaLDAs",
             "__typename": "ChallengeEdge"
         }
     ],

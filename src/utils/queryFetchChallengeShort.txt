@@ -1,0 +1,70 @@
+query searchChallenges_challenge(
+    $byIDs: [String], 
+    $byHasParentChallenge: Boolean
+) 
+{
+    searchChallenges(
+        input: {
+            filters: {
+                byIDs: $byIDs, 
+                byHasParentChallenge: $byHasParentChallenge
+            },
+        first: 1
+        }
+    ) 
+    {
+        totalCount
+        edges {
+            node {
+                ...ChallengeQueryFragment
+                childChallenges {
+                    ...ChallengeQueryFragment
+                    __typename
+                }
+                __typename
+            }
+            cursor
+            __typename
+        }
+        __typename
+    }
+}
+
+fragment ChallengeQueryFragment on Challenge {
+    id
+    name
+    endDate
+    slots {
+        title
+        description
+        query {
+                ...ChallengeSlotQueryFragment
+            __typename
+        }
+        slotOrder
+        isWildcard
+        __typename
+    }
+    relatedGames {
+        id
+        awayTeamID
+        homeTeamID
+        __typename
+    }
+    __typename
+}
+    
+fragment ChallengeSlotQueryFragment on ChallengeSlotQuery {
+    byEditionFlowIDs
+    byPlayTypes
+    byPlayerIDs
+    bySetIDs
+    byTeamIDs
+    byTiers
+    byPlayerPositions
+    bySeries
+    byCombinedBadgeSlugs
+    __typename
+}
+    
+            
