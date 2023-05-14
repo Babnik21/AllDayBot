@@ -1,0 +1,101 @@
+query searchMarketplaceEditions(
+    $byEditionFlowIDs: [Int], 
+    $byBadgeSlugs: [BadgeSlug], 
+    $byPlayerPositions: [PlayerPosition], 
+    $byPlayTypes: [PlayType], 
+    $byPlayerIDs: [String], 
+    $byTeamIDs: [String], 
+    $byTiers: [EditionTier], 
+    $bySetIDs: [String], 
+    $bySeriesFlowIDs: [Int], 
+    $minPrice: PriceInput, 
+    $maxPrice: PriceInput, 
+    $after: String, 
+    $first: Int, 
+    $sortBy: MarketplaceEditionSortType
+) 
+{
+    searchMarketplaceEditions(
+        input: {
+            after: $after, 
+            first: $first, 
+            filters: {
+                byBadgeSlugs: $byBadgeSlugs, 
+                byPlayTypes: $byPlayTypes, 
+                byPlayerPositions: $byPlayerPositions, 
+                byEditionFlowIDs: $byEditionFlowIDs, 
+                byPlayerIDs: $byPlayerIDs, 
+                byTeamIDs: $byTeamIDs, 
+                byTiers: $byTiers, 
+                bySetIDs: $bySetIDs, 
+                bySeriesFlowIDs: $bySeriesFlowIDs, 
+                minPrice: $minPrice, 
+                maxPrice: $maxPrice
+            }, 
+            sortBy: $sortBy
+        }
+    ) 
+    {
+        totalCount
+        pageInfo {
+            endCursor
+            hasNextPage
+            __typename
+        }
+        edges {
+            cursor
+            node {
+                editionFlowID
+                lowestPrice
+                edition {
+                    id
+                    flowID
+                    tier
+                    maxMintSize
+                    assetType
+                    assetVersion
+                    currentMintSize
+                    authenticatedUserOwnedMomentNFTs(input: {first: 1}) {
+                        totalCount
+                        __typename
+                    }
+                    numMomentsBurned
+                    badges {
+                        id
+                        title
+                        slug
+                        description
+                        __typename
+                    }
+                    play {
+                        id
+                        metadata {
+                            teamName
+                            classification
+                            playerFullName
+                            gameDate
+                            playType
+                            homeTeamID
+                            awayTeamID
+                            __typename
+                        }
+                        __typename
+                    }
+                    set {
+                        name
+                        __typename
+                    }
+                    series {
+                        name
+                        __typename
+                    }
+                    __typename
+                }
+                __typename
+            }
+            cursor
+            __typename
+        }
+        __typename
+    }
+}

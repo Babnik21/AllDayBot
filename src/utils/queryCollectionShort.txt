@@ -1,0 +1,46 @@
+query searchMomentNFTsV2_collection(
+    $byOwnerFlowAddresses: [String], 
+    $byIDs: [String], 
+    $byFlowIDs: [Int], 
+    $bySetFlowIDs: [Int], 
+    $bySeriesFlowIDs: [Int], 
+    $bySetIDs: [String], 
+    $byPlayerIDs: [String], 
+    $byPlayTypes: [PlayType], 
+    $byTeamIDs: [String], 
+    $byTiers: [EditionTier], 
+    $byPlayerPositions: [PlayerPosition], 
+    $byBadgeSlugs: [BadgeSlug], 
+    $byCombinedBadgeSlugs: [BadgeSlug], 
+    $after: String, 
+    $first: Int, 
+    $sortBy: MomentNFTSortType
+) 
+{
+    searchMomentNFTsV2(
+        input: {
+            after: $after, 
+            first: $first, 
+            filters: {
+                byOwnerFlowAddresses: $byOwnerFlowAddresses, 
+                byIDs: $byIDs, 
+                byFlowIDs: $byFlowIDs, 
+                byPlayerIDs: $byPlayerIDs, 
+                byPlayTypes: $byPlayTypes, 
+                bySetFlowIDs: $bySetFlowIDs, 
+                bySeriesFlowIDs: $bySeriesFlowIDs, 
+                bySetIDs: $bySetIDs, 
+                byTeamIDs: $byTeamIDs, 
+                byTiers: $byTiers, 
+                byPlayerPositions: $byPlayerPositions, 
+                byBadgeSlugs: $byBadgeSlugs, 
+                byCombinedBadgeSlugs: $byCombinedBadgeSlugs
+            }, 
+            sortBy: $sortBy
+        }
+    ) 
+    {
+        totalCount
+        __typename
+    }
+}

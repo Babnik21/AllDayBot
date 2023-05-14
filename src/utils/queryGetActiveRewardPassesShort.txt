@@ -8,6 +8,7 @@ query GetActiveRewardPasses {
             type
             category
             rewardPoints
+            referenceID
             validTo
             validations {
                 moments {
