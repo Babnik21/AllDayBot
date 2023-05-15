@@ -1,0 +1,28 @@
+1. Get info
+
+
+// MP - https://nflallday.com/listing/moment/{edition.flowID}
+// Collection - https://nflallday.com/moments/{ID} - ta ID je od momenta (nek hash)
+
+owned_eligible_slots = {
+    index: slot_lst
+}
+owned, market = [], []
+for i, slot in enumerate(slots):
+    find cheapest on market
+    market.append(cheapest)
+
+    find eligible owned
+    for el in eligible owned:
+        
+        // if already in owned, add slot index to eligible slot list
+        if el in owned:
+            owned_eligible_slots[owned.find_index(el)].append(i)
+        
+        // if new, add to owned list and add to owned_eligible_slots
+        else:
+            owned_eligible_slots[len(owned)] = [i]
+            owned.append(el)
+
+
+

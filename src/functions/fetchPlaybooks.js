@@ -60,7 +60,7 @@ const discordMsgPlaybooks = (obj) => {
 }
 
 // Fetches playbook info from 'GetActiveRewardPasses', saves to ./src/resources/playbooks.json
-const fetchPlaybooks = async (detail) => {
+export const fetchPlaybooks = async (detail = 'short') => {
     let tmp;
     let obj;
 
