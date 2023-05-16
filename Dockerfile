@@ -1,4 +1,4 @@
-FROM node:18:16.0
+FROM node:18.16.0
 
 WORKDIR .
 
@@ -7,8 +7,6 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-
-ENV PORT=8080
 
 EXPOSE 8080
 
