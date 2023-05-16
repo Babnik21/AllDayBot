@@ -3,10 +3,11 @@ import { fetchChallenge } from "./fetchChallenges.js";
 import { queryMP } from "./queryMP.js";
 import { queryCollection } from "./queryCollection.js";
 
-const discordMsgPlaybooks = (obj) => {
+const discordMsgPlaybooks = async (obj) => {
     let lst = [];
-    let totalYdsAvailable = 0;
+    
     for (let i = 0; i < obj.length; i++) {
+        let totalYdsAvailable = 0;
         // Skip starter playbook
         if (obj[i].title == 'Starter Playbook') {continue;}
         
@@ -18,19 +19,34 @@ const discordMsgPlaybooks = (obj) => {
 
             // Add text
             if (obj[i].tasks[j].type == 'UPGRADE') {
-                str += `\n    :unlock:: ${obj[i].tasks[j].title}`;
+                str += `\n    ${j+1}) :unlock:: ${obj[i].tasks[j].title}`;
                 if (obj[i].tasks[j].category == 'BURN_MOMENT') {str += ' :fire:'}
                 str += '\n'
             }
-            else  if (obj[i].tasks[j].type == 'POINTS') {
-                str += `\n    ${obj[i].tasks[j].title} (${obj[i].tasks[j].rewardPoints} YDS)`;
+            else if (obj[i].tasks[j].type == 'POINTS') {
+                str += `\n    ${j+1}) ${obj[i].tasks[j].title} (${obj[i].tasks[j].rewardPoints} YDS)`;
                 totalYdsAvailable += obj[i].tasks[j].rewardPoints;
                 if (obj[i].tasks[j].category == 'BURN_MOMENT') {str += ' :fire:'}
             }
 
             // If it has a different deadline than the playbook itself we want to note that
-            if (obj[i].tasks[j].validTo != obj[i].endAt) {
-                str += `\n      Deadline: <t:${Math.floor(Date.parse(obj[i].tasks[j].validTo)/1000)}:f>`;
+            if (obj[i].tasks[j].referenceID != null) {
+                // Expired and unloaded are causing issues.
+                try {
+                    let chObj = await fetchChallenge(obj[i].tasks[j].referenceID);
+                    if (chObj.edges[0].node.endDate != obj[i].endAt) {
+                        if (Date.parse(chObj.edges[0].node.endDate) < Date.now()) {
+                            str += ' (Expired)'
+                        }
+                        else {
+                            str += `\n      Deadline: <t:${Math.floor(Date.parse(chObj.edges[0].node.endDate)/1000)}:f>`;
+                        }
+                    }
+                }
+                catch (err) {
+                    console.log(err);
+                }
+                
             }
         };
         str += `\n  Total yards available: ${totalYdsAvailable}`
@@ -60,22 +76,12 @@ const discordMsgPlaybooks = (obj) => {
 }
 
 // Fetches playbook info from 'GetActiveRewardPasses', saves to ./src/resources/playbooks.json
-export const fetchPlaybooks = async (detail = 'short') => {
+export const fetchPlaybooks = async () => {
     let tmp;
     let obj;
 
     // Get filepath
-    let filePath = 'src/utils/queryGetActiveRewardPasses'
-    switch (detail) {
-        case 'full':
-            filePath += 'Full.txt';
-            break;
-        case 'short':
-            filePath += 'Short.txt';
-            break;
-        default:
-            filePath += 'Full.txt';
-    }
+    let filePath = 'src/utils/queryGetActiveRewardPassesShort.txt'
 
     let query = readFileSync(filePath, { encoding: 'utf-8' });
 
@@ -209,9 +215,9 @@ export const discordPlaybookProgress = async (index, flowAddress) => {
 
 // Gets playbook JSON from AD Graphql and makes discord msg for each one.
 // Only "short" detail for now
-export const playbooks = async (detail) => {
-    let pbObj = await fetchPlaybooks('Short');
-    let msgLst = discordMsgPlaybooks(pbObj);
+export const playbooks = async () => {
+    let pbObj = await fetchPlaybooks();
+    let msgLst = await discordMsgPlaybooks(pbObj);
     return msgLst;
 }
 

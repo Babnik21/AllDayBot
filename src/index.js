@@ -5,9 +5,11 @@ import { helloCommand } from './commands/hello.js';
 import { playbookCommand } from "./commands/playbook.js";
 import { progressCommand } from "./commands/progress.js";
 import { registerCommand } from "./commands/register.js";
+import { solveChallengeCommand} from "./commands/solveChallenge.js";
 import { playbooks, discordPlaybookProgress } from "./functions/fetchPlaybooks.js";
 import { registerUser } from "./functions/registerUser.js";
 import { getFlowAddress } from "./utils/getFlowAddress.js";
+import { solveChallenge } from "./functions/solveChallenge.js";
 
 // dotenv
 config();
@@ -35,14 +37,14 @@ client.on('interactionCreate', async (interaction) => {
             interaction.reply(`Hello <@${interaction.options.get('user').value}>`);
         }
         else if (interaction.commandName === 'playbook') {
-            let msgs = await playbooks('Short');
-            interaction.reply('Printing out content...');
+            interaction.reply('Fetching playbook info. This might take a minute...');
+            let msgs = await playbooks();
             for (let i = 0; i < msgs.length; i++) {
                 client.channels.cache.get(CHANNEL_ID_AD).send(msgs[i]);
             }
         }
         else if (interaction.commandName === 'progress') {
-            interaction.reply('Printing out content...');
+            interaction.reply('Fetching progress. This might take a minute...');
             const pbId = interaction.options.get('id').value;
             const flowAddress = getFlowAddress(interaction.user.id);
             let msg = await discordPlaybookProgress(pbId - 1, flowAddress);
@@ -53,9 +55,16 @@ client.on('interactionCreate', async (interaction) => {
             let msg = await registerUser(interaction.user.id, username);
             interaction.reply(msg);
         }
+        else if (interaction.commandName === 'solve') {
+            interaction.reply('Solving challenge. This might take a minute...');
+            const pbId = interaction.options.get('playbook-id').value;
+            const chId = interaction.options.get('challenge-id').value;
+            const flowAddress = getFlowAddress(interaction.user.id);
+            let msg = await solveChallenge(pbId - 1, chId - 1, flowAddress);
+            client.channels.cache.get(CHANNEL_ID_AD).send(msg);
+        }
     }
 });
-
 
 async function main() {
 
@@ -63,7 +72,8 @@ async function main() {
         helloCommand,
         playbookCommand,
         progressCommand,
-        registerCommand
+        registerCommand,
+        solveChallengeCommand
     ]
 
     try {

@@ -2,8 +2,9 @@ import { fetchPlaybooks } from "./fetchPlaybooks.js";
 import { fetchChallenge } from './fetchChallenges.js';
 import { queryCollection } from './queryCollection.js';
 import { queryMP } from './queryMP.js';
+import munkres from 'munkres-js';
 
-
+// Gathers all MP and Collection moments with prices and slots they fit into
 const fetchMoments = async (slots, flowAddress) => {
     let mpList = [];
     let ownedObj = {}
@@ -25,7 +26,12 @@ const fetchMoments = async (slots, flowAddress) => {
                     editionFlowID: collObj.edges[j].node.editionFlowID,
                     player: collObj.edges[j].node.edition.play.metadata.playerFullName,
                     team: null,         // Popravi null ce je team moment 
-                    slots: [i]
+                    slots: [i],
+                    series: collObj.edges[j].node.edition.series.name,
+                    set: collObj.edges[j].node.edition.set.name
+                }
+                if (collObj.edges[j].node.edition.play.metadata.playerFullName == undefined) {
+                    console.log(collObj.edges[j].node)
                 }
             }
             // if record already exist, only add slot index
@@ -44,22 +50,54 @@ const fetchMoments = async (slots, flowAddress) => {
     return [mpList, ownedObj, maxLA];
 }
 
-const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
+const prepMarix = (mpList, ownedObj, maxLA) => {
+    let matrix = [];
+    if (isNaN(maxLA)) {
+        maxLA = 100000;
+    }
+    
+    // Start with MP moments
+    for (let i = 0; i < mpList.length; i++) {
+        let lst = Array.from({ length: mpList.length }, (_, __) => maxLA);
+        lst[i] = mpList[i];
+        lst = lst.concat(Array.from({ length: Object.keys(ownedObj).length}, (_, __) => 0));
+        matrix.push(lst);
+    }
+    
+    // Add Owned moments
+    for (let i = 0; i < Object.keys(ownedObj).length; i++) {
+        let lst = Array.from({ length: mpList.length }, (_, __) => maxLA);
+        let key = Object.keys(ownedObj)[i];
+        // Set zeroes for slots moment fits into
+        for (let j = 0; j < ownedObj[key].slots.length; j++) {
+            lst[ownedObj[key].slots[j]] = 0;
+        }
+        lst = lst.concat(Array.from({ length: Object.keys(ownedObj).length}, (_, __) => 0));
+        matrix.push(lst);
+    }
+
+    return matrix;
+}
+
+// Main function that finds cheapest solution to a challenge
+export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
     const pbObj = await fetchPlaybooks();
     if (pbIndex >= pbObj.length) {
         return 'Invalid playbook index. Use `/playbook` to find index for each playbook';
     }
     else if (chIndex >= pbObj[pbIndex].tasks.length) {
-        return 'Invalid challenge index. Use `/progress` to find index for each challenge in the playbook';
+        return 'Invalid challenge index. Use `/progress` or `/playbook` to find index for each challenge in the playbook';
     }
-    let str = `**${pbObj[pbIndex].title}** - Ends <t:${Math.floor(Date.parse(pbObj[pbIndex].endAt)/1000)}:f>`;
+    let str = `    **${pbObj[pbIndex].title}**\n`;
     
     if (pbObj[pbIndex].tasks[chIndex].referenceID == null) {
         return 'The challenge doesn\'t require you to submit moments. If you believe this is an error, contact Babnik';
     }
-    // Get challenge object
-    let chObj = await fetchChallenge(pbObj[pbIndex].tasks[chIndex].referenceID);
     
+    // Get challenge object
+    const chObj = await fetchChallenge(pbObj[pbIndex].tasks[chIndex].referenceID);
+    
+
     // Handle issues
     if (chObj.totalCount == 0) {
         return 'The requirements are yet unknown';
@@ -68,37 +106,92 @@ const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
         return 'Challenge has already ended';
     }
 
+    str += `\n**${chObj.edges[0].node.name}** - Ends <t:${Math.floor(Date.parse(chObj.edges[0].node.endDate)/1000)}:f>`;
 
     let slots = chObj.edges[0].node.slots;
     // Option 1 - there's only one possible challenge:
     if (slots != null) {
+        let totalPrice = 0;
 
         // Get moments available for all slots
         let [mpList, ownedObj, maxLA] = await fetchMoments(slots, flowAddress);
 
+        let matrix = prepMarix(mpList, ownedObj, maxLA);
 
-        // Pripravi matriko
+        let solution = munkres(matrix).slice(0, mpList.length);
 
-        // Izvedi Hungarian
-
-        // Izpiši rešitev
+        for (let i = 0; i < mpList.length; i ++) {
+            str += `\n  Slot ${i + 1}) `
+            // If it's a MP moment
+            if (solution[i][1] < mpList.length) {
+                str += 'No moment owned. Cheapest available:'
+                let mpObj = await queryMP(slots[i].query);
+                for (let j = 0; j < Math.min(mpObj.edges.length, 3); j++) {
+                    let price = parseInt(mpObj.edges[j].node.lowestPrice)
+                    str += `\n    $${price}: <https://nflallday.com/listing/moment/${mpObj.edges[j].node.editionFlowID}>`;
+                    if (j == 0) {
+                        totalPrice += price;
+                    }
+                }
+            }
+            
+            // If it's an owned momend
+            else {
+                let key = Object.keys(ownedObj)[solution[i][1] - mpList.length];
+                str += `\n    ${ownedObj[key].player} ${ownedObj[key].set} set, ${ownedObj[key].series}: <https://nflallday.com/moments/${key}>`;
+            }
+        }
+        str += `\n  Total price to go: $${totalPrice}`;
     }
 
     // Option 2 - there are child challenges:
     else {
+        let prices = [], strings = [];
         // For each of the available child challenges:
-        for (let k = 0; k <= chObj.edges[0].node.childChallenges.length; k++) {
-            // Do what we did in option 1
+        for (let k = 0; k < chObj.edges[0].node.childChallenges.length; k++) {
+            let totalPrice = 0;
+            let tmpStr = `\nCheapest option: #${k + 1}`;
+            let slots = chObj.edges[0].node.childChallenges[k].slots;
+
+            // Get moments available for all slots
+            let [mpList, ownedObj, maxLA] = await fetchMoments(slots, flowAddress);
+
+            let matrix = prepMarix(mpList, ownedObj, maxLA);
+
+            let solution = munkres(matrix).slice(0, mpList.length);
+
+            for (let i = 0; i < mpList.length; i ++) {
+                tmpStr += `\n  Slot ${i + 1}) `
+                // If it's a MP moment
+                if (solution[i][1] < mpList.length) {
+                    tmpStr += 'No moment owned. Cheapest available:'
+                    let mpObj = await queryMP(slots[i].query);
+                    for (let j = 0; j < Math.min(mpObj.edges.length, 3); j++) {
+                        let price = parseInt(mpObj.edges[j].node.lowestPrice)
+                        tmpStr += `\n    $${price}: <https://nflallday.com/listing/moment/${mpObj.edges[j].node.editionFlowID}>`;
+                        if (j == 0) {
+                            totalPrice += price;
+                        }
+                    }
+                }
+                
+                // If it's an owned momend
+                else {
+                    let key = Object.keys(ownedObj)[solution[i][1] - mpList.length];
+                    tmpStr += `\n    ${ownedObj[key].player} ${ownedObj[key].set} set, ${ownedObj[key].series}: <https://nflallday.com/moments/${key}>`;
+                }
+            }
+            tmpStr += `\n  Total price to go: $${totalPrice}`;
+
+            prices.push(totalPrice);
+            strings.push(tmpStr);
         }
-
-        // Select cheapest total cost child challenge
-
+        let totalPrice = Math.min(...prices);
+        str += strings[prices.indexOf(totalPrice)];
     }
-    
+
+    return str;
 }
-
-console.log(await solveChallenge(1, 13, "c1a251abdc74a103"))
-
 
 export const discordPlaybookProgress = async (index, flowAddress) => {
     const pbObj = await fetchPlaybooks('short');
