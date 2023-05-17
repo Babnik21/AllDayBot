@@ -37,35 +37,62 @@ client.on('messageCreate', (message) => console.log(message.content));
 client.on('interactionCreate', async (interaction) => {
     if (interaction.isChatInputCommand()) {
         if (interaction.commandName === 'hello') {
-            logger.debug('Test123');
-            interaction.reply(`Hello <@${interaction.options.get('user').value}>`);
+            interaction.reply('Hello!');
         }
         else if (interaction.commandName === 'playbook') {
-            interaction.reply('Fetching playbook info. This might take a minute...');
-            let msgs = await playbooks();
-            for (let i = 0; i < msgs.length; i++) {
-                client.channels.cache.get(CHANNEL_ID_AD).send(msgs[i]);
+            logger.debug('Executing command playbook');
+            try {
+                interaction.reply('Fetching playbook info. This might take a minute...');
+                let msgs = await playbooks();
+                for (let i = 0; i < msgs.length; i++) {
+                    client.channels.cache.get(CHANNEL_ID_AD).send(msgs[i]);
+                }
+                logger.debug('Executed command playbook');
+            }
+            catch (err) {
+                logger.error(err)
             }
         }
         else if (interaction.commandName === 'progress') {
-            interaction.reply('Fetching progress. This might take a minute...');
-            const pbId = interaction.options.get('id').value;
-            const flowAddress = getFlowAddress(interaction.user.id);
-            let msg = await discordPlaybookProgress(pbId - 1, flowAddress);
-            client.channels.cache.get(CHANNEL_ID_AD).send(msg);
+            logger.debug('Executing command progress');
+            try {
+                interaction.reply('Fetching progress. This might take a minute...');
+                const pbId = interaction.options.get('id').value;
+                const flowAddress = getFlowAddress(interaction.user.id);
+                let msg = await discordPlaybookProgress(pbId - 1, flowAddress);
+                client.channels.cache.get(CHANNEL_ID_AD).send(msg);
+                logger.debug('Executed command progress');
+            }
+            catch (err) {
+                logger.error(err);
+            }
         }
         else if (interaction.commandName === 'register') {
-            const username = interaction.options.get('username').value;
-            let msg = await registerUser(interaction.user.id, username);
-            interaction.reply(msg);
+            logger.debug('Executing command register');
+            try {
+                const username = interaction.options.get('username').value;
+                let msg = await registerUser(interaction.user.id, username);
+                interaction.reply(msg);
+                logger.debug('Executed command register');
+            }
+            catch (err) {
+                logger.error(err);
+            }
         }
         else if (interaction.commandName === 'solve') {
-            interaction.reply('Solving challenge. This might take a minute...');
-            const pbId = interaction.options.get('playbook-id').value;
-            const chId = interaction.options.get('challenge-id').value;
-            const flowAddress = getFlowAddress(interaction.user.id);
-            let msg = await solveChallenge(pbId - 1, chId - 1, flowAddress);
-            client.channels.cache.get(CHANNEL_ID_AD).send(msg);
+            logger.debug('Executing command solve');
+            try {
+                interaction.reply('Solving challenge. This might take a minute...');
+                const pbId = interaction.options.get('playbook-id').value;
+                const chId = interaction.options.get('challenge-id').value;
+                const flowAddress = getFlowAddress(interaction.user.id);
+                let msg = await solveChallenge(pbId - 1, chId - 1, flowAddress);
+                client.channels.cache.get(CHANNEL_ID_AD).send(msg);
+                logger.debug('Executed command solve');
+            }
+            catch (err) {
+                logger.error(err);
+            }
         }
     }
 });
@@ -81,7 +108,6 @@ async function main() {
     ]
 
     try {
-        console.log('Started refreshing bot\'s (/) commands...');
         await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {
             body: commands, 
         });
