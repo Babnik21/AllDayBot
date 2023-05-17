@@ -10,6 +10,7 @@ import { playbooks, discordPlaybookProgress } from "./functions/fetchPlaybooks.j
 import { registerUser } from "./functions/registerUser.js";
 import { getFlowAddress } from "./utils/getFlowAddress.js";
 import { solveChallenge } from "./functions/solveChallenge.js";
+import { testLogger } from "./functions/logger.js";
 
 // dotenv
 config();
@@ -17,8 +18,10 @@ const TOKEN = process.env.BOT_TOKEN;
 const GUILD_ID = process.env.GUILD_ID;
 const CLIENT_ID = process.env.BOT_CLIENT_ID;
 const CHANNEL_ID_AD = process.env.CHANNEL_ID_AD.toString(); 
+const LOGGER_TOKEN = process.env.LOGGER_TOKEN.toString();
 
-const rest = new REST({ version: '10' }).setToken(TOKEN)
+const rest = new REST({ version: '10' }).setToken(TOKEN);
+const logger = testLogger("1Mwt3qPTn5UT7XRb6uMKR91S");
 
 const client = new Client({intents: [
     GatewayIntentBits.Guilds,
@@ -34,6 +37,7 @@ client.on('messageCreate', (message) => console.log(message.content));
 client.on('interactionCreate', async (interaction) => {
     if (interaction.isChatInputCommand()) {
         if (interaction.commandName === 'hello') {
+            logger.debug('Test123');
             interaction.reply(`Hello <@${interaction.options.get('user').value}>`);
         }
         else if (interaction.commandName === 'playbook') {
