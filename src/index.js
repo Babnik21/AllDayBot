@@ -6,6 +6,7 @@ import { playbookCommand } from "./commands/playbook.js";
 import { progressCommand } from "./commands/progress.js";
 import { registerCommand } from "./commands/register.js";
 import { solveChallengeCommand} from "./commands/solveChallenge.js";
+import { addRoleCommand } from "./commands/addrole.js";
 import { playbooks, discordPlaybookProgress } from "./functions/fetchPlaybooks.js";
 import { registerUser } from "./functions/registerUser.js";
 import { getFlowAddress } from "./utils/getFlowAddress.js";
@@ -17,11 +18,11 @@ config();
 const TOKEN = process.env.BOT_TOKEN;
 const GUILD_ID = process.env.GUILD_ID;
 const CLIENT_ID = process.env.BOT_CLIENT_ID;
-const CHANNEL_ID_AD = process.env.CHANNEL_ID_AD.toString(); 
+const CHANNEL_ID_AD = process.env.CHANNEL_ID_AD.toString();
 const LOGGER_TOKEN = process.env.LOGGER_TOKEN.toString();
 
 const rest = new REST({ version: '10' }).setToken(TOKEN);
-const logger = testLogger("1Mwt3qPTn5UT7XRb6uMKR91S");
+const logger = testLogger(LOGGER_TOKEN);
 
 const client = new Client({intents: [
     GatewayIntentBits.Guilds,
@@ -30,16 +31,25 @@ const client = new Client({intents: [
     GatewayIntentBits.MessageContent
 ]});
 
-//client.login(TOKEN);
 client.on('ready', () => console.log(`${client.user.username} has logged in!`));
-client.on('messageCreate', (message) => console.log(message.content));
+client.on('messageCreate', (message) => {
+    if (message.channel.id == '1105501950168023222' && message.author.id != '1105904080410378340') {
+        message.channel.send('<@&1108778702365532182> :eyes:');
+    }
+    else if (message.author.id == '1105502167894343761') {
+        message.channel.send('<@&1108778276601729176> :eyes:');
+    }
+    else if (message.author.id == '1105502452087787520') {
+        message.channel.send('<@&1108777943058096150> :eyes:');
+    }
+});
 
 client.on('interactionCreate', async (interaction) => {
     if (interaction.isChatInputCommand()) {
         if (interaction.commandName === 'hello') {
             interaction.reply('Hello!');
         }
-        else if (interaction.commandName === 'playbook') {
+        else if (interaction.commandName === 'playbook') { 
             logger.debug('Executing command playbook');
             try {
                 interaction.reply('Fetching playbook info. This might take a minute...');
@@ -50,7 +60,8 @@ client.on('interactionCreate', async (interaction) => {
                 logger.debug('Executed command playbook');
             }
             catch (err) {
-                logger.error(err)
+                logger.error(err);
+                logger.debug('Error executing command playbook');
             }
         }
         else if (interaction.commandName === 'progress') {
@@ -65,6 +76,7 @@ client.on('interactionCreate', async (interaction) => {
             }
             catch (err) {
                 logger.error(err);
+                logger.debug('Error executing command progress');
             }
         }
         else if (interaction.commandName === 'register') {
@@ -77,6 +89,7 @@ client.on('interactionCreate', async (interaction) => {
             }
             catch (err) {
                 logger.error(err);
+                logger.debug('Error executing command register');
             }
         }
         else if (interaction.commandName === 'solve') {
@@ -92,6 +105,59 @@ client.on('interactionCreate', async (interaction) => {
             }
             catch (err) {
                 logger.error(err);
+                logger.debug('Error executing command solve');
+            }
+        }
+        else if (interaction.commandName == 'addrole') {
+            logger.debug('Executing command addrole');
+            try {
+                let role = interaction.options.getRole('role');
+                let userId = interaction.user.id;
+                let member = await interaction.guild.members.fetch(userId);
+                if (member.roles.cache.has(role.id)) {
+                    interaction.reply('You already have this role!');
+                }
+                else {
+                    try {
+                        await interaction.guild.members.cache.get(userId).roles.add(role);
+                        interaction.reply('Successfully assigned role!');
+                    }
+                    catch (err) {
+                        logger.error(err);
+                    }
+                }
+
+                logger.debug('Executed command addrole')
+            }
+            catch (err) {
+                logger.error(err);
+                logger.debug('Error executing command addrole');
+            }
+        }
+        else if (interaction.commandName == 'removerole') {
+            logger.debug('Executing command removerole');
+            try {
+                let role = interaction.options.getRole('role');
+                let userId = interaction.user.id;
+                let member = await interaction.guild.members.fetch(userId);
+                if (!member.roles.cache.has(role.id)) {
+                    interaction.reply('You don\'t have this role!');
+                }
+                else {
+                    try {
+                        await interaction.guild.members.cache.get(userId).roles.remove(role);
+                        interaction.reply('Successfully removed role!');
+                    }
+                    catch (err) {
+                        logger.error(err);
+                    }
+                }
+
+                logger.debug('Executed command removerole')
+            }
+            catch (err) {
+                logger.error(err);
+                logger.debug('Error executing command removerole');
             }
         }
     }
@@ -104,7 +170,8 @@ async function main() {
         playbookCommand,
         progressCommand,
         registerCommand,
-        solveChallengeCommand
+        solveChallengeCommand,
+        addRoleCommand
     ]
 
     try {
