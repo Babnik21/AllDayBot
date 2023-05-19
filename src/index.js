@@ -6,12 +6,16 @@ import { playbookCommand } from "./commands/playbook.js";
 import { progressCommand } from "./commands/progress.js";
 import { registerCommand } from "./commands/register.js";
 import { solveChallengeCommand} from "./commands/solveChallenge.js";
+import { gainersCommand } from "./commands/gainers.js";
 import { addRoleCommand } from "./commands/addrole.js";
+import { removeRoleCommand } from "./commands/removerole.js";
+import { killCommand } from "./commands/kill.js";
 import { playbooks, discordPlaybookProgress } from "./functions/fetchPlaybooks.js";
+import { gainers } from "./functions/gainers.js";
 import { registerUser } from "./functions/registerUser.js";
 import { getFlowAddress } from "./utils/getFlowAddress.js";
 import { solveChallenge } from "./functions/solveChallenge.js";
-import { testLogger } from "./functions/logger.js";
+import { myLogger } from "./functions/logger.js";
 
 // dotenv
 config();
@@ -22,7 +26,7 @@ const CHANNEL_ID_AD = process.env.CHANNEL_ID_AD.toString();
 const LOGGER_TOKEN = process.env.LOGGER_TOKEN.toString();
 
 const rest = new REST({ version: '10' }).setToken(TOKEN);
-const logger = testLogger(LOGGER_TOKEN);
+const logger = myLogger(LOGGER_TOKEN);
 
 const client = new Client({intents: [
     GatewayIntentBits.Guilds,
@@ -112,7 +116,22 @@ client.on('interactionCreate', async (interaction) => {
                 logger.debug('Error executing command solve');
             }
         }
-        else if (interaction.commandName == 'addrole') {
+        else if (interaction.commandName === 'gainers') {
+            logger.debug('Executing command gainers');
+            try {
+                interaction.reply('Finding biggest gainers. This might take a minute...')
+                let interval = interaction.options.get('interval').value;
+                let msg = await gainers(interaction.user.id, interval);
+                interaction.channel.send(msg);
+                logger.debug('Executed command gainers');
+            }
+            catch (err) {
+                logger.error(err);
+                logger.debug('Error executing command gainers')
+                interaction.channel.send('Unknown error occurred.')
+            }
+        }
+        else if (interaction.commandName === 'addrole') {
             logger.debug('Executing command addrole');
             try {
                 let role = interaction.options.getRole('role');
@@ -175,7 +194,10 @@ async function main() {
         progressCommand,
         registerCommand,
         solveChallengeCommand,
-        addRoleCommand
+        gainersCommand,
+        addRoleCommand,
+        removeRoleCommand,
+        killCommand
     ]
 
     try {

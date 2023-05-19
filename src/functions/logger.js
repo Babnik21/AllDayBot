@@ -7,13 +7,13 @@ const myFormat = printf(({level, message, timestamp}) => {
     return `${timestamp} [${level}]  ${message}`;
 });
 
-export const testLogger = (token) => {
+export const myLogger = (token) => {
     const logtail = new Logtail(token);
     return createLogger({
         level: "error",
         format: combine(timestamp(), align(), myFormat),
         transports: [
-            new transports.File({ filename: 'logs/test.log', level: 'debug' }),
+            new transports.File({ filename: 'logs/debug.log', level: 'debug' }),
             new LogtailTransport(logtail)
         ],
         exceptionHandlers: [
