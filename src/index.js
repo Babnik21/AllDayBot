@@ -49,6 +49,10 @@ client.on('interactionCreate', async (interaction) => {
         if (interaction.commandName === 'hello') {
             interaction.reply('Hello!');
         }
+        else if (interaction.commandName === 'kill') {
+            logger.debug('Executing command kill');
+            client.destroy();
+        }
         else if (interaction.commandName === 'playbook') { 
             logger.debug('Executing command playbook');
             try {
