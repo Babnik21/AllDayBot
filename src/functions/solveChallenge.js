@@ -11,6 +11,7 @@ const fetchMoments = async (slots, flowAddress) => {
     // for each of the requirements
     for (let i = 0; i < slots.length; i++) {
         let query = slots[i].query;
+        console.log(query);
 
         //skip freebies
         if (query == null) {
@@ -19,6 +20,7 @@ const fetchMoments = async (slots, flowAddress) => {
 
         // Get owned moments
         let collObj = await queryCollection(query, flowAddress);
+        console.log(collObj.totalCount);
         for (let j = 0; j < collObj.edges.length; j++) {
             // If moment is not eligible for any previous slot, add it
             if (ownedObj[collObj.edges[j].node.id] == undefined) {

@@ -1,5 +1,6 @@
 query searchMomentNFTsV2_collection(
     $byOwnerFlowAddresses: [String], 
+    $byEditionFlowIDs: [Int],
     $byIDs: [String], 
     $byFlowIDs: [Int], 
     $bySetFlowIDs: [Int], 
@@ -22,7 +23,8 @@ query searchMomentNFTsV2_collection(
             after: $after, 
             first: $first, 
             filters: {
-                byOwnerFlowAddresses: $byOwnerFlowAddresses, 
+                byOwnerFlowAddresses: $byOwnerFlowAddresses,
+                byEditionFlowIDs: $byEditionFlowIDs, 
                 byIDs: $byIDs, 
                 byFlowIDs: $byFlowIDs, 
                 byPlayerIDs: $byPlayerIDs, 

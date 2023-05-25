@@ -19,9 +19,9 @@ import { myLogger } from "./functions/logger.js";
 
 // dotenv
 config();
-const TOKEN = process.env.BOT_TOKEN;
+const TOKEN = process.env.BOT_TOKEN_TEST;
 const GUILD_ID = process.env.GUILD_ID;
-const CLIENT_ID = process.env.BOT_CLIENT_ID;
+const CLIENT_ID = process.env.BOT_CLIENT_ID_TEST;
 const CHANNEL_ID_AD = process.env.CHANNEL_ID_AD.toString();
 const LOGGER_TOKEN = process.env.LOGGER_TOKEN.toString();
 

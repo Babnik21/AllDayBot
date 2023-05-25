@@ -130,6 +130,9 @@ export const discordPlaybookProgress = async (index, flowAddress) => {
 
         // Skipping challenges that don't have requirements yet
         let chObj = await fetchChallenge(pbObj[index].tasks[i].referenceID);
+        
+        writeFile(`tmp${i}.json`, JSON.stringify(chObj), (err) => console.log(err));
+
         if (chObj.totalCount == 0) {
             str += `\n  ${i+1}) TBD`;
             continue;
@@ -207,10 +210,6 @@ export const discordPlaybookProgress = async (index, flowAddress) => {
     }
     return str;
 }
-
-
-//console.log(await discordPlaybookProgress(0, "c1a251abdc74a103"));
-
 
 
 // Gets playbook JSON from AD Graphql and makes discord msg for each one.
