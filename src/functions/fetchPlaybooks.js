@@ -218,6 +218,7 @@ export const discordPlaybookProgress = async (index, flowAddress) => {
 export const playbooks = async () => {
     let pbObj = await fetchPlaybooks();
     let msgLst = await discordMsgPlaybooks(pbObj);
+    if (msgLst == []) return ["There are no playbooks available at this time."]
     return msgLst;
 }
 
