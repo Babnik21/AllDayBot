@@ -1,25 +1,24 @@
 import { readFileSync, writeFile } from "fs";
 
 
-let testObj = {
-    "after": null,
-    "byBadgeSlugs": [],
-    "byCombinedBadgeSlugs": [],
-    "byFlowIDs": [],
-    "byIDs": [],
-    "byPlayTypes": [],
-    "byPlayerPositions": [],
-    "bySeriesFlowIDs": [],
-    "bySetFlowIDs": [],
-    "bySetIDs": [],
-    "byTeamIDs": [],
-    "byTiers": [
-      "RARE"
-    ],
-    "first": 12,
-    "sortBy": "LISTED_PRICE_ASC_NULLS_LAST"
-}
-let testFlowAddress = "c1a251abdc74a103";
+// let testObj = {
+//     "after": null,
+//     "byBadgeSlugs": [],
+//     "byCombinedBadgeSlugs": [],
+//     "byFlowIDs": [],
+//     "byIDs": [],
+//     "byPlayTypes": [],
+//     "byPlayerPositions": [],
+//     "bySeriesFlowIDs": [],
+//     "bySetFlowIDs": [],
+//     "bySetIDs": [],
+//     "byTeamIDs": [],
+//     "byTiers": [
+//       "RARE"
+//     ],
+//     "first": 12,
+//     "sortBy": "LISTED_PRICE_ASC_NULLS_LAST"
+// }
 
 // Queries moments available on MP based on query parameters passed in.
 export const queryCollection = async (queryParams, flowAddress) => {

@@ -2,76 +2,131 @@ import { readFileSync, writeFile } from "fs";
 import { fetchChallenge } from "./fetchChallenges.js";
 import { queryMP } from "./queryMP.js";
 import { queryCollection } from "./queryCollection.js";
+import { EmbedBuilder } from "@discordjs/builders";
 
 const discordMsgPlaybooks = async (obj) => {
-    let lst = [];
+    let embeds = [
+        new EmbedBuilder()
+            .setTitle(`NFL All Day Playbooks`)
+            .setDescription(`Last updated: <t:${Math.floor(Date.now() / 1000)}:f>`)
+            .setColor(0xffffff)
+            .setURL('https://nflallday.com/playbooks')
+    ];
     
     for (let i = 0; i < obj.length; i++) {
-        let totalYdsAvailable = 0;
+        // Count number of requirements added, to make sure fields are properly aligned
+        let count = 0;
         // Skip starter playbook
-        if (obj[i].title == 'Starter Playbook') {continue;}
-        
-        // Make a requirements string
-        let str = `**${i + 1}) ${obj[i].title}** - Ends <t:${Math.floor(Date.parse(obj[i].endAt)/1000)}:f>`
+        if (obj[i].title == 'Starter Playbook') continue;
+
+        let embed = new EmbedBuilder()
+            .setTitle(`${i + 1}) ${obj[i].title}`)
+            .setDescription(`Ends <t:${Math.floor(Date.parse(obj[i].endAt)/1000)}:f>`)
+            .setColor(0xffffff)
+            .addFields({ name: 'Playbook Requirements:', value: '\u200b'})
+            .setURL(`https://nflallday.com/playbooks/${obj[i].id}`);
+
+        let totalYdsAvailable = 0;
+
         for (let j = 0; j < obj[i].tasks.length; j++) {
             // Skip if expired
             if (Date.parse(obj[i].tasks[j].validTo) < Date.now()) {continue;};
 
-            // Add text
-            if (obj[i].tasks[j].type == 'UPGRADE') {
-                str += `\n    ${j+1}) :unlock:: ${obj[i].tasks[j].title}`;
-                if (obj[i].tasks[j].category == 'BURN_MOMENT') {str += ' :fire:'}
-                str += '\n'
-            }
-            else if (obj[i].tasks[j].type == 'POINTS') {
-                str += `\n    ${j+1}) ${obj[i].tasks[j].title} (${obj[i].tasks[j].rewardPoints} YDS)`;
-                totalYdsAvailable += obj[i].tasks[j].rewardPoints;
-                if (obj[i].tasks[j].category == 'BURN_MOMENT') {str += ' :fire:'}
-            }
+            if (obj[i].tasks[j].type == 'POINTS') totalYdsAvailable += obj[i].tasks[j].rewardPoints;
 
-            // If it has a different deadline than the playbook itself we want to note that
+            let fieldValue = '\u200b';
+
+            //If it has a different deadline than the playbook itself we want to note that
             if (obj[i].tasks[j].referenceID != null) {
                 // Expired and unloaded are causing issues.
                 try {
                     let chObj = await fetchChallenge(obj[i].tasks[j].referenceID);
                     if (chObj.edges[0].node.endDate != obj[i].endAt) {
                         if (Date.parse(chObj.edges[0].node.endDate) < Date.now()) {
-                            str += ' (Expired)'
+                            fieldValue = '(Expired)'
                         }
                         else {
-                            str += `\n      Deadline: <t:${Math.floor(Date.parse(chObj.edges[0].node.endDate)/1000)}:f>`;
+                            fieldValue = `Deadline: <t:${Math.floor(Date.parse(chObj.edges[0].node.endDate)/1000)}:f>`;
                         }
                     }
                 }
                 catch (err) {
                     console.log(err);
                 }
-                
             }
+
+            embed.addFields({ 
+                name: `${j+1}) ${obj[i].tasks[j].type == 'UPGRADE' ? ':unlock:: ' : ''}${obj[i].tasks[j].title}` 
+                    + `${obj[i].tasks[j].type == 'POINTS' ? ' (' + obj[i].tasks[j].rewardPoints + ' YDS)' : ''}`
+                    + `${obj[i].tasks[j].category == 'BURN_MOMENT' ? ' :fire:' : ''}`, 
+                value: fieldValue,
+                inline: true
+            })
+            count++;
+
         };
-        str += `\n  Total yards available: ${totalYdsAvailable}`
+
+        // Fix alignment and reset count
+        if (count > 3) {
+            while (count%3 != 0) {
+                embed.addFields({ name: '\u200b', value: '\u200b', inline: true });
+                count++;
+            }
+        }
+        
+        count = 0;
+
+
+        embed.addFields( {
+            name: `Total yards available: ${totalYdsAvailable}`,
+            value: '\u200b'
+        })
 
         // Make rewards string
-        str += `\n  **Playbook rewards:**`
+        embed.addFields( {
+            name: `Playbook Rewards:`,
+            value: '\u200b'
+        })
         for (let j = 0; j < obj[i].levels.length; j++) {
             for (let k = 0; k < obj[i].levels[j].rewards.length; k++) {
                 // Excluding useless rewards
-                if (!obj[i].levels[j].rewards[k].title.includes('Banner') && !obj[i].levels[j].rewards[k].title.includes('Trophy')) {
-                    if (obj[i].levels[j].rewards[k].tier == 'PREMIUM') {
-                        str += '\n    :lock:'
-                    }
-                    else if (obj[i].levels[j].rewards[k].tier == 'GRATIS') {
-                        str += '\n    :free:' 
-                    }
-                    str += ` @${obj[i].levels[j].requiredPoints} YDS, ${obj[i].levels[j].rewards[k].title}`        
+                if (obj[i].levels[j].rewards[k].title.includes('Banner') || obj[i].levels[j].rewards[k].title.includes('Trophy')) continue;
+
+                let prefix;
+                switch (obj[i].levels[j].rewards[k].tier) {
+                    case 'PREMIUM':
+                        prefix = ':lock: ';
+                        break;
+                    case 'GRATIS':
+                        prefix = ':free: ';
+                        break;
+                    default:
+                        prefix = '';
+                        break;
                 }
+
+                embed.addFields({
+                    name: `${prefix}${obj[i].levels[j].rewards[k].title}`,
+                    value: `@${obj[i].levels[j].requiredPoints} YDS`,
+                    inline: true
+                })
+                count++; 
             }
         }
 
-        lst.push(str);
-    }
+        // Only fix rewards alignment if there's more than 3 rewards displayed
+        if (count > 3) {
+            while (count%3 != 0) {
+                embed.addFields({ name: '\u200b', value: '\u200b', inline: true });
+                count++;
+            }
+        }
 
-    return lst;
+        embeds.push(embed)
+    }
+    if (embeds.length == 0) embeds[0].addFields({ name: 'No playbooks available at this time.', value: '\u200b' })
+
+    return embeds;
     
 }
 
@@ -115,26 +170,39 @@ export const fetchPlaybooks = async () => {
 }
 
 export const discordPlaybookProgress = async (index, flowAddress) => {
+    let count = 0
     const pbObj = await fetchPlaybooks('short');
     if (index >= pbObj.length) {
         return 'Invalid index. Use `/playbook` to find index for each playbook.';
     }
-    let str = `**${pbObj[index].title}** - Ends <t:${Math.floor(Date.parse(pbObj[index].endAt)/1000)}:f>`;
+
+    let embed = new EmbedBuilder()
+        .setTitle(`${pbObj[index].title}`)
+        .setDescription(`Ends <t:${Math.floor(Date.parse(pbObj[index].endAt)/1000)}:f>`)
+        .setColor(0xffffff)
+        .setURL(`https://nflallday.com/playbook/${pbObj[index].id}`)
+
     // Loop for each task in tasks list (playbook)
     for (let i = 0; i < pbObj[index].tasks.length; i++) {
-        // Recognising unlock type task and treating it seperately
+        // we are hoping unlock tasks are always the first ones
         if (pbObj[index].tasks[i].referenceID == null) {
-            str += `\n  ${i+1}) ${pbObj[index].tasks[i].title} :unlock:`;
+            embed.addFields({
+                name: `${i+1}) ${pbObj[index].tasks[i].title}`
+                    + (pbObj[index].tasks[i].type == 'UPGRADE' ? ' :unlock:' : ''),
+                value: '\u200b',
+                inline: pbObj[index].tasks[i].type == 'POINTS'
+            });
+            if (pbObj[index].tasks[i].type == 'POINTS') count++;
             continue;
         }
 
         // Skipping challenges that don't have requirements yet
         let chObj = await fetchChallenge(pbObj[index].tasks[i].referenceID);
         
-        writeFile(`tmp${i}.json`, JSON.stringify(chObj), (err) => console.log(err));
+        // writeFile(`tmp${i}.json`, JSON.stringify(chObj), (err) => console.log(err));
 
         if (chObj.totalCount == 0) {
-            str += `\n  ${i+1}) TBD`;
+            embed.addFields({ name: `${i+1}) TBD`, value: '\u200b' })
             continue;
         }
         // Skipping if expired
@@ -150,7 +218,7 @@ export const discordPlaybookProgress = async (index, flowAddress) => {
                 let query = chObj.edges[0].node.slots[j].query;
                 
                 // Query is null for freebies usually
-                // Skipping those with null query and expired ones
+                // Skipping those with null query
                 if (query == null) {
                     continue;
                 }
@@ -197,18 +265,24 @@ export const discordPlaybookProgress = async (index, flowAddress) => {
         }
 
         // Assemble task string
-        str += `\n  ${i+1}) ${chObj.edges[0].node.name}`
-        if (priceToGo == 0) {
-            str += ` :white_check_mark:`
-        }
-        else {
-            str += ` - Price To Go: $${priceToGo}`
-        }
-        if (Date.parse(chObj.edges[0].node.endDate) < Date.parse(pbObj[index].endAt)) {
-            str += `\n    Deadline: <t:${Math.floor(Date.parse(chObj.edges[0].node.endDate) / 1000)}:f>`
+        embed.addFields({
+            name: `${i+1}) ${chObj.edges[0].node.name}${priceToGo == 0 ? ' :white_check_mark:' : ''}`,
+            value: `${priceToGo != 0 ? 'Price To Go: $' + priceToGo + '\n': ''}` 
+                + (Date.parse(chObj.edges[0].node.endDate) < Date.parse(pbObj[index].endAt) ? `Deadline: <t:${Math.floor(Date.parse(chObj.edges[0].node.endDate) / 1000)}:f>` : ''),
+            inline: true
+        });
+        count ++;
+
+    }
+    
+    if (count > 3) {
+        while (count%3 != 0) {
+            embed.addFields({ name: '\u200b', value: '\u200b', inline: true})
+            count++;
         }
     }
-    return str;
+
+    return [embed];
 }
 
 
@@ -216,9 +290,8 @@ export const discordPlaybookProgress = async (index, flowAddress) => {
 // Only "short" detail for now
 export const playbooks = async () => {
     let pbObj = await fetchPlaybooks();
-    let msgLst = await discordMsgPlaybooks(pbObj);
-    if (msgLst == []) return ["There are no playbooks available at this time."]
-    return msgLst;
+    let embeds = await discordMsgPlaybooks(pbObj);
+    return embeds;
 }
 
 //console.log(await fetchPlaybooks('Short'));

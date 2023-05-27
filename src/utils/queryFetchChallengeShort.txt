@@ -33,6 +33,7 @@ query searchChallenges_challenge(
 fragment ChallengeQueryFragment on Challenge {
     id
     name
+    startDate
     endDate
     slots {
         title

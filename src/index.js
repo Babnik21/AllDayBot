@@ -17,11 +17,14 @@ import { getFlowAddress } from "./utils/getFlowAddress.js";
 import { solveChallenge } from "./functions/solveChallenge.js";
 import { myLogger } from "./functions/logger.js";
 
+import { testCommand } from "./commands/test.js";
+import { test } from "./functions/test.js";
+
 // dotenv
 config();
-const TOKEN = process.env.BOT_TOKEN_TEST;
+const TOKEN = process.env.BOT_TOKEN;
 const GUILD_ID = process.env.GUILD_ID;
-const CLIENT_ID = process.env.BOT_CLIENT_ID_TEST;
+const CLIENT_ID = process.env.BOT_CLIENT_ID;
 const CHANNEL_ID_AD = process.env.CHANNEL_ID_AD.toString();
 const LOGGER_TOKEN = process.env.LOGGER_TOKEN.toString();
 
@@ -36,6 +39,8 @@ const client = new Client({intents: [
 ]});
 
 client.on('ready', () => console.log(`${client.user.username} has logged in!`));
+
+// Tagging roles on announcement messages
 client.on('messageCreate', (message) => {
     if (message.channel.id == '1105501950168023222' && message.author.id != '1105904080410378340') {
         message.channel.send('<@&1108778702365532182> :eyes:');
@@ -50,43 +55,86 @@ client.on('messageCreate', (message) => {
 
 client.on('interactionCreate', async (interaction) => {
     if (interaction.isChatInputCommand()) {
+
+        // Hello command
         if (interaction.commandName === 'hello') {
             interaction.reply('Hello!');
         }
+
+        // Force killing client
         else if (interaction.commandName === 'kill') {
             logger.debug('Executing command kill');
             client.destroy();
         }
+
+        // Test command
+        else if (interaction.commandName == 'embed') {
+            try {
+                interaction.deferReply();
+                const flowAddress = getFlowAddress(interaction.user.id);
+                let embeds = await test(0, 6, flowAddress);
+                interaction.editReply({ embeds: embeds });
+            }
+            catch (err) {
+                logger.error(err);
+                interaction.editReply('Error occurred.')
+            }
+        }
+
+        // Displaying playbook information
         else if (interaction.commandName === 'playbook') { 
             logger.debug('Executing command playbook');
             try {
-                interaction.reply('Fetching playbook info. This might take a minute...');
-                let msgs = await playbooks();
-                for (let i = 0; i < msgs.length; i++) {
-                    client.channels.cache.get(CHANNEL_ID_AD).send(msgs[i]);
-                }
+                interaction.deferReply();
+                let embeds = await playbooks();
+                interaction.editReply({ embeds: embeds });
                 logger.debug('Executed command playbook');
             }
             catch (err) {
                 logger.error(err);
+                interaction.editReply('An unknown error occurred.');
                 logger.debug('Error executing command playbook');
             }
         }
+
+        // Displaying progress toward playbook
         else if (interaction.commandName === 'progress') {
             logger.debug('Executing command progress');
             try {
-                interaction.reply('Fetching progress. This might take a minute...');
+                interaction.deferReply();
                 const pbId = interaction.options.get('id').value;
                 const flowAddress = getFlowAddress(interaction.user.id);
-                let msg = await discordPlaybookProgress(pbId - 1, flowAddress);
-                client.channels.cache.get(CHANNEL_ID_AD).send(msg);
+                let embeds = await discordPlaybookProgress(pbId - 1, flowAddress);
+                interaction.editReply({ embeds: embeds });
                 logger.debug('Executed command progress');
             }
             catch (err) {
                 logger.error(err);
+                interaction.editReply('An unknown error occurred.');
                 logger.debug('Error executing command progress');
             }
         }
+
+        // Solving challenges
+        else if (interaction.commandName === 'solve') {
+            logger.debug('Executing command solve');
+            try {
+                interaction.deferReply();
+                const pbId = interaction.options.get('playbook-id').value;
+                const chId = interaction.options.get('challenge-id').value;
+                const flowAddress = getFlowAddress(interaction.user.id);
+                let embeds = await solveChallenge(pbId - 1, chId - 1, flowAddress);
+                interaction.editReply({ embeds: embeds });
+                logger.debug('Executed command solve');
+            }
+            catch (err) {
+                logger.error(err);
+                interaction.editReply('Unknown error occurred.');
+                logger.debug('Error executing command solve');
+            }
+        }
+
+        // Adding flow addresses and stuff
         else if (interaction.commandName === 'register') {
             logger.debug('Executing command register');
             try {
@@ -100,37 +148,25 @@ client.on('interactionCreate', async (interaction) => {
                 logger.debug('Error executing command register');
             }
         }
-        else if (interaction.commandName === 'solve') {
-            logger.debug('Executing command solve');
-            try {
-                interaction.reply('Solving challenge. This might take a minute...');
-                const pbId = interaction.options.get('playbook-id').value;
-                const chId = interaction.options.get('challenge-id').value;
-                const flowAddress = getFlowAddress(interaction.user.id);
-                let msg = await solveChallenge(pbId - 1, chId - 1, flowAddress);
-                client.channels.cache.get(CHANNEL_ID_AD).send(msg);
-                logger.debug('Executed command solve');
-            }
-            catch (err) {
-                logger.error(err);
-                logger.debug('Error executing command solve');
-            }
-        }
+
+        // Gainers
         else if (interaction.commandName === 'gainers') {
             logger.debug('Executing command gainers');
             try {
-                interaction.reply('Finding biggest gainers. This might take a minute...')
+                interaction.deferReply()
                 let interval = interaction.options.get('interval').value;
-                let msg = await gainers(interaction.user.id, interval);
-                interaction.channel.send(msg);
+                let embeds = await gainers(interaction.user.id, interval);
+                interaction.editReply({ embeds: embeds });
                 logger.debug('Executed command gainers');
             }
             catch (err) {
                 logger.error(err);
-                logger.debug('Error executing command gainers')
-                interaction.channel.send('Unknown error occurred.')
+                logger.debug('Error executing command gainers');
+                interaction.editReply('Unknown error occurred.');
             }
         }
+
+        // Roles
         else if (interaction.commandName === 'addrole') {
             logger.debug('Executing command addrole');
             try {
@@ -198,6 +234,7 @@ async function main() {
         addRoleCommand,
         removeRoleCommand,
         killCommand
+        // testCommand
     ]
 
     try {

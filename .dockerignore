@@ -2,3 +2,5 @@ node_modules
 samples
 sample*
 *test*
+*tmp*
+*temp*
