@@ -15,21 +15,21 @@ import { gainers } from "./functions/gainers.js";
 import { registerUser } from "./functions/registerUser.js";
 import { getFlowAddress } from "./utils/getFlowAddress.js";
 import { solveChallenge } from "./functions/solveChallenge.js";
-import { myLogger } from "./functions/logger.js";
+import { logger } from "./functions/logger.js";
 
 import { testCommand } from "./commands/test.js";
 import { test } from "./functions/test.js";
 
 // dotenv
 config();
-const TOKEN = process.env.BOT_TOKEN;
+const TOKEN = process.env.BOT_TOKEN_TEST;
 const GUILD_ID = process.env.GUILD_ID;
-const CLIENT_ID = process.env.BOT_CLIENT_ID;
+const CLIENT_ID = process.env.BOT_CLIENT_ID_TEST;
 const CHANNEL_ID_AD = process.env.CHANNEL_ID_AD.toString();
 const LOGGER_TOKEN = process.env.LOGGER_TOKEN.toString();
 
 const rest = new REST({ version: '10' }).setToken(TOKEN);
-const logger = myLogger(LOGGER_TOKEN);
+
 
 const client = new Client({intents: [
     GatewayIntentBits.Guilds,
@@ -226,15 +226,15 @@ async function main() {
 
     const commands = [
         helloCommand,
-        playbookCommand,
-        progressCommand,
-        registerCommand,
+        // playbookCommand,
+        // progressCommand,
+        // registerCommand,
         solveChallengeCommand,
-        gainersCommand,
-        addRoleCommand,
-        removeRoleCommand,
-        killCommand
-        // testCommand
+        // gainersCommand,
+        // addRoleCommand,
+        // removeRoleCommand,
+        killCommand,
+        testCommand
     ]
 
     try {
