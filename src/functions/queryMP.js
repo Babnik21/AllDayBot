@@ -31,11 +31,11 @@ export const queryMP = async (queryParams) => {
     else {
         // Save useful information
         obj = tmp.data.searchMarketplaceEditions;
-        // writeFile('src/resources/challenge_temp.json', JSON.stringify(obj), (err) => {
-        //     if (err) {
-        //         console.log(err)
-        //     }
-        // });
+        writeFile('src/resources/challenge_temp.json', JSON.stringify(obj), (err) => {
+            if (err) {
+                console.log(err)
+            }
+        });
     }
     return obj;
 };

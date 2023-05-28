@@ -21,7 +21,7 @@ import { readFileSync, writeFile } from "fs";
 // }
 
 // Queries moments available on MP based on query parameters passed in.
-export const queryCollection = async (queryParams, flowAddress) => {
+export const queryCollection = async (queryParams, flowAddress, returnFlowIdList = false) => {
     let tmp;
     let obj;
     queryParams.byOwnerFlowAddresses = [flowAddress];
@@ -57,6 +57,16 @@ export const queryCollection = async (queryParams, flowAddress) => {
         //     }
         // });
     }
+
+    // If I need list of flow_ids, return that too
+    if (returnFlowIdList) {
+        let lst = []
+        for (let moment of obj.edges) {
+            lst.push(moment.node.editionFlowID)
+        }
+        return [obj, lst]
+    }
+
     return obj;
 };
 

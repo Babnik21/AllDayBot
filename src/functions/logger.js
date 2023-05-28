@@ -2,6 +2,10 @@ import { Logtail } from "@logtail/node";
 import { LogtailTransport } from "@logtail/winston";
 import { createLogger, format, transports } from "winston";
 const { combine, timestamp, printf, align } = format;
+import { config } from "dotenv";
+
+// dotenv
+config();
 
 const myFormat = printf(({level, message, timestamp}) => {
     return `${timestamp} [${level}]  ${message}`;
@@ -25,3 +29,5 @@ export const myLogger = (token) => {
         exitOnError: false
     })
 }
+
+export let logger = myLogger(process.env.LOGGER_TOKEN.toString());

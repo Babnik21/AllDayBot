@@ -1,163 +1,635 @@
-variables: {
-    "after": null,
-    "byBadgeSlugs": [],
-    "byCombinedBadgeSlugs": [],
-    "byEditionFlowIDs": [],
-    "byFlowIDs": [],
-    "byIDs": [],
-    "byOwnerFlowAddresses": [
-        "c1a251abdc74a103"
+{
+    "totalCount": 1147,
+    "pageInfo": {
+        "endCursor": "ODliODNiNjMtODBmZC00ZDVmLTk5ZTktNmEyMDAzMDEwY2JhLDIwMjMtMDUtMjhUMDk6MTE6NDMuOTc4ODAxWiwwLA==",
+        "hasNextPage": true,
+        "__typename": "PageInfo"
+    },
+    "edges": [
+        {
+            "cursor": "Y2VkNmM2MmYtZTFmMi00ZWFjLWE5NjMtMjk5YTIyYjE1MTQwLDIwMjMtMDUtMjhUMTA6NDQ6MTYuNTQ5MDAxWiwwLA==",
+            "node": {
+                "editionFlowID": 887,
+                "lowestPrice": "4.00000000",
+                "edition": {
+                    "id": "ced6c62f-e1f2-4eac-a963-299a22b15140",
+                    "flowID": 887,
+                    "tier": "COMMON",
+                    "maxMintSize": 10000,
+                    "assetType": "STATIC",
+                    "assetVersion": null,
+                    "currentMintSize": 10000,
+                    "authenticatedUserOwnedMomentNFTs": {
+                        "totalCount": 0,
+                        "__typename": "SearchMomentNFTsResponseV2"
+                    },
+                    "numMomentsBurned": 1093,
+                    "badges": [
+                        {
+                            "id": "8d9e223a-9d90-4142-ae22-a9e4ee6ecb7b",
+                            "title": "Rookie Year",
+                            "slug": "rookie-year",
+                            "description": "Marks any Moment that occurred in the player’s rookie year",
+                            "__typename": "Badge"
+                        },
+                        {
+                            "id": "915964c0-1e81-46b4-8b09-7ed6bc19e29c",
+                            "title": "Rookie Mint",
+                            "slug": "rookie-mint",
+                            "description": "Marks all Moments minted for a player during their rookie year.",
+                            "__typename": "Badge"
+                        },
+                        {
+                            "id": "c015aec8-a114-42af-83fa-181d145853f2",
+                            "title": "ALL DAY Debut",
+                            "slug": "all-day-debut",
+                            "description": "Marks first Moment edition ever minted for a particular player (excluding Genesis Moments)",
+                            "__typename": "Badge"
+                        }
+                    ],
+                    "play": {
+                        "id": "a127810e-0c0b-46ac-95e9-b73c13a9435f",
+                        "metadata": {
+                            "teamName": "New York Giants",
+                            "classification": "PLAYER_GAME",
+                            "playerFullName": "Kadarius Toney",
+                            "gameDate": "11/01/2021",
+                            "playType": "Pass",
+                            "homeTeamID": "5163",
+                            "awayTeamID": "5170",
+                            "__typename": "PlayMetadata"
+                        },
+                        "__typename": "Play"
+                    },
+                    "set": {
+                        "name": "Base",
+                        "__typename": "Set"
+                    },
+                    "series": {
+                        "name": "Series 1",
+                        "__typename": "Series"
+                    },
+                    "__typename": "Edition"
+                },
+                "__typename": "MarketplaceEdition"
+            },
+            "__typename": "MarketplaceEditionEdge"
+        },
+        {
+            "cursor": "YTZmNWE0ZjgtODQ4ZC00YmU2LWIzOTMtMmFlNmVkMWUyZmNlLDIwMjMtMDUtMjhUMTA6Mzg6MzcuMDQyODI4WiwwLA==",
+            "node": {
+                "editionFlowID": 1019,
+                "lowestPrice": "6.00000000",
+                "edition": {
+                    "id": "a6f5a4f8-848d-4be6-b393-2ae6ed1e2fce",
+                    "flowID": 1019,
+                    "tier": "COMMON",
+                    "maxMintSize": 10000,
+                    "assetType": "STATIC",
+                    "assetVersion": null,
+                    "currentMintSize": 10000,
+                    "authenticatedUserOwnedMomentNFTs": {
+                        "totalCount": 0,
+                        "__typename": "SearchMomentNFTsResponseV2"
+                    },
+                    "numMomentsBurned": 288,
+                    "badges": [
+                        {
+                            "id": "e7537f9d-5682-4678-b103-c1da47733516",
+                            "title": "Challenge Reward",
+                            "slug": "challenge-reward",
+                            "description": "Marks any Moment edition that is distributed exclusively via Reward Packs.",
+                            "__typename": "Badge"
+                        }
+                    ],
+                    "play": {
+                        "id": "9757a0d1-b94e-4b06-9569-95a98d938145",
+                        "metadata": {
+                            "teamName": "Green Bay Packers",
+                            "classification": "PLAYER_GAME",
+                            "playerFullName": "Aaron Rodgers",
+                            "gameDate": "09/20/2021",
+                            "playType": "Pass",
+                            "homeTeamID": "5160",
+                            "awayTeamID": "5159",
+                            "__typename": "PlayMetadata"
+                        },
+                        "__typename": "Play"
+                    },
+                    "set": {
+                        "name": "Base",
+                        "__typename": "Set"
+                    },
+                    "series": {
+                        "name": "Series 1",
+                        "__typename": "Series"
+                    },
+                    "__typename": "Edition"
+                },
+                "__typename": "MarketplaceEdition"
+            },
+            "__typename": "MarketplaceEditionEdge"
+        },
+        {
+            "cursor": "ZTA1YzYzODMtMTVkNC00ZjhlLTkxMTQtZGY1MzNjY2U5MWI2LDIwMjMtMDUtMjhUMTA6MzY6NTEuODg1MjE0WiwwLA==",
+            "node": {
+                "editionFlowID": 785,
+                "lowestPrice": "6.00000000",
+                "edition": {
+                    "id": "e05c6383-15d4-4f8e-9114-df533cce91b6",
+                    "flowID": 785,
+                    "tier": "COMMON",
+                    "maxMintSize": 8500,
+                    "assetType": "STATIC",
+                    "assetVersion": null,
+                    "currentMintSize": 8500,
+                    "authenticatedUserOwnedMomentNFTs": {
+                        "totalCount": 0,
+                        "__typename": "SearchMomentNFTsResponseV2"
+                    },
+                    "numMomentsBurned": 148,
+                    "badges": null,
+                    "play": {
+                        "id": "f1dfc621-8672-45d5-8c8d-a92f8ad0dce7",
+                        "metadata": {
+                            "teamName": "Tennessee Titans",
+                            "classification": "PLAYER_GAME",
+                            "playerFullName": "A.J. Brown",
+                            "gameDate": "01/22/2022",
+                            "playType": "Reception",
+                            "homeTeamID": "5161",
+                            "awayTeamID": "5155",
+                            "__typename": "PlayMetadata"
+                        },
+                        "__typename": "Play"
+                    },
+                    "set": {
+                        "name": "Divisional Round",
+                        "__typename": "Set"
+                    },
+                    "series": {
+                        "name": "Series 1",
+                        "__typename": "Series"
+                    },
+                    "__typename": "Edition"
+                },
+                "__typename": "MarketplaceEdition"
+            },
+            "__typename": "MarketplaceEditionEdge"
+        },
+        {
+            "cursor": "M2JhZDZiNDItYTlkYS00ODg2LTljNTgtYjM0YTZhNzNlNjllLDIwMjMtMDUtMjhUMTA6MzQ6MDMuNjMzMTUyWiwwLA==",
+            "node": {
+                "editionFlowID": 1348,
+                "lowestPrice": "5.00000000",
+                "edition": {
+                    "id": "3bad6b42-a9da-4886-9c58-b34a6a73e69e",
+                    "flowID": 1348,
+                    "tier": "COMMON",
+                    "maxMintSize": 10000,
+                    "assetType": "STATIC",
+                    "assetVersion": null,
+                    "currentMintSize": 10000,
+                    "authenticatedUserOwnedMomentNFTs": {
+                        "totalCount": 0,
+                        "__typename": "SearchMomentNFTsResponseV2"
+                    },
+                    "numMomentsBurned": 763,
+                    "badges": null,
+                    "play": {
+                        "id": "ab7a0578-af39-4ea5-a394-9f918d99a3ec",
+                        "metadata": {
+                            "teamName": "Green Bay Packers",
+                            "classification": "PLAYER_GAME",
+                            "playerFullName": "Aaron Rodgers",
+                            "gameDate": "12/04/2022",
+                            "playType": "Pass",
+                            "homeTeamID": "5154",
+                            "awayTeamID": "5160",
+                            "__typename": "PlayMetadata"
+                        },
+                        "__typename": "Play"
+                    },
+                    "set": {
+                        "name": "Base",
+                        "__typename": "Set"
+                    },
+                    "series": {
+                        "name": "Series 2",
+                        "__typename": "Series"
+                    },
+                    "__typename": "Edition"
+                },
+                "__typename": "MarketplaceEdition"
+            },
+            "__typename": "MarketplaceEditionEdge"
+        },
+        {
+            "cursor": "NDVhMWE3YWMtMTdkZi00N2Q2LWFjYjctNjYxYmJiNjQ5MmM1LDIwMjMtMDUtMjhUMTA6MTY6MjkuMDMxNDE4WiwwLA==",
+            "node": {
+                "editionFlowID": 800,
+                "lowestPrice": "4.00000000",
+                "edition": {
+                    "id": "45a1a7ac-17df-47d6-acb7-661bbb6492c5",
+                    "flowID": 800,
+                    "tier": "COMMON",
+                    "maxMintSize": 8500,
+                    "assetType": "STATIC",
+                    "assetVersion": null,
+                    "currentMintSize": 8500,
+                    "authenticatedUserOwnedMomentNFTs": {
+                        "totalCount": 0,
+                        "__typename": "SearchMomentNFTsResponseV2"
+                    },
+                    "numMomentsBurned": 201,
+                    "badges": null,
+                    "play": {
+                        "id": "1eb47ab9-c3db-4749-b937-054051495291",
+                        "metadata": {
+                            "teamName": "Cincinnati Bengals",
+                            "classification": "PLAYER_GAME",
+                            "playerFullName": "Tee Higgins",
+                            "gameDate": "01/30/2022",
+                            "playType": "Reception",
+                            "homeTeamID": "5163",
+                            "awayTeamID": "5155",
+                            "__typename": "PlayMetadata"
+                        },
+                        "__typename": "Play"
+                    },
+                    "set": {
+                        "name": "Conference Championships",
+                        "__typename": "Set"
+                    },
+                    "series": {
+                        "name": "Series 1",
+                        "__typename": "Series"
+                    },
+                    "__typename": "Edition"
+                },
+                "__typename": "MarketplaceEdition"
+            },
+            "__typename": "MarketplaceEditionEdge"
+        },
+        {
+            "cursor": "OGM3ZTZjMWYtZGVhZS00ZGQ5LTgxZjAtMWVlY2JhZDI3ZGQzLDIwMjMtMDUtMjhUMTA6MTQ6MTYuNDY0MjY3WiwwLA==",
+            "node": {
+                "editionFlowID": 801,
+                "lowestPrice": "7.00000000",
+                "edition": {
+                    "id": "8c7e6c1f-deae-4dd9-81f0-1eecbad27dd3",
+                    "flowID": 801,
+                    "tier": "COMMON",
+                    "maxMintSize": 8500,
+                    "assetType": "STATIC",
+                    "assetVersion": null,
+                    "currentMintSize": 8500,
+                    "authenticatedUserOwnedMomentNFTs": {
+                        "totalCount": 1,
+                        "__typename": "SearchMomentNFTsResponseV2"
+                    },
+                    "numMomentsBurned": 35,
+                    "badges": null,
+                    "play": {
+                        "id": "48c09040-159f-47ec-b011-575c5fb9e51d",
+                        "metadata": {
+                            "teamName": "Kansas City Chiefs",
+                            "classification": "PLAYER_GAME",
+                            "playerFullName": "Tyreek Hill",
+                            "gameDate": "01/30/2022",
+                            "playType": "Reception",
+                            "homeTeamID": "5163",
+                            "awayTeamID": "5155",
+                            "__typename": "PlayMetadata"
+                        },
+                        "__typename": "Play"
+                    },
+                    "set": {
+                        "name": "Conference Championships",
+                        "__typename": "Set"
+                    },
+                    "series": {
+                        "name": "Series 1",
+                        "__typename": "Series"
+                    },
+                    "__typename": "Edition"
+                },
+                "__typename": "MarketplaceEdition"
+            },
+            "__typename": "MarketplaceEditionEdge"
+        },
+        {
+            "cursor": "MjFhYWVhNmMtODE3OS00ZDQzLTgwYWYtMTQ1Nzc3NjRjYmEzLDIwMjMtMDUtMjhUMTA6MTE6NTguNTU0NzQzWiwwLA==",
+            "node": {
+                "editionFlowID": 373,
+                "lowestPrice": "12.00000000",
+                "edition": {
+                    "id": "21aaea6c-8179-4d43-80af-14577764cba3",
+                    "flowID": 373,
+                    "tier": "COMMON",
+                    "maxMintSize": 10000,
+                    "assetType": "STATIC",
+                    "assetVersion": null,
+                    "currentMintSize": 10000,
+                    "authenticatedUserOwnedMomentNFTs": {
+                        "totalCount": 0,
+                        "__typename": "SearchMomentNFTsResponseV2"
+                    },
+                    "numMomentsBurned": 1065,
+                    "badges": [
+                        {
+                            "id": "c015aec8-a114-42af-83fa-181d145853f2",
+                            "title": "ALL DAY Debut",
+                            "slug": "all-day-debut",
+                            "description": "Marks first Moment edition ever minted for a particular player (excluding Genesis Moments)",
+                            "__typename": "Badge"
+                        }
+                    ],
+                    "play": {
+                        "id": "568acead-4de5-4147-ad35-20b41eea5378",
+                        "metadata": {
+                            "teamName": "Seattle Seahawks",
+                            "classification": "PLAYER_GAME",
+                            "playerFullName": "Russell Wilson",
+                            "gameDate": "12/05/2021",
+                            "playType": "Pass",
+                            "homeTeamID": "5177",
+                            "awayTeamID": "5176",
+                            "__typename": "PlayMetadata"
+                        },
+                        "__typename": "Play"
+                    },
+                    "set": {
+                        "name": "Base",
+                        "__typename": "Set"
+                    },
+                    "series": {
+                        "name": "Series 1",
+                        "__typename": "Series"
+                    },
+                    "__typename": "Edition"
+                },
+                "__typename": "MarketplaceEdition"
+            },
+            "__typename": "MarketplaceEditionEdge"
+        },
+        {
+            "cursor": "YTFkYzU4ZWMtNWYxMi00NTgyLWE0ZjEtMGIxMDBkMWI4NmI5LDIwMjMtMDUtMjhUMTA6MDU6NDIuODgxMzMyWiwwLA==",
+            "node": {
+                "editionFlowID": 722,
+                "lowestPrice": "3.00000000",
+                "edition": {
+                    "id": "a1dc58ec-5f12-4582-a4f1-0b100d1b86b9",
+                    "flowID": 722,
+                    "tier": "COMMON",
+                    "maxMintSize": 7000,
+                    "assetType": "STATIC",
+                    "assetVersion": null,
+                    "currentMintSize": 7000,
+                    "authenticatedUserOwnedMomentNFTs": {
+                        "totalCount": 1,
+                        "__typename": "SearchMomentNFTsResponseV2"
+                    },
+                    "numMomentsBurned": 668,
+                    "badges": null,
+                    "play": {
+                        "id": "58c75721-3b27-406f-8c10-eccb7c7e70a1",
+                        "metadata": {
+                            "teamName": "Cincinnati Bengals",
+                            "classification": "TEAM_GAME",
+                            "playerFullName": "",
+                            "gameDate": "01/09/2022",
+                            "playType": "Fumble Recovery",
+                            "homeTeamID": "5182",
+                            "awayTeamID": "5155",
+                            "__typename": "PlayMetadata"
+                        },
+                        "__typename": "Play"
+                    },
+                    "set": {
+                        "name": "Make the Stop",
+                        "__typename": "Set"
+                    },
+                    "series": {
+                        "name": "Series 1",
+                        "__typename": "Series"
+                    },
+                    "__typename": "Edition"
+                },
+                "__typename": "MarketplaceEdition"
+            },
+            "__typename": "MarketplaceEditionEdge"
+        },
+        {
+            "cursor": "MTY1ZmM1ODQtMDA0MS00ZDZkLWI4NDAtNjBkZDIwZWI0YjkzLDIwMjMtMDUtMjhUMDk6Mjg6MTUuNDU3ODQ5WiwwLA==",
+            "node": {
+                "editionFlowID": 1458,
+                "lowestPrice": "1400.00000000",
+                "edition": {
+                    "id": "165fc584-0041-4d6d-b840-60dd20eb4b93",
+                    "flowID": 1458,
+                    "tier": "LEGENDARY",
+                    "maxMintSize": 50,
+                    "assetType": "STATIC",
+                    "assetVersion": null,
+                    "currentMintSize": 50,
+                    "authenticatedUserOwnedMomentNFTs": {
+                        "totalCount": 0,
+                        "__typename": "SearchMomentNFTsResponseV2"
+                    },
+                    "numMomentsBurned": 0,
+                    "badges": null,
+                    "play": {
+                        "id": "2c2d6c81-47eb-4c85-a540-b6265fde965a",
+                        "metadata": {
+                            "teamName": "Cincinnati Bengals",
+                            "classification": "PLAYER_MELT",
+                            "playerFullName": "Joe Burrow",
+                            "gameDate": "01/22/2023",
+                            "playType": "Player Melt",
+                            "homeTeamID": "5153",
+                            "awayTeamID": "5155",
+                            "__typename": "PlayMetadata"
+                        },
+                        "__typename": "Play"
+                    },
+                    "set": {
+                        "name": "Playoff",
+                        "__typename": "Set"
+                    },
+                    "series": {
+                        "name": "Series 2",
+                        "__typename": "Series"
+                    },
+                    "__typename": "Edition"
+                },
+                "__typename": "MarketplaceEdition"
+            },
+            "__typename": "MarketplaceEditionEdge"
+        },
+        {
+            "cursor": "ZTQzMzdmZmQtMDgxMy00OTYzLTg3NWQtNDE4NzQyMTExZWQzLDIwMjMtMDUtMjhUMDk6MjA6NTAuNzc0MTUyWiwwLA==",
+            "node": {
+                "editionFlowID": 1452,
+                "lowestPrice": "67.00000000",
+                "edition": {
+                    "id": "e4337ffd-0813-4963-875d-418742111ed3",
+                    "flowID": 1452,
+                    "tier": "RARE",
+                    "maxMintSize": 500,
+                    "assetType": "STATIC",
+                    "assetVersion": null,
+                    "currentMintSize": 500,
+                    "authenticatedUserOwnedMomentNFTs": {
+                        "totalCount": 0,
+                        "__typename": "SearchMomentNFTsResponseV2"
+                    },
+                    "numMomentsBurned": 8,
+                    "badges": null,
+                    "play": {
+                        "id": "0e05d33c-fad2-4467-af75-273e842df928",
+                        "metadata": {
+                            "teamName": "Minnesota Vikings",
+                            "classification": "PLAYER_MELT",
+                            "playerFullName": "T.J. Hockenson",
+                            "gameDate": "01/15/2023",
+                            "playType": "Player Melt",
+                            "homeTeamID": "5167",
+                            "awayTeamID": "5170",
+                            "__typename": "PlayMetadata"
+                        },
+                        "__typename": "Play"
+                    },
+                    "set": {
+                        "name": "Playoff",
+                        "__typename": "Set"
+                    },
+                    "series": {
+                        "name": "Series 2",
+                        "__typename": "Series"
+                    },
+                    "__typename": "Edition"
+                },
+                "__typename": "MarketplaceEdition"
+            },
+            "__typename": "MarketplaceEditionEdge"
+        },
+        {
+            "cursor": "ZTRmMzAyOTMtNWQ0My00MDhhLTgyMjUtMDJjMDMyMTZhYzM4LDIwMjMtMDUtMjhUMDk6MTI6MTYuOTYzODdaLDAs",
+            "node": {
+                "editionFlowID": 1361,
+                "lowestPrice": "2.00000000",
+                "edition": {
+                    "id": "e4f30293-5d43-408a-8225-02c03216ac38",
+                    "flowID": 1361,
+                    "tier": "COMMON",
+                    "maxMintSize": 10000,
+                    "assetType": "STATIC",
+                    "assetVersion": null,
+                    "currentMintSize": 10000,
+                    "authenticatedUserOwnedMomentNFTs": {
+                        "totalCount": 0,
+                        "__typename": "SearchMomentNFTsResponseV2"
+                    },
+                    "numMomentsBurned": 904,
+                    "badges": null,
+                    "play": {
+                        "id": "d31c9f45-f6b0-4461-b2b1-296f63581d3d",
+                        "metadata": {
+                            "teamName": "Tennessee Titans",
+                            "classification": "PLAYER_GAME",
+                            "playerFullName": "Kevin Byard",
+                            "gameDate": "09/25/2022",
+                            "playType": "Interception",
+                            "homeTeamID": "5161",
+                            "awayTeamID": "5164",
+                            "__typename": "PlayMetadata"
+                        },
+                        "__typename": "Play"
+                    },
+                    "set": {
+                        "name": "Base",
+                        "__typename": "Set"
+                    },
+                    "series": {
+                        "name": "Series 2",
+                        "__typename": "Series"
+                    },
+                    "__typename": "Edition"
+                },
+                "__typename": "MarketplaceEdition"
+            },
+            "__typename": "MarketplaceEditionEdge"
+        },
+        {
+            "cursor": "ODliODNiNjMtODBmZC00ZDVmLTk5ZTktNmEyMDAzMDEwY2JhLDIwMjMtMDUtMjhUMDk6MTE6NDMuOTc4ODAxWiwwLA==",
+            "node": {
+                "editionFlowID": 1489,
+                "lowestPrice": "20.00000000",
+                "edition": {
+                    "id": "89b83b63-80fd-4d5f-99e9-6a2003010cba",
+                    "flowID": 1489,
+                    "tier": "RARE",
+                    "maxMintSize": 872,
+                    "assetType": "STATIC",
+                    "assetVersion": null,
+                    "currentMintSize": 872,
+                    "authenticatedUserOwnedMomentNFTs": {
+                        "totalCount": 0,
+                        "__typename": "SearchMomentNFTsResponseV2"
+                    },
+                    "numMomentsBurned": 32,
+                    "badges": [
+                        {
+                            "id": "e7537f9d-5682-4678-b103-c1da47733516",
+                            "title": "Challenge Reward",
+                            "slug": "challenge-reward",
+                            "description": "Marks any Moment edition that is distributed exclusively via Reward Packs.",
+                            "__typename": "Badge"
+                        },
+                        {
+                            "id": "8d9e223a-9d90-4142-ae22-a9e4ee6ecb7b",
+                            "title": "Rookie Year",
+                            "slug": "rookie-year",
+                            "description": "Marks any Moment that occurred in the player’s rookie year",
+                            "__typename": "Badge"
+                        },
+                        {
+                            "id": "915964c0-1e81-46b4-8b09-7ed6bc19e29c",
+                            "title": "Rookie Mint",
+                            "slug": "rookie-mint",
+                            "description": "Marks all Moments minted for a player during their rookie year.",
+                            "__typename": "Badge"
+                        }
+                    ],
+                    "play": {
+                        "id": "00e7c6d7-cc22-44b6-8606-8048c513b2d6",
+                        "metadata": {
+                            "teamName": "Baltimore Ravens",
+                            "classification": "PLAYER_MELT",
+                            "playerFullName": "Kyle Hamilton",
+                            "gameDate": "12/17/2022",
+                            "playType": "Player Melt",
+                            "homeTeamID": "5182",
+                            "awayTeamID": "5156",
+                            "__typename": "PlayMetadata"
+                        },
+                        "__typename": "Play"
+                    },
+                    "set": {
+                        "name": "Draw it Up",
+                        "__typename": "Set"
+                    },
+                    "series": {
+                        "name": "Series 2",
+                        "__typename": "Series"
+                    },
+                    "__typename": "Edition"
+                },
+                "__typename": "MarketplaceEdition"
+            },
+            "__typename": "MarketplaceEditionEdge"
+        }
     ],
-    "byPlayTypes": [],
-    "byPlayerIDs": [],
-    "byPlayerPositions": [
-        "QB"
-    ],
-    "bySeriesFlowIDs": [],
-    "bySetIDs": [],
-    "byTeamIDs": [],
-    "byTiers": [
-        "RARE",
-        "LEGENDARY",
-        "ULTIMATE"
-    ],
-    "first": null,
-    "sortBy": "ACQUIRED_AT_DESC"
-},
-"query searchMomentNFTsV2_challengesMoment(
-    $byOwnerFlowAddresses: [String
-], 
-    $byIDs: [String
-], 
-    $byFlowIDs: [Int
-], 
-    $bySetIDs: [String
-], 
-    $bySeriesFlowIDs: [Int
-], 
-    $byPlayerIDs: [String
-], 
-    $byPlayTypes: [PlayType
-], 
-    $byTeamIDs: [String
-], 
-    $byEditionFlowIDs: [Int
-],
-    $byTiers: [EditionTier
-], 
-    $byPlayerPositions: [PlayerPosition
-], 
-    $byBadgeSlugs: [BadgeSlug
-], 
-    $byCombinedBadgeSlugs: [BadgeSlug
-], 
-    $after: String, 
-    $first: Int, 
-    $sortBy: MomentNFTSortType
-) 
-{searchMomentNFTsV2(   
-    input: {
-        after: $after, 
-        first: $first, 
-        filters: {
-            byOwnerFlowAddresses: $byOwnerFlowAddresses, 
-            byIDs: $byIDs, 
-            byFlowIDs: $byFlowIDs, 
-            byPlayerIDs: $byPlayerIDs, 
-            byPlayTypes: $byPlayTypes, 
-            bySetIDs: $bySetIDs, 
-            bySeriesFlowIDs: $bySeriesFlowIDs, 
-            byTeamIDs: $byTeamIDs, 
-            byEditionFlowIDs: $byEditionFlowIDs, 
-            byTiers: $byTiers, 
-            byPlayerPositions: $byPlayerPositions, 
-            byBadgeSlugs: $byBadgeSlugs, 
-            byCombinedBadgeSlugs: $byCombinedBadgeSlugs
-        }, 
-        sortBy: $sortBy
-    }) 
-    {
-        totalCount
-        edges {
-            node {
-                ...ChallengesMomentNFTFragment
-                __typename\n
-            }
-            cursor
-            __typename\n
-        }
-        __typename
-    }
-}"
-
-fragment ChallengesMomentNFTFragment on MomentNFT {
-    badges {
-        id
-        title
-        slug
-        description
-        __typename
-    }
-    id
-    flowID
-    editionFlowID
-    ownerAddress
-    serialNumber
-    momentNFTListing {
-        id
-        listingFlowID
-        __typename
-    }
-    edition {
-        id
-        flowID
-        currentMintSize
-        maxMintSize
-        assetType
-        assetVersion
-        series {
-            id
-            name
-            __typename
-        }
-        set {
-            id
-            name
-            __typename
-        }
-        play {
-            id
-            flowID
-            metadata {
-                classification
-                playType
-                images {
-                    type
-                    url
-                    __typename
-                }
-                week
-                season
-                playerFullName
-                homeTeamName
-                awayTeamName
-                teamName
-                teamID
-                homeTeamID
-                awayTeamID
-                gameDate
-                __typename
-            }
-            __typename
-        }
-        tier
-        __typename
-    }
-    owner {
-        id
-        username
-        flowAddress
-        __typename
-    }
-    __typename
-}"
+    "__typename": "SearchMarketplaceEditionsResponse"
+}

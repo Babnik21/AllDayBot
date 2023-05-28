@@ -4,11 +4,15 @@ import { queryCollection } from './queryCollection.js';
 import { queryMP } from './queryMP.js';
 import munkres from 'munkres-js';
 import { EmbedBuilder } from "@discordjs/builders";
+import { queryOTM } from "./queryOtm.js";
+
 
 // Gathers all MP and Collection moments with prices and slots they fit into
-const fetchMoments = async (slots, flowAddress) => {
+const fetchMoments = async (slots, flowAddress, burn = false, sortKey = 'change24') => {
     let mpList = [];
-    let ownedObj = {}
+    let ownedObj = {};
+    let maxLA = 0;
+
     // for each of the requirements
     for (let i = 0; i < slots.length; i++) {
         let query = slots[i].query;
@@ -20,20 +24,35 @@ const fetchMoments = async (slots, flowAddress) => {
 
         // Get owned moments
         let collObj = await queryCollection(query, flowAddress);
+
         for (let j = 0; j < collObj.edges.length; j++) {
             // If moment is not eligible for any previous slot, add it
             if (ownedObj[collObj.edges[j].node.id] == undefined) {
-                ownedObj[collObj.edges[j].node.id] =  {
+                let playerName = collObj.edges[j].node.edition.play.metadata.playerFullName;
+                if (playerName == '') playerName = collObj.edges[j].node.edition.play.metadata.teamName
+                let set = collObj.edges[j].node.edition.set.name;
+                let series = collObj.edges[j].node.edition.series.name;
+
+                // Get prices
+                let params = {
+                    playerName: playerName, 
+                    series: series,
+                    set: set
+                };
+
+                let [la, expLoss] = await queryOTM(params, sortKey = sortKey);
+
+                ownedObj[collObj.edges[j].node.id] = {
                     editionFlowID: collObj.edges[j].node.editionFlowID,
-                    player: collObj.edges[j].node.edition.play.metadata.playerFullName,
-                    team: null,         // Popravi null ce je team moment 
+                    player: playerName,
+                    team: null,       // Popravi null ce je team moment 
                     slots: [i],
-                    series: collObj.edges[j].node.edition.series.name,
-                    set: collObj.edges[j].node.edition.set.name
+                    series: series,
+                    set: set,
+                    lowAsk: la,
+                    expLoss: (burn ? Math.max((la - 1) * 0.95, 0.95) : expLoss)
                 }
-                if (collObj.edges[j].node.edition.play.metadata.playerFullName == undefined) {
-                    console.log(collObj.edges[j].node);
-                }
+
             }
             // if record already exist, only add slot index
             else {
@@ -43,13 +62,40 @@ const fetchMoments = async (slots, flowAddress) => {
 
         // Get MP moments
         let mpObj = await queryMP(query);
-        let la = parseInt(mpObj.edges[0].node.lowestPrice);
-        mpList.push(la);
+        if (burn) {
+            let cheapest = mpObj.edges[0];
+            cheapest.expLoss = parseInt(cheapest.node.lowestPrice);
+            mpList.push(cheapest);
+            maxLA = Math.max(maxLA, parseInt(cheapest.node.lowestPrice) + 1);
+        }
+        else {
+            let cheapest = await findCheapest(mpObj.edges);
+            mpList.push(cheapest);
+            maxLA = Math.max(maxLA, parseInt(cheapest.lowestPrice) + 1);
+        }
+
     }
-    let maxLA = Math.max(mpList) + 1;
 
     return [mpList, ownedObj, maxLA];
 }
+
+// Finds cheapest moment out of a list returned in MP Query
+const findCheapest = async (moments, sortKey = 'change24') => {
+    let cheapest = { expLoss: null };
+    for (let moment of moments) {
+        let params = {
+            playerName: moment.node.edition.play.metadata.playerFullName,
+            series: moment.node.edition.series.name,
+            set: moment.node.edition.set.name
+        };
+        let [_, expLoss] = await queryOTM(params, sortKey = sortKey);
+        moment.expLoss = expLoss;
+        if (cheapest.expLoss == null || moment.expLoss < cheapest.expLoss) cheapest = moment;
+        if (cheapest.expLoss == 0.95) break;
+    }
+    return cheapest;
+}
+
 
 const prepMarix = (mpList, ownedObj, maxLA) => {
     let matrix = [];
@@ -60,7 +106,7 @@ const prepMarix = (mpList, ownedObj, maxLA) => {
     // Start with MP moments
     for (let i = 0; i < mpList.length; i++) {
         let lst = Array.from({ length: mpList.length }, (_, __) => maxLA);
-        lst[i] = mpList[i];
+        lst[i] = mpList[i].expLoss;
         lst = lst.concat(Array.from({ length: Object.keys(ownedObj).length}, (_, __) => 0));
         matrix.push(lst);
     }
@@ -126,19 +172,11 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
         for (let i = 0; i < mpList.length; i ++) {
             // If it's a MP moment
             if (solution[i][1] < mpList.length) {
-                let value = '';
-                let minPrice = 0;
-                let mpObj = await queryMP(slots[i].query);
-                for (let j = 0; j < Math.min(mpObj.edges.length, 3); j++) {
-                    let price = parseInt(mpObj.edges[j].node.lowestPrice);
-                    if (j == 0) minPrice = price;
-                    else value += '\n'
-                    value += `[${mpObj.edges[j].node.edition.play.metadata.playerFullName}](https://nflallday.com/listing/moment/${mpObj.edges[j].node.editionFlowID}): $${price}`;
-                }
-
                 embed.addFields({
-                    name: `Slot ${i+1}) No moment owned. Cheapest available: $${minPrice}`,
-                    value: value,
+                    name: `Slot ${i+1}) No moment owned. Cheapest available:`,
+                    value: `[${mpList[i].node.edition.play.metadata.playerFullName}] \
+                        (https://nflallday.com/listing/moment/${mpList[i].node.edition.flowID}/select), \
+                        Price: $${parseInt(mpList[i].node.lowestPrice)}, Expected Loss: $${mpList[i].node.expLoss}`,
                     inline: true
                 })
             }
@@ -185,7 +223,7 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
                 .setURL(`https://nflallday.com/challenges/${refID}`)
             let count = 0;
             let totalPrice = 0;
-            // let tmpStr = `\nCheapest option: #${k + 1}`;
+            let totalExpLoss = 0;
             embed.addFields({ name: `Cheapest option: #${k + 1}`, value: '\u200b' });
             let slots = chObj.edges[0].node.childChallenges[k].slots;
 
@@ -197,39 +235,31 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
             let solution = munkres(matrix).slice(0, mpList.length);
 
             for (let i = 0; i < mpList.length; i ++) {
-                // tmpStr += `\n  Slot ${i + 1}) `
                 // If it's a MP moment
                 if (solution[i][1] < mpList.length) {
-                    // tmpStr += 'No moment owned. Cheapest available:'
-                    let value = '';
-                    let minPrice = 0;
-                    let mpObj = await queryMP(slots[i].query);
-                    for (let j = 0; j < Math.min(mpObj.edges.length, 3); j++) {
-                        let price = parseInt(mpObj.edges[j].node.lowestPrice);
-                        if (j == 0) minPrice = price;
-                        else value += '\n'
-                        value += `[${mpObj.edges[j].node.edition.play.metadata.playerFullName}](https://nflallday.com/listing/moment/${mpObj.edges[j].node.editionFlowID}): $${price}`;
-                    }
-
+                    let price = parseInt(mpList[i].node.lowestPrice);
+                    let expLoss = mpList[i].node.expLoss;
                     embed.addFields({
-                        name: `Slot ${i+1}) No moment owned. Cheapest available: $${minPrice}`,
-                        value: value,
+                        name: `Slot ${i+1}) No moment owned. Cheapest available:`,
+                        value: `[${mpList[i].node.edition.play.metadata.playerFullName}] \
+                            (https://nflallday.com/listing/moment/${mpList[i].node.edition.flowID}/select), \
+                            Price: $${price}, Expected Loss: $${expLoss}`,
                         inline: true
                     })
-                    totalPrice += minPrice;
-                    count++;
+
                 }
                 
                 // If it's an owned momend
                 else {
                     let key = Object.keys(ownedObj)[solution[i][1] - mpList.length];
-                    // tmpStr += `\n    ${ownedObj[key].player} ${ownedObj[key].set} set, ${ownedObj[key].series}: <https://nflallday.com/moments/${key}>`;
                     embed.addFields({
                         name: `Slot ${i+1}) ${ownedObj[key].player}, ${ownedObj[key].set} set, ${ownedObj[key].series}`,
                         value: `View moment [here](https://nflallday.com/moments/${key})`,
                         inline: true
                     })
                 }
+
+                count++;
             }
 
             // Add empty fields for alignment
@@ -240,12 +270,13 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
                 }
             }
 
-            embed.addFields({ name: `Total price to go: $${totalPrice}`, value: '\u200b' });
+            embed.addFields({ name: `Total price to go: $${totalPrice}, Expected Loss: $${totalExpLoss}`, value: '\u200b' });
 
             embeds.push(embed);
-            prices.push(totalPrice);
+            prices.push(totalExpLoss);
         }
         let totalPrice = Math.min(...prices);
         return [embeds[prices.indexOf(totalPrice)]];
     }
 }
+
