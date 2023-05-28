@@ -22,11 +22,11 @@ import { test } from "./functions/test.js";
 
 // dotenv
 config();
-const TOKEN = process.env.BOT_TOKEN_TEST;
+const TOKEN = process.env.BOT_TOKEN;
 const GUILD_ID = process.env.GUILD_ID;
-const CLIENT_ID = process.env.BOT_CLIENT_ID_TEST;
-const CHANNEL_ID_AD = process.env.CHANNEL_ID_AD.toString();
-const LOGGER_TOKEN = process.env.LOGGER_TOKEN.toString();
+const CLIENT_ID = process.env.BOT_CLIENT_ID;
+// const CHANNEL_ID_AD = process.env.CHANNEL_ID_AD.toString();
+// const LOGGER_TOKEN = process.env.LOGGER_TOKEN.toString();
 
 const rest = new REST({ version: '10' }).setToken(TOKEN);
 
@@ -226,15 +226,15 @@ async function main() {
 
     const commands = [
         helloCommand,
-        // playbookCommand,
-        // progressCommand,
-        // registerCommand,
+        playbookCommand,
+        progressCommand,
+        registerCommand,
         solveChallengeCommand,
-        // gainersCommand,
-        // addRoleCommand,
-        // removeRoleCommand,
-        killCommand,
-        testCommand
+        gainersCommand,
+        addRoleCommand,
+        removeRoleCommand,
+        killCommand
+        // testCommand
     ]
 
     try {
