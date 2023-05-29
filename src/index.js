@@ -234,7 +234,7 @@ async function main() {
         addRoleCommand,
         removeRoleCommand,
         killCommand
-        // testCommand
+        //testCommand
     ]
 
     try {

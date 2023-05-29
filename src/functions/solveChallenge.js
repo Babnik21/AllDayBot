@@ -96,7 +96,16 @@ const findCheapest = async (moments, sortKey = 'change24') => {
     return cheapest;
 }
 
+// Deterimnes correct time interval for expected loss calculation
+const findInterval = (startDate) => {
+    let timeSinceChallengeStart = (Date.now() - Date.parse(startDate)) / 1000;  // In seconds
+    if (timeSinceChallengeStart < 14400) return "change4" // Less than 4 hours since challenge start
+    if (timeSinceChallengeStart < 28800) return "change8" // Less than 8 hours since challenge start
+    if (timeSinceChallengeStart < 3600 * 24) return "change24" // Less than 24 hours since challenge start
+    return "change7d" // More than 24 hours since challenge start
+}
 
+// Prepares a cost matrix for hungarian algoithm
 const prepMarix = (mpList, ownedObj, maxLA) => {
     let matrix = [];
     if (isNaN(maxLA)) {
@@ -137,6 +146,11 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
     }
     const refID = pbObj[pbIndex].tasks[chIndex].referenceID
     if (refID == null) {
+        if (pbObj[pbIndex].tasks[chIndex].type == 'UPGRADE') {
+            return new EmbedBuilder
+                .setTitle(`Can't be bothered to solve this dumbass task. Just burn ${pbObj[pbIndex].tasks[chIndex].validations.moments[0].quantity} ${pbObj[pbIndex].tasks[chIndex].validations.moments[0].tier.toLowerCase()} moment(s)`)
+                .setDescription('Just use cheapest on market or in your collection');
+        }
         return new EmbedBuilder().setTitle('The challenge doesn\'t require you to submit moments.').setDescription('If you believe this to be an error, contact babnik21');
     }
     
@@ -149,7 +163,10 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
     }
     else if (Date.parse(chObj.edges[0].node.endDate) < Date.now()) {
         return new EmbedBuilder().setTitle('Challenge has already ended');
-    }        
+    }
+
+    // Determine sortkey for expected loss based on time period since challenge start
+    let sortKey = findInterval(chObj.edges[0].node.startDate);
 
     let slots = chObj.edges[0].node.slots;
     // Option 1 - there's only one possible challenge:
@@ -163,7 +180,7 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
         let totalPrice = 0;
 
         // Get moments available for all slots
-        let [mpList, ownedObj, maxLA] = await fetchMoments(slots, flowAddress);
+        let [mpList, ownedObj, maxLA] = await fetchMoments(slots, flowAddress, sortKey = sortKey);
 
         let matrix = prepMarix(mpList, ownedObj, maxLA);
 
@@ -228,7 +245,7 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
             let slots = chObj.edges[0].node.childChallenges[k].slots;
 
             // Get moments available for all slots
-            let [mpList, ownedObj, maxLA] = await fetchMoments(slots, flowAddress);
+            let [mpList, ownedObj, maxLA] = await fetchMoments(slots, flowAddress, sortKey = sortKey);
 
             let matrix = prepMarix(mpList, ownedObj, maxLA);
 

@@ -171,7 +171,7 @@ export const fetchPlaybooks = async () => {
 
 export const discordPlaybookProgress = async (index, flowAddress) => {
     let count = 0
-    const pbObj = await fetchPlaybooks('short');
+    const pbObj = await fetchPlaybooks();
     if (index >= pbObj.length) {
         return 'Invalid index. Use `/playbook` to find index for each playbook.';
     }
@@ -184,12 +184,12 @@ export const discordPlaybookProgress = async (index, flowAddress) => {
 
     // Loop for each task in tasks list (playbook)
     for (let i = 0; i < pbObj[index].tasks.length; i++) {
-        // we are hoping unlock tasks are always the first ones
+        // we are hoping unlock tasks are always the first ones, otherwise structure is ruined
         if (pbObj[index].tasks[i].referenceID == null) {
             embed.addFields({
                 name: `${i+1}) ${pbObj[index].tasks[i].title}`
                     + (pbObj[index].tasks[i].type == 'UPGRADE' ? ' :unlock:' : ''),
-                value: '\u200b',
+                value: pbObj[index].tasks[i].rewardPoints > 0 ? `YDS: ${pbObj[index].tasks[i].rewardPoints}` : '\u200b',
                 inline: pbObj[index].tasks[i].type == 'POINTS'
             });
             if (pbObj[index].tasks[i].type == 'POINTS') count++;
@@ -267,8 +267,10 @@ export const discordPlaybookProgress = async (index, flowAddress) => {
         // Assemble task string
         embed.addFields({
             name: `${i+1}) ${chObj.edges[0].node.name}${priceToGo == 0 ? ' :white_check_mark:' : ''}`,
-            value: `${priceToGo != 0 ? 'Price To Go: $' + priceToGo + '\n': ''}` 
-                + (Date.parse(chObj.edges[0].node.endDate) < Date.parse(pbObj[index].endAt) ? `Deadline: <t:${Math.floor(Date.parse(chObj.edges[0].node.endDate) / 1000)}:f>` : ''),
+            value: (priceToGo != 0 ? `Price To Go: $${priceToGo}\n` : '') 
+                + (Math.abs(Date.parse(chObj.edges[0].node.endDate) - Date.parse(pbObj[index].endAt))/1000 > 900 
+                    ? `Deadline: <t:${Math.floor(Date.parse(chObj.edges[0].node.endDate) / 1000)}:f>\n` : '')
+                + (pbObj[index].tasks[i].rewardPoints > 0 ? `YDS: ${pbObj[index].tasks[i].rewardPoints}` : ''),
             inline: true
         });
         count ++;
@@ -287,7 +289,6 @@ export const discordPlaybookProgress = async (index, flowAddress) => {
 
 
 // Gets playbook JSON from AD Graphql and makes discord msg for each one.
-// Only "short" detail for now
 export const playbooks = async () => {
     let pbObj = await fetchPlaybooks();
     let embeds = await discordMsgPlaybooks(pbObj);
