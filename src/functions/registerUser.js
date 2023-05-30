@@ -1,4 +1,5 @@
 import { readFileSync, writeFile } from "fs";
+import { logger } from "../logger.js";
 
 export const registerUser = async (discordId, username) => {
     let res = await fetch(`https://www.otmnft.com/api/nflallday/user?username=${username}`, {
@@ -28,7 +29,8 @@ export const registerUser = async (discordId, username) => {
         return 'Success!';
     }
     catch (err) {
-        console.log(err);
+        logger.info('Error when registring user ' + username);
+        logger.error(err);
         return 'Unknown error occurred!';
     }
 

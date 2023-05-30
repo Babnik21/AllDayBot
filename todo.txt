@@ -1,5 +1,5 @@
 
-Solver vedno gleda 24h change -- popravi, da gleda pravilen interval glede na challenge
+Buy now pa Submit now za /solve
 
 
 

@@ -1,0 +1,10 @@
+export { addRoleCommand } from './addrole.js';
+export { removeRoleCommand } from './removerole.js';
+export { gainersCommand } from './gainers.js';
+export { solveCommand } from './solve.js';
+export { playbookCommand } from './playbook.js';
+export { progressCommand } from './progress.js';
+export { registerCommand } from './register.js';
+export { killCommand } from './kill.js';
+export { helloCommand } from './hello.js';
+export { testCommand } from './test.js';

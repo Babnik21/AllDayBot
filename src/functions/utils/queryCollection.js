@@ -1,20 +1,20 @@
 import { readFileSync, writeFile } from "fs";
 
 // Queries moments available on MP based on query parameters passed in.
-export const queryMP = async (queryParams) => {
+export const queryCollection = async (queryParams, flowAddress) => {
     let tmp;
     let obj;
-    queryParams.sortBy = 'PRICE_ASC';
+    queryParams.byOwnerFlowAddresses = [flowAddress];
 
     // Get filepath
-    let filePath = 'src/utils/queryMPFull.txt';
+    let filePath = 'src/utils/queryCollectionFull.txt';
     let query = readFileSync(filePath, { encoding: "utf-8" });
 
 
-    const res = await fetch('https://nflallday.com/consumer/graphql?searchMarketplaceEditions', {
+    const res = await fetch('https://nflallday.com/consumer/graphql?searchMomentNFTsV2_collection', {
         method: "POST",
         body: JSON.stringify({
-            operationName:"searchMarketplaceEditions",
+            operationName:"searchMomentNFTsV2_collection",
             variables: queryParams,
             query: query
         }),
@@ -30,13 +30,14 @@ export const queryMP = async (queryParams) => {
     }
     else {
         // Save useful information
-        obj = tmp.data.searchMarketplaceEditions;
-        writeFile('src/resources/challenge_temp.json', JSON.stringify(obj), (err) => {
-            if (err) {
-                console.log(err)
-            }
-        });
+        obj = tmp.data.searchMomentNFTsV2;
+        // writeFile('src/resources/challenge_temp.json', JSON.stringify(obj), (err) => {
+        //     if (err) {
+        //         console.log(err)
+        //     }
+        // });
     }
+
     return obj;
 };
 

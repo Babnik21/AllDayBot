@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from "discord.js";
 
-export const solveChallengeCommand = new SlashCommandBuilder()
+export const solveCommand = new SlashCommandBuilder()
     .setName('solve')
     .setDescription('Finds cheapest solution for selected challenge based on user\'s collection')
     .addIntegerOption((option) => {

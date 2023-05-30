@@ -17,14 +17,15 @@ export const myLogger = (token) => {
         level: "error",
         format: combine(timestamp(), align(), myFormat),
         transports: [
-            new transports.File({ filename: 'logs/debug.log', level: 'debug' }),
-            new LogtailTransport(logtail)
+            new transports.File({ filename: 'logs/debug.log', level: 'debug' })
         ],
         exceptionHandlers: [
-            new transports.File({ filename: 'logs/exceptions.log' })
+            new transports.File({ filename: 'logs/exceptions.log' }),
+            new LogtailTransport(logtail)
         ],
         rejectionHandlers: [
-            new transports.File({ filename: 'logs/rejections.log'})
+            new transports.File({ filename: 'logs/rejections.log'}),
+            new LogtailTransport(logtail)
         ],
         exitOnError: false
     })

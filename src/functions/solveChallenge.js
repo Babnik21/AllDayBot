@@ -1,139 +1,10 @@
-import { fetchPlaybooks } from "./fetchPlaybooks.js";
-import { fetchChallenge } from './fetchChallenges.js';
-import { queryCollection } from './queryCollection.js';
-import { queryMP } from './queryMP.js';
+import { fetchPlaybooks } from './utils/fetchPlaybooks.js';
+import { fetchChallenge } from './utils/fetchChallenges.js';
 import munkres from 'munkres-js';
 import { EmbedBuilder } from "@discordjs/builders";
-import { queryOTM } from "./queryOtm.js";
-
-
-// Gathers all MP and Collection moments with prices and slots they fit into
-const fetchMoments = async (slots, flowAddress, burn = false, sortKey = 'change24') => {
-    let mpList = [];
-    let ownedObj = {};
-    let maxLA = 0;
-
-    // for each of the requirements
-    for (let i = 0; i < slots.length; i++) {
-        let query = slots[i].query;
-
-        //skip freebies
-        if (query == null) {
-            continue;
-        }
-
-        // Get owned moments
-        let collObj = await queryCollection(query, flowAddress);
-
-        for (let j = 0; j < collObj.edges.length; j++) {
-            // If moment is not eligible for any previous slot, add it
-            if (ownedObj[collObj.edges[j].node.id] == undefined) {
-                let playerName = collObj.edges[j].node.edition.play.metadata.playerFullName;
-                if (playerName == '') playerName = collObj.edges[j].node.edition.play.metadata.teamName
-                let set = collObj.edges[j].node.edition.set.name;
-                let series = collObj.edges[j].node.edition.series.name;
-
-                // Get prices
-                let params = {
-                    playerName: playerName, 
-                    series: series,
-                    set: set
-                };
-
-                let [la, expLoss] = await queryOTM(params, sortKey = sortKey);
-
-                ownedObj[collObj.edges[j].node.id] = {
-                    editionFlowID: collObj.edges[j].node.editionFlowID,
-                    player: playerName,
-                    team: null,       // Popravi null ce je team moment 
-                    slots: [i],
-                    series: series,
-                    set: set,
-                    lowAsk: la,
-                    expLoss: (burn ? Math.max((la - 1) * 0.95, 0.95) : expLoss)
-                }
-
-            }
-            // if record already exist, only add slot index
-            else {
-                ownedObj[collObj.edges[j].node.id].slots.push(i);
-            }
-        }
-
-        // Get MP moments
-        let mpObj = await queryMP(query);
-        if (burn) {
-            let cheapest = mpObj.edges[0];
-            cheapest.expLoss = parseInt(cheapest.node.lowestPrice);
-            mpList.push(cheapest);
-            maxLA = Math.max(maxLA, parseInt(cheapest.node.lowestPrice) + 1);
-        }
-        else {
-            let cheapest = await findCheapest(mpObj.edges);
-            mpList.push(cheapest);
-            maxLA = Math.max(maxLA, parseInt(cheapest.lowestPrice) + 1);
-        }
-
-    }
-
-    return [mpList, ownedObj, maxLA];
-}
-
-// Finds cheapest moment out of a list returned in MP Query
-const findCheapest = async (moments, sortKey = 'change24') => {
-    let cheapest = { expLoss: null };
-    for (let moment of moments) {
-        let params = {
-            playerName: moment.node.edition.play.metadata.playerFullName,
-            series: moment.node.edition.series.name,
-            set: moment.node.edition.set.name
-        };
-        let [_, expLoss] = await queryOTM(params, sortKey = sortKey);
-        moment.expLoss = expLoss;
-        if (cheapest.expLoss == null || moment.expLoss < cheapest.expLoss) cheapest = moment;
-        if (cheapest.expLoss == 0.95) break;
-    }
-    return cheapest;
-}
-
-// Deterimnes correct time interval for expected loss calculation
-const findInterval = (startDate) => {
-    let timeSinceChallengeStart = (Date.now() - Date.parse(startDate)) / 1000;  // In seconds
-    if (timeSinceChallengeStart < 14400) return "change4" // Less than 4 hours since challenge start
-    if (timeSinceChallengeStart < 28800) return "change8" // Less than 8 hours since challenge start
-    if (timeSinceChallengeStart < 3600 * 24) return "change24" // Less than 24 hours since challenge start
-    return "change7d" // More than 24 hours since challenge start
-}
-
-// Prepares a cost matrix for hungarian algoithm
-const prepMarix = (mpList, ownedObj, maxLA) => {
-    let matrix = [];
-    if (isNaN(maxLA)) {
-        maxLA = 100000;
-    }
-    
-    // Start with MP moments
-    for (let i = 0; i < mpList.length; i++) {
-        let lst = Array.from({ length: mpList.length }, (_, __) => maxLA);
-        lst[i] = mpList[i].expLoss;
-        lst = lst.concat(Array.from({ length: Object.keys(ownedObj).length}, (_, __) => 0));
-        matrix.push(lst);
-    }
-    
-    // Add Owned moments
-    for (let i = 0; i < Object.keys(ownedObj).length; i++) {
-        let lst = Array.from({ length: mpList.length }, (_, __) => maxLA);
-        let key = Object.keys(ownedObj)[i];
-        // Set zeroes for slots moment fits into
-        for (let j = 0; j < ownedObj[key].slots.length; j++) {
-            lst[ownedObj[key].slots[j]] = 0;
-        }
-        lst = lst.concat(Array.from({ length: Object.keys(ownedObj).length}, (_, __) => 0));
-        matrix.push(lst);
-    }
-
-    return matrix;
-}
+import { prepPriceMarix } from "./utils/prepPriceMatrix.js"
+import { findChangeInterval } from "./utils/findChangeInterval.js";
+import { fetchEligibleMoments } from './utils/fetchEligibleMoments.js';
 
 // Main function that finds cheapest solution to a challenge
 export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
@@ -166,7 +37,7 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
     }
 
     // Determine sortkey for expected loss based on time period since challenge start
-    let sortKey = findInterval(chObj.edges[0].node.startDate);
+    let sortKey = findChangeInterval(chObj.edges[0].node.startDate);
 
     let slots = chObj.edges[0].node.slots;
     // Option 1 - there's only one possible challenge:
@@ -178,11 +49,12 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
             .setURL(`https://nflallday.com/challenges/${refID}`)
         let count = 0;
         let totalPrice = 0;
+        let burn = chObj.edges[0].node.name.toLowerCase().includes('burn');
 
         // Get moments available for all slots
-        let [mpList, ownedObj, maxLA] = await fetchMoments(slots, flowAddress, sortKey = sortKey);
+        let [mpList, ownedObj, maxLA] = await fetchEligibleMoments(slots, flowAddress, burn = burn, sortKey = sortKey);
 
-        let matrix = prepMarix(mpList, ownedObj, maxLA);
+        let matrix = prepPriceMarix(mpList, ownedObj, maxLA);
 
         let solution = munkres(matrix).slice(0, mpList.length);
 
@@ -241,13 +113,16 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
             let count = 0;
             let totalPrice = 0;
             let totalExpLoss = 0;
+            let burn = chObj.edges[0].node.childChallenges[k].name.toLowerCase().includes('burn');
+
+
             embed.addFields({ name: `Cheapest option: #${k + 1}`, value: '\u200b' });
             let slots = chObj.edges[0].node.childChallenges[k].slots;
 
             // Get moments available for all slots
-            let [mpList, ownedObj, maxLA] = await fetchMoments(slots, flowAddress, sortKey = sortKey);
+            let [mpList, ownedObj, maxLA] = await fetchEligibleMoments(slots, flowAddress, burn = burn, sortKey = sortKey);
 
-            let matrix = prepMarix(mpList, ownedObj, maxLA);
+            let matrix = prepPriceMarix(mpList, ownedObj, maxLA);
 
             let solution = munkres(matrix).slice(0, mpList.length);
 
