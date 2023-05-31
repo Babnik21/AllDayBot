@@ -1,3 +1,4 @@
+import { logger } from "../../logger.js";
 
 export const queryOTM = async (params, sortKey = 'change24') => {
     params.sortby = sortKey;
@@ -10,11 +11,12 @@ export const queryOTM = async (params, sortKey = 'change24') => {
     let tmp = await res.json();
 
     if (tmp.hasOwnProperty('detail')) {
-        console.log('Error fetching MP Data!');
+        logger.info('Error fetching MP Data!');
         return;
     }
     if (tmp.data.length == 0) {
-        console.log('Moment not on OTM!');
+        logger.info(`Moment not found. Name: ${params.playerName}, Series: ${params.series}, Set: ${params.set} `);
+        logger.info('Response: ' + JSON.stringify(tmp));
         return [
             100000,
             100000

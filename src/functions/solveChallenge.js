@@ -65,9 +65,9 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
                     name: `Slot ${i+1}) No moment owned. Cheapest available:`,
                     value: `[${mpList[i].node.edition.play.metadata.playerFullName}] \
                         (https://nflallday.com/listing/moment/${mpList[i].node.edition.flowID}/select), \
-                        Price: $${parseInt(mpList[i].node.lowestPrice)}, Expected Loss: $${mpList[i].node.expLoss}`,
+                        Price: $${parseInt(mpList[i].node.lowestPrice)}, Expected Loss: $${mpList[i].expLoss}`,
                     inline: true
-                })
+                });
             }
             
             // If it's an owned momend
@@ -86,7 +86,7 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
         // Add empty fields for alignment
         if (count > 3) {
             while (count%3 != 0) {
-                embed.addFields({ name: '\u200b', value: '\u200b', inline: true})
+                embed.addFields({ name: '\u200b', value: '\u200b', inline: true});
                 count++;
             }
         }
@@ -130,16 +130,18 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
                 // If it's a MP moment
                 if (solution[i][1] < mpList.length) {
                     let price = parseInt(mpList[i].node.lowestPrice);
-                    let expLoss = mpList[i].node.expLoss;
+                    let expLoss = mpList[i].expLoss;
                     embed.addFields({
                         name: `Slot ${i+1}) No moment owned. Cheapest available:`,
                         value: `[${mpList[i].node.edition.play.metadata.playerFullName}] \
                             (https://nflallday.com/listing/moment/${mpList[i].node.edition.flowID}/select), \
                             Price: $${price}, Expected Loss: $${expLoss}`,
                         inline: true
-                    })
-
+                    });
+                    totalExpLoss += expLoss;
                 }
+
+                
                 
                 // If it's an owned momend
                 else {
@@ -167,8 +169,10 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
             embeds.push(embed);
             prices.push(totalExpLoss);
         }
+        
         let totalPrice = Math.min(...prices);
         return [embeds[prices.indexOf(totalPrice)]];
     }
 }
 
+// console.log(await solveChallenge(0, 8, 'c1a251abdc74a103'));

@@ -3,16 +3,16 @@ import { config } from "dotenv";
 import { REST } from '@discordjs/rest';
 import { logger } from "./logger.js";
 import { handleCommand } from "./handler.js";
+import * as commands from './commands/index.js';
+import { testCommand } from "./commands/index.js";
 
-// Testing
-import { testCommand } from "./commands/test.js";
 
 // Env variables
 config();
 
-const TOKEN = process.env.BOT_TOKEN;
+const TOKEN = process.env.BOT_TOKEN_TEST;
 const GUILD_ID = process.env.GUILD_ID;
-const CLIENT_ID = process.env.BOT_CLIENT_ID;
+const CLIENT_ID = process.env.BOT_CLIENT_ID_TEST;
 
 const rest = new REST({ version: '10' }).setToken(TOKEN);
 
@@ -36,6 +36,7 @@ client.on('messageCreate', (message) => {
     else if (message.author.id == '1105502452087787520') {
         message.channel.send('<@&1108777943058096150> :eyes:');
     }
+    logger.verbose(`Pinged members in ${message.channel.name}`);
 });
 
 client.on('interactionCreate', async (interaction) => {
@@ -54,18 +55,23 @@ client.on('interactionCreate', async (interaction) => {
 
 async function main() {
 
-    const commands = [
-        testCommand
-    ]
-
     try {
+
+        const commands = Object.values(commands);
+        // const commands = [
+        //     testCommand
+        // ]
+
+        // Refresh commands
         await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {
             body: commands, 
         });
+
+        // Run bot
         client.login(TOKEN);
     }
     catch (err) {
-        console.log(err);
+        logger.error(err);
     }
 }
 

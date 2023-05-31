@@ -8,6 +8,7 @@ import { handleRegister } from "./handlers/registerHandler.js";
 import { handleGainers } from "./handlers/gainersHandler.js";
 import { handleAddRole } from "./handlers/addRoleHandler.js";
 import { handleRemoveRole } from "./handlers/removeRoleHandler.js";
+import { handleTest } from "./handlers/testHandler.js";
 
 export const handleCommand = async (interaction) => {
     logger.debug(`Executing command ${interaction.commandName}`)
@@ -36,6 +37,9 @@ export const handleCommand = async (interaction) => {
                 break;
             case 'removerole':
                 await handleRemoveRole(interaction);
+                break;
+            case 'test':
+                await handleTest(interaction);
                 break;
             default:
                 logger.info(`Unrecognized command ${interaction.commandName}.`)
