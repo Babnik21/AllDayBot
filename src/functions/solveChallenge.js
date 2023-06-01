@@ -5,6 +5,7 @@ import { EmbedBuilder } from "@discordjs/builders";
 import { prepPriceMarix } from "./utils/prepPriceMatrix.js"
 import { findChangeInterval } from "./utils/findChangeInterval.js";
 import { fetchEligibleMoments } from './utils/fetchEligibleMoments.js';
+import { queryOTM } from './utils/queryOtm.js';
 
 // Main function that finds cheapest solution to a challenge
 export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
@@ -49,35 +50,45 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
             .setURL(`https://nflallday.com/challenges/${refID}`)
         let count = 0;
         let totalPrice = 0;
+        let totalExpLoss = 0;
         let burn = chObj.edges[0].node.name.toLowerCase().includes('burn');
 
         // Get moments available for all slots
-        let [mpList, ownedObj, maxLA] = await fetchEligibleMoments(slots, flowAddress, burn = burn, sortKey = sortKey);
+        let [mpList, ownedMoments, maxLA] = await fetchEligibleMoments(slots, flowAddress, burn = burn, sortKey = sortKey);
 
-        let matrix = prepPriceMarix(mpList, ownedObj, maxLA);
+        let matrix = prepPriceMarix(mpList, ownedMoments, maxLA);
 
         let solution = munkres(matrix).slice(0, mpList.length);
 
         for (let i = 0; i < mpList.length; i ++) {
             // If it's a MP moment
             if (solution[i][1] < mpList.length) {
+                let price = parseInt(mpList[i].node.lowestPrice);
+                let expLoss = mpList[i].expLoss;
                 embed.addFields({
                     name: `Slot ${i+1}) No moment owned. Cheapest available:`,
-                    value: `[${mpList[i].node.edition.play.metadata.playerFullName}] \
+                    value: `[${mpList[i].node.edition.play.metadata.playerFullName}]\
                         (https://nflallday.com/listing/moment/${mpList[i].node.edition.flowID}/select), \
-                        Price: $${parseInt(mpList[i].node.lowestPrice)}, Expected Loss: $${mpList[i].expLoss}`,
+                        Price: $${price}, Expected Loss: $${expLoss}`,
                     inline: true
                 });
+
+                totalPrice += price;
+                totalExpLoss += expLoss;
             }
             
             // If it's an owned momend
             else {
-                let key = Object.keys(ownedObj)[solution[i][1] - mpList.length];
+                let key = Object.keys(ownedMoments)[solution[i][1] - mpList.length];
+                let expLoss = ownedMoments[key].expLoss;
+
                 embed.addFields({
-                    name: `Slot ${i+1}) ${ownedObj[key].player}, ${ownedObj[key].set} set, ${ownedObj[key].series}`,
-                    value: `View moment [here](https://nflallday.com/moments/${key})`,
+                    name: `Slot ${i+1}) ${ownedMoments[key].player}, ${ownedMoments[key].set} set, ${ownedMoments[key].series}`,
+                    value: `View moment [here](https://nflallday.com/moments/${key})\nExpected loss: $${expLoss}`,
                     inline: true
-                })
+                });
+                
+                totalExpLoss += expLoss;
             }
 
             count++;
@@ -92,10 +103,7 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
         }
 
         // Add total price to go
-        embed.addFields({
-            name: `Total price to go: $${totalPrice}`,
-            value: '\u200b'
-        })
+        embed.addFields({ name: `Total price to go: $${totalPrice}, Expected Loss: $${Math.round(100 * totalExpLoss) / 100}`, value: '\u200b' });
         
         return [embed]
     }
@@ -120,9 +128,9 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
             let slots = chObj.edges[0].node.childChallenges[k].slots;
 
             // Get moments available for all slots
-            let [mpList, ownedObj, maxLA] = await fetchEligibleMoments(slots, flowAddress, burn = burn, sortKey = sortKey);
+            let [mpList, ownedMoments, maxLA] = await fetchEligibleMoments(slots, flowAddress, burn = burn, sortKey = sortKey);
 
-            let matrix = prepPriceMarix(mpList, ownedObj, maxLA);
+            let matrix = prepPriceMarix(mpList, ownedMoments, maxLA);
 
             let solution = munkres(matrix).slice(0, mpList.length);
 
@@ -133,11 +141,12 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
                     let expLoss = mpList[i].expLoss;
                     embed.addFields({
                         name: `Slot ${i+1}) No moment owned. Cheapest available:`,
-                        value: `[${mpList[i].node.edition.play.metadata.playerFullName}] \
+                        value: `[${mpList[i].node.edition.play.metadata.playerFullName}]\
                             (https://nflallday.com/listing/moment/${mpList[i].node.edition.flowID}/select), \
                             Price: $${price}, Expected Loss: $${expLoss}`,
                         inline: true
                     });
+                    totalPrice += price;
                     totalExpLoss += expLoss;
                 }
 
@@ -145,12 +154,16 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
                 
                 // If it's an owned momend
                 else {
-                    let key = Object.keys(ownedObj)[solution[i][1] - mpList.length];
+                    let key = Object.keys(ownedMoments)[solution[i][1] - mpList.length];
+                    let expLoss = ownedMoments[key].expLoss;;
+
                     embed.addFields({
-                        name: `Slot ${i+1}) ${ownedObj[key].player}, ${ownedObj[key].set} set, ${ownedObj[key].series}`,
-                        value: `View moment [here](https://nflallday.com/moments/${key})`,
+                        name: `Slot ${i+1}) ${ownedMoments[key].player}, ${ownedMoments[key].set} set, ${ownedMoments[key].series}`,
+                        value: `View moment [here](https://nflallday.com/moments/${key})\nExpected loss: $${expLoss}`,
                         inline: true
-                    })
+                    });
+
+                    totalExpLoss += expLoss;
                 }
 
                 count++;
@@ -164,12 +177,12 @@ export const solveChallenge = async (pbIndex, chIndex, flowAddress) => {
                 }
             }
 
-            embed.addFields({ name: `Total price to go: $${totalPrice}, Expected Loss: $${totalExpLoss}`, value: '\u200b' });
+            embed.addFields({ name: `Total price to go: $${totalPrice}, Expected Loss: $${Math.round(100 * totalExpLoss) / 100}`, value: '\u200b' });
 
             embeds.push(embed);
             prices.push(totalExpLoss);
         }
-        
+
         let totalPrice = Math.min(...prices);
         return [embeds[prices.indexOf(totalPrice)]];
     }

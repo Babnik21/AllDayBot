@@ -1,6 +1,6 @@
 import { logger } from "../../logger.js";
 
-export const queryOTM = async (params, sortKey = 'change24') => {
+export const queryOTM = async (params, sortKey = 'change24', owned = false) => {
     params.sortby = sortKey;
     let url = `https://www.otmnft.com/api/nflallday/market/moments?limit=2&page=1`
     url += `&playerName=${params.playerName}&series=${params.series}&set=${params.set}&sortby=-${sortKey}`
@@ -24,8 +24,8 @@ export const queryOTM = async (params, sortKey = 'change24') => {
     }
     let lst = [
         tmp.data[0].price,
-        Math.max((tmp.data[0].price - 1) * 0.95 - (tmp.data[0].price * 100 / (100 + tmp.data[0][sortKey])) * 0.9 * 0.95, 0.95)
-        // Undercut by 1 * (1 - MP fee) - (Expected post-challenge price (=prechallenge price) * lowball * (1 - MP fee))
+        Math.round(100 * Math.max((owned ? (tmp.data[0].price - 1) * 0.95 : tmp.data[0].price) - (tmp.data[0].price * 100 / (100 + tmp.data[0][sortKey])) * 0.9 * 0.95, 0.95)) / 100
+        // (Undercut by 1 * (1 - MP fee) or LA) - (Expected post-challenge price (=prechallenge price) * lowball * (1 - MP fee))
     ]
     return lst;
 
